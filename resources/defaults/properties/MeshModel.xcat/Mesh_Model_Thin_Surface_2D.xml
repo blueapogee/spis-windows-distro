@@ -1,0 +1,163 @@
+<Property>
+  <id>201</id>
+  <name>Mesh Model - Spacecraft Thin Element 2D - Original Surface</name>
+  <description>Mesh model of 2D thin surface: to be applied on OTS types groups</description>
+  <isCompound>false</isCompound>
+  <type>S/C mesh properties</type>
+  
+  <characteristicList>
+    <entry>
+      <string>EdgeFlagS</string>
+      <IntegerCharacteristic>
+        <id>9</id>
+        <name>EdgeFlagS</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit></unit>
+          <standardUnit></standardUnit>
+        </unit>
+        <localisation>1</localisation>
+        <informationLink></informationLink>
+        <value>2</value>
+      </IntegerCharacteristic>
+    </entry>
+    
+    <entry>
+      <string>EdgeFlag</string>
+      <IntegerCharacteristic>
+        <id>2</id>
+        <name>EdgeFlag</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit></unit>
+          <standardUnit></standardUnit>
+        </unit>
+        <localisation>1</localisation>
+        <informationLink></informationLink>
+        <value>3</value>
+      </IntegerCharacteristic>
+    </entry>
+    <entry>
+      <string>Xyz</string>
+      <com.artenum.frida.characteristic.TupleOfIntegerCharacteristic>
+        <id>4</id>
+        <name>Xyz</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit>[m]</unit>
+          <standardUnit>m</standardUnit>
+        </unit>
+        <localisation>0</localisation>
+        <informationLink></informationLink>
+        <value>
+          <int>0</int>
+          <int>0</int>
+          <int>0</int>
+        </value>
+      </com.artenum.frida.characteristic.TupleOfIntegerCharacteristic>
+    </entry>
+
+<!--     <entry> -->
+<!--       <string>VolInteracFlag</string> -->
+<!--       <IntegerCharacteristic> -->
+<!--         <id>5</id> -->
+<!--         <name>VolInteracFlag</name> -->
+<!--         <parentProperty class="Property" reference="../../../.."/> -->
+<!--         <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit"> -->
+<!--           <unit></unit> -->
+<!--           <standardUnit></standardUnit> -->
+<!--         </unit> -->
+<!--         <localisation>3</localisation> -->
+<!--         <informationLink></informationLink> -->
+<!--         <value>0</value> -->
+<!--       </IntegerCharacteristic> -->
+<!--     </entry> -->
+    
+    <entry>
+      <string>SurfFlagS</string>
+      <IntegerCharacteristic>
+        <id>7</id>
+        <name>SurfFlagS</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit></unit>
+          <standardUnit></standardUnit>
+        </unit>
+        <localisation>2</localisation>
+        <informationLink></informationLink>
+        <value>2</value>
+      </IntegerCharacteristic>
+    </entry>
+    
+
+    <entry>
+      <string>NodeFlag</string>
+      <IntegerCharacteristic>
+        <id>3</id>
+        <name>NodeFlag</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit></unit>
+          <standardUnit></standardUnit>
+        </unit>
+        <localisation>0</localisation>
+        <informationLink></informationLink>
+        <value>3</value>
+      </IntegerCharacteristic>
+    </entry>
+    
+    <entry>
+      <string>NodeFlagS</string>
+      <IntegerCharacteristic>
+        <id>11</id>
+        <name>NodeFlagS</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit></unit>
+          <standardUnit></standardUnit>
+        </unit>
+        <localisation>0</localisation>
+        <informationLink></informationLink>
+        <value>2</value>
+      </IntegerCharacteristic>
+    </entry>
+
+    <entry>
+      <string>XyzS</string>
+      <com.artenum.frida.characteristic.TupleOfIntegerCharacteristic>
+        <id>12</id>
+        <name>XyzS</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit>[m]</unit>
+          <standardUnit>m</standardUnit>
+        </unit>
+        <localisation>0</localisation>
+        <informationLink></informationLink>
+        <value>
+          <int>0</int>
+          <int>0</int>
+          <int>0</int>
+        </value>
+      </com.artenum.frida.characteristic.TupleOfIntegerCharacteristic>
+    </entry>
+    
+    <entry>
+      <string>SurfFlag</string>
+      <IntegerCharacteristic>
+        <id>1</id>
+        <name>SurfFlag</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit></unit>
+          <standardUnit></standardUnit>
+        </unit>
+        <localisation>2</localisation>
+        <informationLink></informationLink>
+        <value>3</value>
+      </IntegerCharacteristic>
+    </entry>
+    
+  </characteristicList>
+
+</Property>

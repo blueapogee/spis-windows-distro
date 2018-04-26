@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GroupOperatorDefinition xsi:noNamespaceSchemaLocation="org-frida-0.0.5.xsd" creationDate="2014/04/14-14:51:33:06"
+lastUpdate="2014/04/14-14:51:36:309" owner="benj" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Group groupType="Undefined" description="" />
+	<Group groupType="Internal charging spacecraft boundary conditions" description="">
+		<AllowedOperator operatorType="2D mesh splitting" />
+		<AllowedOperator operatorType="Default Mutable Operator" />
+	</Group>
+	<Group groupType="Internal charging external boundary conditions" description="" />
+	<Group groupType="Internal charging computational volume" description="" />
+	<Group groupType="Instruments" description="">
+		<AllowedOperator operatorType="2D mesh splitting" />
+	</Group>
+</GroupOperatorDefinition>

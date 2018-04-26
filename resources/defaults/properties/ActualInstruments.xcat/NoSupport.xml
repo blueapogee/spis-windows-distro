@@ -1,0 +1,26 @@
+<Property>
+  <id>1200</id>
+  <name>No Actual Instrument Support</name>
+  <description>No instrument support for thi S/C surface.</description>
+  <isCompound>false</isCompound>
+  <type>S/C instrument support</type>
+  
+    <characteristicList>
+    <entry>
+      <string>InstrumentSupport</string>
+      <IntegerCharacteristic>
+        <id>1200</id>
+        <name>InstrumentSupport</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit></unit>
+          <standardUnit></standardUnit>
+        </unit>
+        <localisation>2</localisation>
+        <informationLink></informationLink>
+        <value>0</value>
+      </IntegerCharacteristic>
+    </entry>
+    </characteristicList>
+    
+</Property>

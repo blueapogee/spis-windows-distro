@@ -1,0 +1,140 @@
+<Property>
+  <id>200</id>
+  <name>No source - Spacecraft default</name>
+  <description>Default SC settings: no source</description>
+  <isCompound>false</isCompound>
+  <type>S/C sources and interactors</type>
+  
+  <characteristicList>
+    
+     <entry>
+      <string>SourceCurrent</string>
+      <DoubleCharacteristic>
+        <id>21</id>
+        <name>SourceCurrent</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit>[A/m2]</unit>
+          <standardUnit>A/m2</standardUnit>
+        </unit>
+        <localisation>2</localisation>
+        <informationLink></informationLink>
+        <value>600.0</value>
+      </DoubleCharacteristic>
+    </entry>
+    
+    <entry>
+      <string>SourceId</string>
+      <IntegerCharacteristic>
+        <id>20</id>
+        <name>SourceId</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit></unit>
+          <standardUnit></standardUnit>
+        </unit>
+        <localisation>2</localisation>
+        <informationLink></informationLink>
+        <value>0</value>
+      </IntegerCharacteristic>
+    </entry>
+    
+    <entry>
+      <string>SourceMach</string>
+      <DoubleCharacteristic>
+        <id>23</id>
+        <name>SourceMach</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit>[-]</unit>
+          <standardUnit>-</standardUnit>
+        </unit>
+        <localisation>2</localisation>
+        <informationLink></informationLink>
+        <value>0.0</value>
+      </DoubleCharacteristic>
+    </entry>
+    
+    <entry>
+      <string>SourceTemp</string>
+      <DoubleCharacteristic>
+        <id>22</id>
+        <name>SourceTemp</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit>[eV]</unit>
+          <standardUnit>eV</standardUnit>
+        </unit>
+        <localisation>2</localisation>
+        <informationLink></informationLink>
+        <value>30.0</value>
+      </DoubleCharacteristic>
+    </entry>
+    
+    <entry>
+      <string>SourceCurrentOnWire</string>
+      <DoubleCharacteristic>
+        <id>25</id>
+        <name>SourceCurrentOnWire</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit>[A/m2]</unit>
+          <standardUnit>A/m2</standardUnit>
+        </unit>
+        <localisation>1</localisation>
+        <informationLink></informationLink>
+        <value>600.0</value>
+      </DoubleCharacteristic>
+    </entry>
+    
+    <entry>
+      <string>SourceIdOnWire</string>
+      <IntegerCharacteristic>
+        <id>26</id>
+        <name>SourceIdOnWire</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit></unit>
+          <standardUnit></standardUnit>
+        </unit>
+        <localisation>1</localisation>
+        <informationLink></informationLink>
+        <value>0</value>
+      </IntegerCharacteristic>
+    </entry>
+    
+    <entry>
+      <string>SourceMachOnWire</string>
+      <DoubleCharacteristic>
+        <id>27</id>
+        <name>SourceMachOnWire</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit>[-]</unit>
+          <standardUnit>-</standardUnit>
+        </unit>
+        <localisation>1</localisation>
+        <informationLink></informationLink>
+        <value>0.0</value>
+      </DoubleCharacteristic>
+    </entry>
+    
+    
+    <entry>
+      <string>SourceTempOnWire</string>
+      <DoubleCharacteristic>
+        <id>28</id>
+        <name>SourceTempOnWire</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit>[eV]</unit>
+          <standardUnit>eV</standardUnit>
+        </unit>
+        <localisation>1</localisation>
+        <informationLink></informationLink>
+        <value>30.0</value>
+      </DoubleCharacteristic>
+    </entry>
+    </characteristicList>
+
+</Property>

@@ -1,0 +1,144 @@
+<Property>
+  <id>300</id>
+  <name>Electric field BC: Boundary, null Electric Field</name>
+  <description>Reflective boundary settings: E=0</description>
+  <isCompound>false</isCompound>
+  <type>Ext. Bound. Electric field BC</type>
+  
+  <characteristicList>
+    <entry>
+      <string>NodeFlagBd</string>
+      <IntegerCharacteristic>
+        <id>3</id>
+        <name>NodeFlagBd</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit></unit>
+          <standardUnit></standardUnit>
+        </unit>
+        <localisation>0</localisation>
+        <informationLink></informationLink>
+        <value>0</value>
+      </IntegerCharacteristic>
+    </entry>
+
+    <entry>
+      <string>BdFourValue</string>
+      <DoubleCharacteristic>
+        <id>9</id>
+        <name>BdFourValue</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit>[V/m]</unit>
+          <standardUnit>V/m</standardUnit>
+        </unit>
+        <localisation>0</localisation>
+        <informationLink></informationLink>
+        <value>0.0</value>
+      </DoubleCharacteristic>
+    </entry>
+            
+        
+    <entry>
+      <string>BdDiriPot</string>
+      <DoubleCharacteristic>
+        <id>6</id>
+        <name>BdDiriPot</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit>[V]</unit>
+          <standardUnit>V</standardUnit>
+        </unit>
+        <localisation>0</localisation>
+        <informationLink></informationLink>
+        <value>0.0</value>
+      </DoubleCharacteristic>
+    </entry>
+    
+    <!--  
+    <entry>
+      <string>VolInteracFlag</string>
+      <IntegerCharacteristic>
+        <id>5</id>
+        <name>VolInteracFlag</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit></unit>
+          <standardUnit></standardUnit>
+        </unit>
+        <localisation>3</localisation>
+        <informationLink></informationLink>
+        <value>0</value>
+      </IntegerCharacteristic>
+    </entry>
+    -->
+    
+    
+    <entry>
+      <string>BdFourAlpha</string>
+      <DoubleCharacteristic>
+        <id>8</id>
+        <name>BdFourAlpha</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit>[m-1]</unit>
+          <standardUnit>m-1</standardUnit>
+        </unit>
+        <localisation>2</localisation>
+        <informationLink></informationLink>
+        <value>0.0</value>
+      </DoubleCharacteristic>
+    </entry>
+    
+    <entry>
+      <string>BdFourFlag</string>
+      <IntegerCharacteristic>
+        <id>7</id>
+        <name>BdFourFlag</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit></unit>
+          <standardUnit></standardUnit>
+        </unit>
+        <localisation>2</localisation>
+        <informationLink></informationLink>
+        <value>1</value>
+      </IntegerCharacteristic>
+    </entry>
+    
+    <!-- 
+    <entry>
+      <string>BackGroundDens</string>
+      <DoubleCharacteristic>
+        <id>6</id>
+        <name>BackGroundDens</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit>[m-3]</unit>
+          <standardUnit>m-3</standardUnit>
+        </unit>
+        <localisation>3</localisation>
+        <informationLink></informationLink>
+        <value>0.0</value>
+      </DoubleCharacteristic>
+    </entry>
+     -->
+     
+    <entry>
+      <string>BdDiriFlag</string>
+      <IntegerCharacteristic>
+        <id>5</id>
+        <name>BdDiriFlag</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit></unit>
+          <standardUnit></standardUnit>
+        </unit>
+        <localisation>0</localisation>
+        <informationLink></informationLink>
+        <value>0</value>
+      </IntegerCharacteristic>
+    </entry>
+  </characteristicList>
+
+</Property>

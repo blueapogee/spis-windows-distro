@@ -1,0 +1,8 @@
+<Property>
+  <id>11</id>
+  <name>Atom</name>
+  <description>Material made of atoms</description>
+  <isCompound>false</isCompound>
+  <type>Material type</type>
+  <characteristicList/>
+</Property>

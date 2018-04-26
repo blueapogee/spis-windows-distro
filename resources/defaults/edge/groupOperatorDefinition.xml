@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GroupOperatorDefinition xsi:noNamespaceSchemaLocation="org-frida-0.0.5.xsd" creationDate="2014/04/14-14:51:33:06"
+lastUpdate="2014/04/14-14:51:36:309" owner="benj" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Group groupType="Undefined" description="" />
+	<Group groupType="Custom material" description="" />
+	<!-- <Group groupType="Pre-defined material" description="" /> -->
+</GroupOperatorDefinition>

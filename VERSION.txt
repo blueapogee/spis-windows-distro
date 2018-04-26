@@ -1,0 +1,335 @@
+##############################################################
+ArtTk-2.0.20.jar:
+Built-by: hudson
+SVN revision: 1991
+
+##############################################################
+org-keridwen-core-data-model-2.0.16.jar:
+Built-by: hudson
+SVN revision: ${/home/hudson/.m2/repository/org/keridwen/core/org-keridwen-core-data-model/2.0.16/org-keridwen-core-data-model-2.0.16.jar.name.Implementation-Build}
+
+##############################################################
+org-keridwen-core-messaging-2.0.16.jar:
+Built-by: hudson
+SVN revision: ${/home/hudson/.m2/repository/org/keridwen/core/org-keridwen-core-messaging/2.0.16/org-keridwen-core-messaging-2.0.16.jar.name.Implementation-Build}
+
+##############################################################
+org-keridwen-core-settings-2.0.16.jar:
+Built-by: hudson
+SVN revision: ${/home/hudson/.m2/repository/org/keridwen/core/org-keridwen-core-settings/2.0.16/org-keridwen-core-settings-2.0.16.jar.name.Implementation-Build}
+
+##############################################################
+org-keridwen-core-state-2.0.16.jar:
+Built-by: hudson
+SVN revision: ${/home/hudson/.m2/repository/org/keridwen/core/org-keridwen-core-state/2.0.16/org-keridwen-core-state-2.0.16.jar.name.Implementation-Build}
+
+##############################################################
+org-keridwen-core-ui-dockingframes-2.0.16.jar:
+Built-by: hudson
+SVN revision: ${/home/hudson/.m2/repository/org/keridwen/core/org-keridwen-core-ui-dockingframes/2.0.16/org-keridwen-core-ui-dockingframes-2.0.16.jar.name.Implementation-Build}
+
+##############################################################
+org-keridwen-core-i18n-2.0.16.jar:
+Built-by: hudson
+SVN revision: ${/home/hudson/.m2/repository/org/keridwen/core/org-keridwen-core-i18n/2.0.16/org-keridwen-core-i18n-2.0.16.jar.name.Implementation-Build}
+
+##############################################################
+org-keridwen-vtk-2.0.16.jar:
+Built-by: hudson
+SVN revision: ${/home/hudson/.m2/repository/org/keridwen/vtk/org-keridwen-vtk/2.0.16/org-keridwen-vtk-2.0.16.jar.name.Implementation-Build}
+
+##############################################################
+org-keridwen-gmsh-2.0.16.jar:
+Built-by: hudson
+SVN revision: ${/home/hudson/.m2/repository/org/keridwen/gmsh/org-keridwen-gmsh/2.0.16/org-keridwen-gmsh-2.0.16.jar.name.Implementation-Build}
+
+##############################################################
+org-keridwen-xstream-2.0.16.jar:
+Built-by: hudson
+SVN revision: ${/home/hudson/.m2/repository/org/keridwen/xstream/org-keridwen-xstream/2.0.16/org-keridwen-xstream-2.0.16.jar.name.Implementation-Build}
+
+##############################################################
+nisaba-1.0.16.jar:
+Built-by: hudson
+SVN revision: ${/home/hudson/.m2/repository/com/artenum/nisaba/1.0.16/nisaba-1.0.16.jar.name.Implementation-Build}
+
+##############################################################
+org-keridwen-modelling-data-model-2.0.18.jar:
+Built-by: hudson
+SVN revision: ${/home/hudson/.m2/repository/org/keridwen/modelling/org-keridwen-modelling-data-model/2.0.18/org-keridwen-modelling-data-model-2.0.18.jar.name.Implementation-Build}
+
+##############################################################
+org-keridwen-modelling-console-2.0.18.jar:
+Built-by: hudson
+SVN revision: ${/home/hudson/.m2/repository/org/keridwen/modelling/org-keridwen-modelling-console/2.0.18/org-keridwen-modelling-console-2.0.18.jar.name.Implementation-Build}
+
+##############################################################
+org-keridwen-modelling-utils-2.0.18.jar:
+Built-by: hudson
+SVN revision: ${/home/hudson/.m2/repository/org/keridwen/modelling/org-keridwen-modelling-utils/2.0.18/org-keridwen-modelling-utils-2.0.18.jar.name.Implementation-Build}
+
+##############################################################
+org-keridwen-modelling-global-parameters-2.0.18.jar:
+Built-by: hudson
+SVN revision: ${/home/hudson/.m2/repository/org/keridwen/modelling/org-keridwen-modelling-global-parameters/2.0.18/org-keridwen-modelling-global-parameters-2.0.18.jar.name.Implementation-Build}
+
+##############################################################
+org-keridwen-modelling-text-editor-2.0.18.jar:
+Built-by: hudson
+SVN revision: ${/home/hudson/.m2/repository/org/keridwen/modelling/org-keridwen-modelling-text-editor/2.0.18/org-keridwen-modelling-text-editor-2.0.18.jar.name.Implementation-Build}
+
+##############################################################
+org-keridwen-modelling-monitoring-2.0.18.jar:
+Built-by: hudson
+SVN revision: ${/home/hudson/.m2/repository/org/keridwen/modelling/org-keridwen-modelling-monitoring/2.0.18/org-keridwen-modelling-monitoring-2.0.18.jar.name.Implementation-Build}
+
+##############################################################
+org-keridwen-modelling-reporting-2.0.18.jar:
+Built-by: hudson
+SVN revision: ${/home/hudson/.m2/repository/org/keridwen/modelling/org-keridwen-modelling-reporting/2.0.18/org-keridwen-modelling-reporting-2.0.18.jar.name.Implementation-Build}
+
+##############################################################
+org-keridwen-modelling-group-editor-2.0.18.jar:
+Built-by: hudson
+SVN revision: ${/home/hudson/.m2/repository/org/keridwen/modelling/org-keridwen-modelling-group-editor/2.0.18/org-keridwen-modelling-group-editor-2.0.18.jar.name.Implementation-Build}
+
+##############################################################
+org-keridwen-modelling-gmsh-2.0.18.jar:
+Built-by: hudson
+SVN revision: ${/home/hudson/.m2/repository/org/keridwen/modelling/org-keridwen-modelling-gmsh/2.0.18/org-keridwen-modelling-gmsh-2.0.18.jar.name.Implementation-Build}
+
+##############################################################
+org-keridwen-modelling-cad-2.0.18.jar:
+Built-by: hudson
+SVN revision: ${/home/hudson/.m2/repository/org/keridwen/modelling/org-keridwen-modelling-cad/2.0.18/org-keridwen-modelling-cad-2.0.18.jar.name.Implementation-Build}
+
+##############################################################
+org-keridwen-modelling-cad-editor-2.0.18.jar:
+Built-by: hudson
+SVN revision: ${/home/hudson/.m2/repository/org/keridwen/modelling/org-keridwen-modelling-cad-editor/2.0.18/org-keridwen-modelling-cad-editor-2.0.18.jar.name.Implementation-Build}
+
+##############################################################
+org-keridwen-modelling-ui-manager-2.0.18.jar:
+Built-by: hudson
+SVN revision: ${/home/hudson/.m2/repository/org/keridwen/modelling/org-keridwen-modelling-ui-manager/2.0.18/org-keridwen-modelling-ui-manager-2.0.18.jar.name.Implementation-Build}
+
+##############################################################
+com-artenum-penelope-core-3.0.16.jar:
+Built-by: hudson
+SVN revision: 661
+
+##############################################################
+com-artenum-penelope-plugin-ray-tracing-3.0.16.jar:
+Built-by: hudson
+SVN revision: 661
+
+##############################################################
+com-artenum-penelope-plugin-xml-3.0.16.jar:
+Built-by: hudson
+SVN revision: 661
+
+##############################################################
+com-artenum-penelope-plugin-netcdf-3.0.16.jar:
+Built-by: hudson
+SVN revision: 661
+
+##############################################################
+com-artenum-penelope-plugin-gmsh-3.0.16.jar:
+Built-by: hudson
+SVN revision: 661
+
+##############################################################
+com-artenum-penelope-plugin-jfreemesh-3.0.16.jar:
+Built-by: hudson
+SVN revision: 661
+
+##############################################################
+com-artenum-penelope-plugin-vtk-3.0.16.jar:
+Built-by: hudson
+SVN revision: 661
+
+##############################################################
+Frida-0.0.16.jar:
+Built-by: hudson
+SVN revision: 244
+
+##############################################################
+com-artenum-cassandra-renderer-2.5.16.jar:
+Built-by: hudson
+SVN revision: 3377
+
+##############################################################
+com-artenum-cassandra-core-2.5.16.jar:
+Built-by: hudson
+SVN revision: 3377
+
+##############################################################
+com-artenum-cassandra-plugin-cellcenter-2.5.16.jar:
+Built-by: hudson
+SVN revision: 3377
+
+##############################################################
+com-artenum-cassandra-plugin-clipping-2.5.16.jar:
+Built-by: hudson
+SVN revision: 3377
+
+##############################################################
+com-artenum-cassandra-plugin-cuttingplane-2.5.16.jar:
+Built-by: hudson
+SVN revision: 3377
+
+##############################################################
+com-artenum-cassandra-plugin-default-2.5.16.jar:
+Built-by: hudson
+SVN revision: 3377
+
+##############################################################
+com-artenum-cassandra-plugin-dynamicdataset-2.5.16.jar:
+Built-by: hudson
+SVN revision: 3377
+
+##############################################################
+com-artenum-cassandra-plugin-glyph-2.5.16.jar:
+Built-by: hudson
+SVN revision: 3377
+
+##############################################################
+com-artenum-cassandra-plugin-info2d-2.5.16.jar:
+Built-by: hudson
+SVN revision: 3377
+
+##############################################################
+com-artenum-cassandra-plugin-isolevel-2.5.16.jar:
+Built-by: hudson
+SVN revision: 3377
+
+##############################################################
+com-artenum-cassandra-plugin-probingline-2.5.16.jar:
+Built-by: hudson
+SVN revision: 3377
+
+##############################################################
+com-artenum-cassandra-plugin-genericcutter-2.5.16.jar:
+Built-by: hudson
+SVN revision: 3377
+
+##############################################################
+com-artenum-cassandra-plugin-threshold-2.5.16.jar:
+Built-by: hudson
+SVN revision: 3377
+
+##############################################################
+jcommon-1.0.16.jar:
+Built-by: Gili
+SVN revision: ${/home/hudson/.m2/repository/jfree/jcommon/1.0.16/jcommon-1.0.16.jar.name.Implementation-Build}
+
+##############################################################
+jfreechart-1.0.13.jar:
+Built-by: ${/home/hudson/.m2/repository/jfree/jfreechart/1.0.13/jfreechart-1.0.13.jar.name.Built-By}
+SVN revision: ${/home/hudson/.m2/repository/jfree/jfreechart/1.0.13/jfreechart-1.0.13.jar.name.Implementation-Build}
+
+##############################################################
+org-spis-instruments-1.0.10.jar:
+Built-by: hudson
+SVN revision: 60
+
+##############################################################
+org-spis-num-sci-geo-5.2.4-DUST.jar:
+Built-by: hudson
+SVN revision: 1153
+
+##############################################################
+org-spis-ui-numerical-core-api-5.2.4.jar:
+Built-by: hudson
+SVN revision: 10327
+
+##############################################################
+org-spis-ui-spis-num-numerical-core-implementation-5.2.4.jar:
+Built-by: hudson
+SVN revision: 10327
+
+##############################################################
+org-spis-ui-model-5.2.4.jar:
+Built-by: hudson
+SVN revision: 10327
+
+##############################################################
+org-spis-ui-ui2num-5.2.4.jar:
+Built-by: hudson
+SVN revision: 10327
+
+##############################################################
+org-spis-ui-tools-5.2.4.jar:
+Built-by: hudson
+SVN revision: 10327
+
+##############################################################
+org-spis-ui-data-mining-5.2.4.jar:
+Built-by: hudson
+SVN revision: 10327
+
+##############################################################
+org-spis-ui-electrical-circuit-5.2.4.jar:
+Built-by: hudson
+SVN revision: 10327
+
+##############################################################
+org-spis-ui-global-parameters-5.2.4.jar:
+Built-by: hudson
+SVN revision: 10327
+
+##############################################################
+org-spis-ui-group-editor-5.2.4.jar:
+Built-by: hudson
+SVN revision: 10327
+
+##############################################################
+org-spis-ui-reporting-5.2.4.jar:
+Built-by: hudson
+SVN revision: 10327
+
+##############################################################
+org-spis-ui-project-5.2.4.jar:
+Built-by: hudson
+SVN revision: 10327
+
+##############################################################
+org-spis-ui-geometry-editor-5.2.4.jar:
+Built-by: hudson
+SVN revision: 10327
+
+##############################################################
+org-spis-ui-simulation-5.2.4.jar:
+Built-by: hudson
+SVN revision: 10327
+
+##############################################################
+org-spis-ui-mesh-5.2.4.jar:
+Built-by: hudson
+SVN revision: 10327
+
+##############################################################
+org-spis-ui-project-converter-5.2.4.jar:
+Built-by: hudson
+SVN revision: 10327
+
+##############################################################
+org-keridwen-vtk-linux64b-glibc2_5-2.0.16.jar:
+Built-by: hudson
+SVN revision: ${/home/hudson/.m2/repository/org/keridwen/vtk/org-keridwen-vtk-linux64b-glibc2_5/2.0.16/org-keridwen-vtk-linux64b-glibc2_5-2.0.16.jar.name.Implementation-Build}
+
+##############################################################
+org-keridwen-vtk-osx64b-2.0.16.jar:
+Built-by: hudson
+SVN revision: ${/home/hudson/.m2/repository/org/keridwen/vtk/org-keridwen-vtk-osx64b/2.0.16/org-keridwen-vtk-osx64b-2.0.16.jar.name.Implementation-Build}
+
+##############################################################
+org-keridwen-vtk-win7-32b-2.0.16.jar:
+Built-by: hudson
+SVN revision: ${/home/hudson/.m2/repository/org/keridwen/vtk/org-keridwen-vtk-win7-32b/2.0.16/org-keridwen-vtk-win7-32b-2.0.16.jar.name.Implementation-Build}
+
+##############################################################
+org-keridwen-vtk-win7-64b-2.0.16.jar:
+Built-by: hudson
+SVN revision: ${/home/hudson/.m2/repository/org/keridwen/vtk/org-keridwen-vtk-win7-64b/2.0.16/org-keridwen-vtk-win7-64b-2.0.16.jar.name.Implementation-Build}
+

@@ -1,0 +1,53 @@
+
+
+from java.awt.event import ActionEvent
+from java.awt.event import ActionListener
+
+from Bin.Tasks.shared import sharedProp, sharedFlags
+#from Bin.Tasks.shared             import sharedFrames
+
+from Modules.Properties.MaterialList        import MaterialList
+from Modules.Properties.NascapMaterialFactory import NascapMaterialFactory
+
+import org.spis.imp.io.nascap.NascapXMLReader
+import org.spis.imp.ui.NascapMaterialImporterPanel
+
+from Bin.FrameManager                   import FrameManager
+
+class NascapMaterialImporter(ActionListener):
+    
+    def __init__(self):        
+        self.frameManager = FrameManager()
+        self.frameManager.setGuicontext(sharedFlags['guiMode'])
+        
+    def loadFile(self, path):
+        reader = org.spis.imp.io.nascap.NascapXMLReader()
+        self.materialList = reader.readFile(path)
+        
+            
+    def importNascapMaterial(self, selectedMaterialList): 
+        
+        
+        print "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"
+        
+        nascapMaterialList = MaterialList()
+        for mat in selectedMaterialList:
+            nascapMaterialList.Add(NascapMaterialFactory(None, mat.getName(), mat.getName(), mat.getDataList()))           
+        sharedProp['defaultNascapMaterialList'] = nascapMaterialList
+        
+    
+    def showGui(self):
+        self.frame = self.frameManager.getNewFrame("NASCAP material importer")
+        importerPanel = org.spis.imp.ui.NascapMaterialImporterPanel()
+        importerPanel.setActionListener(self)
+        self.frame.add(importerPanel)
+        self.frame.setSize(600,400)
+        self.frame.setVisible(1)
+        
+        
+    def actionPerformed(self, ae):
+       actionName = ae.getActionCommand()
+       print actionName
+       if (actionName == "CLOSE"):
+           self.frame.dispose()
+           self.frame = None

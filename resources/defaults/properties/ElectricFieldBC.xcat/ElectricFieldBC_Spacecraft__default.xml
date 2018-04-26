@@ -1,0 +1,160 @@
+<Property>
+  <id>200</id>
+  <name>Electric Field BC - Spacecraft default</name>
+  <description>Default SC settings: 0 Dirichlet potential</description>
+  <isCompound>false</isCompound>
+  <type>S/C electric field BC</type>
+  
+  <characteristicList>
+    <entry>
+      <string>SCFourAlpha</string>
+      <DoubleCharacteristic>
+        <id>18</id>
+        <name>SCFourAlpha</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit>[m-1]</unit>
+          <standardUnit>m-1</standardUnit>
+        </unit>
+        <localisation>2</localisation>
+        <informationLink></informationLink>
+        <value>1.0</value>
+      </DoubleCharacteristic>
+    </entry>
+ 
+    <entry>
+      <string>SCFourValue</string>
+      <DoubleCharacteristic>
+        <id>19</id>
+        <name>SCFourValue</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit>[V/m]</unit>
+          <standardUnit>V/m</standardUnit>
+        </unit>
+        <localisation>0</localisation>
+        <informationLink></informationLink>
+        <value>0.0</value>
+      </DoubleCharacteristic>
+    </entry>
+    
+    <entry>
+      <string>SCDiriPot</string>
+      <DoubleCharacteristic>
+        <id>14</id>
+        <name>SCDiriPot</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit>[V]</unit>
+          <standardUnit>V</standardUnit>
+        </unit>
+        <localisation>0</localisation>
+        <informationLink></informationLink>
+        <value>0.0</value>
+      </DoubleCharacteristic>
+    </entry>
+
+
+    
+<!--
+    <entry>
+      <string>SourceCurrent</string>
+      <DoubleCharacteristic>
+        <id>21</id>
+        <name>SourceCurrent</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit>[A/m2]</unit>
+          <standardUnit>A/m2</standardUnit>
+        </unit>
+        <localisation>2</localisation>
+        <informationLink></informationLink>
+        <value>0.0</value>
+      </DoubleCharacteristic>
+    </entry>
+ -->
+ 
+
+    
+    <entry>
+      <string>SCDiriPotSurf</string>
+      <DoubleCharacteristic>
+        <id>16</id>
+        <name>SCDiriPotSurf</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit>[V]</unit>
+          <standardUnit>V</standardUnit>
+        </unit>
+        <localisation>2</localisation>
+        <informationLink></informationLink>
+        <value>0.0</value>
+      </DoubleCharacteristic>
+    </entry>
+    
+<!--    <entry>
+      <string>SourceId</string>
+      <IntegerCharacteristic>
+        <id>20</id>
+        <name>SourceId</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit></unit>
+          <standardUnit></standardUnit>
+        </unit>
+        <localisation>2</localisation>
+        <informationLink></informationLink>
+        <value>-1</value>
+      </IntegerCharacteristic>
+    </entry>
+-->
+    <entry>
+      <string>SCDiriPotEdge</string>
+      <DoubleCharacteristic>
+        <id>15</id>
+        <name>SCDiriPotEdge</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit>[V]</unit>
+          <standardUnit>V</standardUnit>
+        </unit>
+        <localisation>1</localisation>
+        <informationLink></informationLink>
+        <value>0.0</value>
+      </DoubleCharacteristic>
+    </entry>
+ 
+    <entry>
+      <string>SCDiriFlag</string>
+      <IntegerCharacteristic>
+        <id>13</id>
+        <name>SCDiriFlag</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit></unit>
+          <standardUnit></standardUnit>
+        </unit>
+        <localisation>0</localisation>
+        <informationLink></informationLink>
+        <value>1</value>
+      </IntegerCharacteristic>
+    </entry>
+
+    <entry>
+      <string>SCFourFlag</string>
+      <IntegerCharacteristic>
+        <id>17</id>
+        <name>SCFourFlag</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit></unit>
+          <standardUnit></standardUnit>
+        </unit>
+        <localisation>2</localisation>
+        <informationLink></informationLink>
+        <value>0</value>
+      </IntegerCharacteristic>
+    </entry>
+  </characteristicList>
+
+</Property>

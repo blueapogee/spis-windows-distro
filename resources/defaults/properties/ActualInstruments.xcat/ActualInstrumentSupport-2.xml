@@ -1,0 +1,26 @@
+<Property>
+  <id>1202</id>
+  <name>Instrument Support - 2</name>
+  <description>Instrument support No 2.</description>
+  <isCompound>false</isCompound>
+  <type>S/C instrument support</type>
+  
+    <characteristicList>
+    <entry>
+      <string>InstrumentSupport</string>
+      <IntegerCharacteristic>
+        <id>1202</id>
+        <name>InstrumentSupport</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit></unit>
+          <standardUnit></standardUnit>
+        </unit>
+        <localisation>2</localisation>
+        <informationLink></informationLink>
+        <value>2</value>
+      </IntegerCharacteristic>
+    </entry>
+    </characteristicList>
+    
+</Property>

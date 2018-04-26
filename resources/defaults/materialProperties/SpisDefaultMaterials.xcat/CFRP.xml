@@ -1,0 +1,313 @@
+<Property>
+  <id>4</id>
+  <name>CFRP material properties</name>
+  <description>SPIS default material properties of CFRP (Carbon fibre, conducting, no resin layer)</description>
+  <characteristicList>
+    <entry>
+      <string>BUC</string>
+      <DoubleCharacteristic>
+        <id>2</id>
+        <name>BUC</name>
+        <description>[param:2] Bulk conductivity [ohm-1.m-1], must be set negative if a conductor (in place of infinite for a perfect conductor).</description>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="SimpleStringUnit">
+          <unit>[ohm-1.m-1]</unit>
+          <standardUnit>ohm-1.m-1</standardUnit>
+        </unit>
+        <localisation>-1</localisation>
+        <informationLink></informationLink>
+        <value>-1.0</value>
+      </DoubleCharacteristic>
+    </entry>
+    <entry>
+      <string>MAD</string>
+      <DoubleCharacteristic>
+        <id>18</id>
+        <name>MAD</name>
+        <description>[param:18] Material density [kg/m3]</description>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="SimpleStringUnit">
+          <unit>[kg/m3]</unit>
+          <standardUnit>kg/m3</standardUnit>
+        </unit>
+        <localisation>-1</localisation>
+        <informationLink></informationLink>
+        <value>1000.0</value>
+      </DoubleCharacteristic>
+    </entry>
+    <entry>
+      <string>PEE</string>
+      <DoubleCharacteristic>
+        <id>5</id>
+        <name>PEE</name>
+        <description>[param:5] Primary electron energy that produces maximum (SEE) yield [keV].</description>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="SimpleStringUnit">
+          <unit>[keV]</unit>
+          <standardUnit>keV</standardUnit>
+        </unit>
+        <localisation>-1</localisation>
+        <informationLink></informationLink>
+        <value>0.3</value>
+      </DoubleCharacteristic>
+    </entry>
+    <entry>
+      <string>IPE</string>
+      <DoubleCharacteristic>
+        <id>11</id>
+        <name>IPE</name>
+        <description>[param:11] Incident proton energy that produces maximum secondaryelectron yield [keV].</description>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="SimpleStringUnit">
+          <unit>[keV]</unit>
+          <standardUnit>keV</standardUnit>
+        </unit>
+        <localisation>-1</localisation>
+        <informationLink></informationLink>
+        <value>135.0</value>
+      </DoubleCharacteristic>
+    </entry>
+    <entry>
+      <string>SRE</string>
+      <DoubleCharacteristic>
+        <id>13</id>
+        <name>SRE</name>
+        <description>[param:13] Surface resistivity [ohm].</description>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="SimpleStringUnit">
+          <unit>[ohm]</unit>
+          <standardUnit>ohm</standardUnit>
+        </unit>
+        <localisation>-1</localisation>
+        <informationLink></informationLink>
+        <value>-1.0</value>
+      </DoubleCharacteristic>
+    </entry>
+    <entry>
+      <string>PEY</string>
+      <DoubleCharacteristic>
+        <id>12</id>
+        <name>PEY</name>
+        <description>[param:12] Photoelectron current for normally incident sunlight [A/m2 at 1 AU].</description>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="SimpleStringUnit">
+          <unit>[A/m2]</unit>
+          <standardUnit>A/m2</standardUnit>
+        </unit>
+        <localisation>-1</localisation>
+        <informationLink></informationLink>
+        <value>7.2E-6</value>
+      </DoubleCharacteristic>
+    </entry>
+    <entry>
+      <string>RPR2</string>
+      <DoubleCharacteristic>
+        <id>8</id>
+        <name>RPR2</name>
+        <description>[param:8] Range parameter r2 [Angstrom].</description>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="SimpleStringUnit">
+          <unit>[Angstrom]</unit>
+          <standardUnit>Angstrom</standardUnit>
+        </unit>
+        <localisation>-1</localisation>
+        <informationLink></informationLink>
+        <value>300.0</value>
+      </DoubleCharacteristic>
+    </entry>
+    <entry>
+      <string>MAP</string>
+      <DoubleCharacteristic>
+        <id>14</id>
+        <name>MAP</name>
+        <description>[param:14] Maximum (absolute) potential attainable before a discharge occurs.</description>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="SimpleStringUnit">
+          <unit>[V]</unit>
+          <standardUnit>V</standardUnit>
+        </unit>
+        <localisation>-1</localisation>
+        <informationLink></informationLink>
+        <value>10000.0</value>
+      </DoubleCharacteristic>
+    </entry>
+    <entry>
+      <string>RPR1</string>
+      <DoubleCharacteristic>
+        <id>6</id>
+        <name>RPR1</name>
+        <description>[param:6] Range parameter r1 [Angstrom] in the range expression r1 (E/E0)^n1 + r2 (E/E0)^n2, with E0 = 1 kEv (or equivalently with no E0 coefficient and E expressed in keV).</description>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="SimpleStringUnit">
+          <unit>[Angstrom]</unit>
+          <standardUnit>Angstrom</standardUnit>
+        </unit>
+        <localisation>-1</localisation>
+        <informationLink></informationLink>
+        <value>110.0</value>
+      </DoubleCharacteristic>
+    </entry>
+    <entry>
+      <string>ATN</string>
+      <DoubleCharacteristic>
+        <id>3</id>
+        <name>ATN</name>
+        <description>[param:3] Atomic number [-].</description>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="SimpleStringUnit">
+          <unit>[-]</unit>
+          <standardUnit>-</standardUnit>
+        </unit>
+        <localisation>-1</localisation>
+        <informationLink></informationLink>
+        <value>6.34</value>
+      </DoubleCharacteristic>
+    </entry>
+    <entry>
+      <string>MSEY</string>
+      <DoubleCharacteristic>
+        <id>4</id>
+        <name>MSEY</name>
+        <description>[param:4] Maximum secondary electron emission (SEE) yield for electron impact [-].</description>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="SimpleStringUnit">
+          <unit>[-]</unit>
+          <standardUnit>-</standardUnit>
+        </unit>
+        <localisation>-1</localisation>
+        <informationLink></informationLink>
+        <value>0.70</value>
+      </DoubleCharacteristic>
+    </entry>
+    <entry>
+      <string>MPD</string>
+      <DoubleCharacteristic>
+        <id>15</id>
+        <name>MPD</name>
+        <description>[param:15] Maximum potential difference between surface and underlying conductor before a discharge occurs.</description>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="SimpleStringUnit">
+          <unit>[V]</unit>
+          <standardUnit>V</standardUnit>
+        </unit>
+        <localisation>-1</localisation>
+        <informationLink></informationLink>
+        <value>11000.0</value>
+      </DoubleCharacteristic>
+    </entry>
+    <entry>
+      <string>RCP</string>
+      <DoubleCharacteristic>
+        <id>17</id>
+        <name>RCP</name>
+        <description>[param:17] Radiation induced conductivity power (D) [-].</description>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="SimpleStringUnit">
+          <unit>[-]</unit>
+          <standardUnit>-</standardUnit>
+        </unit>
+        <localisation>-1</localisation>
+        <informationLink></informationLink>
+        <value>1.0</value>
+      </DoubleCharacteristic>
+    </entry>
+    <entry>
+      <string>SEY</string>
+      <DoubleCharacteristic>
+        <id>10</id>
+        <name>SEY</name>
+        <description>[param:10] Secondary electron yield due to impact of 1 keV protons [-].</description>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="SimpleStringUnit">
+          <unit>[-]</unit>
+          <standardUnit>-</standardUnit>
+        </unit>
+        <localisation>-1</localisation>
+        <informationLink></informationLink>
+        <value>0.413</value>
+      </DoubleCharacteristic>
+    </entry>
+    <entry>
+      <string>RPN1</string>
+      <DoubleCharacteristic>
+        <id>7</id>
+        <name>RPN1</name>
+        <description>[param:7] Range parameter n1 [-].</description>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="SimpleStringUnit">
+          <unit>[-]</unit>
+          <standardUnit>-</standardUnit>
+        </unit>
+        <localisation>-1</localisation>
+        <informationLink></informationLink>
+        <value>1.9</value>
+      </DoubleCharacteristic>
+    </entry>
+    <entry>
+      <string>RCC</string>
+      <DoubleCharacteristic>
+        <id>16</id>
+        <name>RCC</name>
+        <description>[param:16] Radiation induced conductivity coefficient K [ohm-1.m-1] in the law K*(rate/rate0)^D, with rate0 = 1 Rad/s (TBC), (or equivalently with no rate0 coefficient and rate expressed in Rad/s).</description>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="SimpleStringUnit">
+          <unit>[ohm-1.m-1]</unit>
+          <standardUnit>ohm-1.m-1</standardUnit>
+        </unit>
+        <localisation>-1</localisation>
+        <informationLink></informationLink>
+        <value>1.0E-13</value>
+      </DoubleCharacteristic>
+    </entry>
+    <entry>
+      <string>RPN2</string>
+      <DoubleCharacteristic>
+        <id>9</id>
+        <name>RPN2</name>
+        <description>[param:9] Range parameter n2 [-].</description>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="SimpleStringUnit">
+          <unit>[-]</unit>
+          <standardUnit>-</standardUnit>
+        </unit>
+        <localisation>-1</localisation>
+        <informationLink></informationLink>
+        <value>1.04</value>
+      </DoubleCharacteristic>
+    </entry>
+    <entry>
+      <string>RDC</string>
+      <DoubleCharacteristic>
+        <id>0</id>
+        <name>RDC</name>
+        <description>[param:0] Relative dielectric constant [-] (keep it positive even though irrelevant for a conductor).</description>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="SimpleStringUnit">
+          <unit>[-]</unit>
+          <standardUnit>-</standardUnit>
+        </unit>
+        <localisation>-1</localisation>
+        <informationLink></informationLink>
+        <value>1.0</value>
+      </DoubleCharacteristic>
+    </entry>
+    <entry>
+      <string>DMT</string>
+      <DoubleCharacteristic>
+        <id>1</id>
+        <name>DMT</name>
+        <description>[param:1] UNUSED. Please use MatThickness characteristic in the &apos;Macroscopic Characteristics&apos; property in place of.</description>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="SimpleStringUnit">
+          <unit>[m]</unit>
+          <standardUnit>m</standardUnit>
+        </unit>
+        <localisation>-1</localisation>
+        <informationLink></informationLink>
+        <value>0.0001</value>
+      </DoubleCharacteristic>
+    </entry>
+  </characteristicList>
+  <isCompound>false</isCompound>
+  <type>Material properties</type>
+</Property>

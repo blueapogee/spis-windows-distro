@@ -1,0 +1,29 @@
+<Property>
+  <id>900</id>
+  <name>Default STG material</name>
+  <description>Default STG material</description>
+  <isCompound>false</isCompound>
+  <type>STG material</type>
+  
+  <characteristicList>
+    
+    
+    <entry>
+      <string>MatTypeId</string>
+      <IntegerCharacteristic>
+        <id>38</id>
+        <name>MatTypeId</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit></unit>
+          <standardUnit></standardUnit>
+        </unit>
+        <localisation>2</localisation>
+        <informationLink></informationLink>
+        <value>1</value>
+      </IntegerCharacteristic>
+    </entry>
+    
+    </characteristicList>
+
+</Property>

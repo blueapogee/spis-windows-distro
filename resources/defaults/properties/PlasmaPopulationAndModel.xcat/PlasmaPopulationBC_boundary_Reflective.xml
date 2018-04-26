@@ -1,0 +1,43 @@
+<Property>
+  <id>300</id>
+  <name>Plasma population BC: Boundary, Reflective</name>
+  <description>Reflective boundary settings: no particle injection, outgoing particle are reflected</description>
+  <isCompound>false</isCompound>
+  <type>Ext. Bound. Plasma Population BC</type>
+  <characteristicList>
+  
+    <entry>
+      <string>OutgoPart</string>
+      <IntegerCharacteristic>
+        <id>11</id>
+        <name>OutgoPart</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit></unit>
+          <standardUnit></standardUnit>
+        </unit>
+        <localisation>2</localisation>
+        <informationLink></informationLink>
+        <value>1</value>
+      </IntegerCharacteristic>
+    </entry>
+    
+
+    <entry>
+      <string>IncomPart</string>
+      <IntegerCharacteristic>
+        <id>10</id>
+        <name>IncomPart</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit></unit>
+          <standardUnit></standardUnit>
+        </unit>
+        <localisation>2</localisation>
+        <informationLink></informationLink>
+        <value>0</value>
+      </IntegerCharacteristic>
+    </entry>
+  </characteristicList>
+
+</Property>

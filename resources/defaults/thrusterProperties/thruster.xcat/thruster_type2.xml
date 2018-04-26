@@ -1,0 +1,88 @@
+<Property>
+	<id>1402</id>
+	<name>Thruster type B (TODO : define a more explicit name)</name>
+	<description>Thruster type B (TODO : define a more explicit description)</description>
+	<isCompound>false</isCompound>
+	<type>Thruster sub-property</type>
+
+	<characteristicList>
+		<entry>
+			<string>power</string>
+			<DoubleCharacteristic>
+				<id>31</id>
+				<name>power</name>
+				<parentProperty class="Property" reference="../../../.." />
+				<unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+					<unit>[W]</unit>
+					<standardUnit>W</standardUnit>
+				</unit>
+				<localisation>2</localisation>
+				<informationLink></informationLink>
+				<value>2.5</value>
+			</DoubleCharacteristic>
+		</entry>
+	</characteristicList>
+
+	<subPropertiesList>
+		<entry>
+			<string>distrib</string>
+			<Property>
+				<id>143</id>
+				<name>distrib</name>
+				<description>distrib Sub-Property</description>
+				<characteristicList>
+					<entry>
+						<string>velocity</string>
+						<SeriesOfDoubleCharacteristic>
+							<id>-1</id>
+							<name>velocity</name>
+							<description></description>
+							<parentProperty class="Property" reference="../../../.." />
+							<unit class="SimpleStringUnit">
+								<unit>[m]</unit>
+								<standardUnit>m</standardUnit>
+							</unit>
+							<localisation>-1</localisation>
+							<informationLink></informationLink>
+							<value>
+								<double-array>
+									<double>2.0</double>
+									<double>2.1</double>
+									<double>2.2</double>
+								</double-array>
+								<double-array>
+									<double>10.0</double>
+									<double>9.0</double>
+									<double>8.0</double>
+								</double-array>
+							</value>
+							<xSerie reference="../value/double-array" />
+							<seriesAbscissa>
+								<null />
+								<double>1.0</double>
+								<double>2.0</double>
+							</seriesAbscissa>
+							<ySeriesLabel>
+								<string>X series</string>
+								<string>Series1</string>
+							</ySeriesLabel>
+							<seriesUnit>
+								<SimpleStringUnit>
+									<unit>[m]</unit>
+									<standardUnit>m</standardUnit>
+								</SimpleStringUnit>
+								<SimpleStringUnit>
+									<unit>[m/s]</unit>
+									<standardUnit>m/s</standardUnit>
+								</SimpleStringUnit>
+							</seriesUnit>
+							<size>3</size>
+						</SeriesOfDoubleCharacteristic>
+					</entry>
+				</characteristicList>
+				<isCompound>false</isCompound>
+				<type></type>
+			</Property>
+		</entry>
+	</subPropertiesList>
+</Property>

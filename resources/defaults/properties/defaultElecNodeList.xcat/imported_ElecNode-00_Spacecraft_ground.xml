@@ -1,0 +1,42 @@
+<Property>
+  <id>0</id>
+  <name>Spacecraft ground (ElecNode-0)</name>
+  <description>electric node 0 (SC ground)</description>
+  <isCompound>false</isCompound>
+  <type>Electrical node model</type>
+
+  <characteristicList>
+    <entry>
+      <string>EdgeElecNodeId</string>
+      <IntegerCharacteristic>
+        <id>2</id>
+        <name>EdgeElecNodeId</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit></unit>
+          <standardUnit></standardUnit>
+        </unit>
+        <localisation>1</localisation>
+        <informationLink></informationLink>
+        <value>0</value>
+      </IntegerCharacteristic>
+    </entry>
+    
+    <entry>
+      <string>ElecNodeId</string>
+      <IntegerCharacteristic>
+        <id>1</id>
+        <name>ElecNodeId</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit></unit>
+          <standardUnit></standardUnit>
+        </unit>
+        <localisation>2</localisation>
+        <informationLink></informationLink>
+        <value>0</value>
+      </IntegerCharacteristic>
+    </entry>
+  </characteristicList>
+
+</Property>

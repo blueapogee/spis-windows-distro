@@ -1,0 +1,27 @@
+<Property>
+  <id>700</id>
+  <name>STG ground (ElecNode-0)</name>
+  <description>electric node 0 (STGC ground)</description>
+  <isCompound>false</isCompound>
+  <type>STG Electrical node model</type>
+
+  <characteristicList>
+    <entry>
+      <string>GridElecNodeId</string>
+      <IntegerCharacteristic>
+        <id>2</id>
+        <name>GridElecNodeId</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit></unit>
+          <standardUnit></standardUnit>
+        </unit>
+        <localisation>2</localisation>
+        <informationLink></informationLink>
+        <value>0</value>
+      </IntegerCharacteristic>
+    </entry>
+    
+   </characteristicList>
+
+</Property>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GroupTypeDefinition xsi:noNamespaceSchemaLocation="org-frida-0.0.5.xsd" creationDate="2014/04/14-14:51:33:06"
+lastUpdate="2014/04/14-14:51:36:309" owner="benj" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Group groupType="Undefined" description=""/>
+    <Group groupType="Custom material" description="">
+        <MandatoryPropertyType>
+            <PropertyType name="Material type" defaultValue=""/>
+        </MandatoryPropertyType>
+        <MandatoryPropertyType>
+            <PropertyType name="Number of sub-properties" defaultValue="0"/>
+        </MandatoryPropertyType>
+        <OptionalPropertyType>
+            <PropertyType name="Z" defaultValue="No"/>
+        </OptionalPropertyType>
+        <OptionalPropertyType>
+            <PropertyType name="Formula" defaultValue="No"/>
+        </OptionalPropertyType>
+        <OptionalPropertyType>
+            <PropertyType name="State" defaultValue="unknown"/>
+        </OptionalPropertyType>
+    </Group>   
+    <Group groupType="Pre-defined material" description="">
+        <MandatoryPropertyType>
+            <PropertyType name="Material" defaultValue=""/>
+        </MandatoryPropertyType>
+    </Group>
+</GroupTypeDefinition>

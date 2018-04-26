@@ -1,0 +1,487 @@
+General.AxesFormatX = "%.3g"; //Number format for X-axis (in standard C form)
+General.AxesFormatY = "%.3g"; //Number format for Y-axis (in standard C form)
+General.AxesFormatZ = "%.3g"; //Number format for Z-axis (in standard C form)
+General.AxesLabelX = ""; //X-axis label
+General.AxesLabelY = ""; //Y-axis label
+General.AxesLabelZ = ""; //Z-axis label
+General.BackgroundImageFileName = ""; //Background image file in JPEG, PNG or PDF format
+General.DefaultFileName = "untitled.geo"; //Default project file name
+General.Display = ""; //X server to use (only for Unix versions)
+General.ErrorFileName = ".gmsh-errors"; //File into which the log is saved if a fatal error occurs
+General.ExecutableFileName = ""; //File name of the Gmsh executable (read-only)
+General.FileName = ""; //Current project file name (read-only)
+General.FltkTheme = ""; //FLTK user interface theme (try e.g.  plastic or gtk+)
+General.GraphicsFont = "Helvetica"; //Font used in the graphic window
+General.GraphicsFontEngine = "Native"; //Set graphics font engine (Native, Cairo)
+General.GraphicsFontTitle = "Helvetica"; //Font used in the graphic window for titles
+General.OptionsFileName = ".gmsh-options"; //Option file created with 'Tools->Options->Save'; automatically readon startup
+General.RecentFile0 = "untitled.geo"; //Most recent opened file
+General.RecentFile1 = "untitled.geo"; //2nd most recent opened file
+General.RecentFile2 = "untitled.geo"; //3rd most recent opened file
+General.RecentFile3 = "untitled.geo"; //4th most recent opened file
+General.RecentFile4 = "untitled.geo"; //5th most recent opened file
+General.RecentFile5 = "untitled.geo"; //6th most recent opened file
+General.RecentFile6 = "untitled.geo"; //7th most recent opened file
+General.RecentFile7 = "untitled.geo"; //8th most recent opened file
+General.RecentFile8 = "untitled.geo"; //9th most recent opened file
+General.RecentFile9 = "untitled.geo"; //10th most recent opened file
+General.SessionFileName = ".gmshrc"; //Option file into which session specific information is saved;automatically read on startup
+General.TextEditor = "open -t %s"; //System command to launch a text editor
+General.TmpFileName = ".gmsh-tmp"; //Temporary file used by the geometry module
+General.WatchFilePattern = ""; //Pattern of files to merge as they become available
+General.AlphaBlending = 1; //Enable alpha blending (transparency) in post-processing views
+General.Antialiasing = 0; //Use multisample antialiasing (will slow down rendering)
+General.ArrowHeadRadius = 0.12; //Relative radius of arrow head
+General.ArrowStemLength = 0.56; //Relative length of arrow stem
+General.ArrowStemRadius = 0.02; //Relative radius of arrow stem
+General.Axes = 0; //Axes (0=none, 1=simple axes, 2=box, 3=full grid, 4=open grid,5=ruler)
+General.AxesMikado = 0; //Mikado axes style
+General.AxesAutoPosition = 1; //Position the axes automatically
+General.AxesForceValue = 0; //Force values on axes (otherwise use natural coordinates)
+General.AxesMaxX = 1; //Maximum X-axis coordinate
+General.AxesMaxY = 1; //Maximum Y-axis coordinate
+General.AxesMaxZ = 1; //Maximum Z-axis coordinate
+General.AxesMinX = 0; //Minimum X-axis coordinate
+General.AxesMinY = 0; //Minimum Y-axis coordinate
+General.AxesMinZ = 0; //Minimum Z-axis coordinate
+General.AxesTicsX = 5; //Number of tics on the X-axis
+General.AxesTicsY = 5; //Number of tics on the Y-axis
+General.AxesTicsZ = 5; //Number of tics on the Z-axis
+General.AxesValueMaxX = 1; //Maximum X-axis forced value
+General.AxesValueMaxY = 1; //Maximum Y-axis forced value
+General.AxesValueMaxZ = 1; //Maximum Z-axis forced value
+General.AxesValueMinX = 0; //Minimum X-axis forced value
+General.AxesValueMinY = 0; //Minimum Y-axis forced value
+General.AxesValueMinZ = 0; //Minimum Z-axis forced value
+General.BackgroundGradient = 1; //Draw background gradient (0=none, 1=vertical, 2=horizontal,3=radial)
+General.BackgroundImage3D = 0; //Create background image in the 3D model (units = model units) or as2D background (units = pixels)
+General.BackgroundImagePage = 0; //Page to render in the background image (for multi-page PDFs)
+General.BackgroundImagePositionX = 0; //X position of background image (for 2D background: < 0: measurefrom right window edge; >= 1e5: centered)
+General.BackgroundImagePositionY = 0; //Y position of background image (for 2D background: < 0: measurefrom bottom window edge; >= 1e5: centered)
+General.BackgroundImageWidth = -1; //Width of background image (0: actual width if height = 0, naturalscaling if not; -1: graphic window width)
+General.BackgroundImageHeight = -1; //Height of background image (0: actual height if width = 0, naturalscaling if not; -1: graphic window height)
+General.BoundingBoxSize = 1; //Overall bounding box size (read-only)
+General.Camera = 0; //Enable camera view mode
+General.CameraAperture = 40; //Camera aperture in degrees
+General.CameraEyeSeparationRatio = 1.5; //Eye separation ratio in % for stereo rendering
+General.CameraFocalLengthRatio = 1; //Camera Focal length ratio
+General.Clip0A = 1; //First coefficient in equation for clipping plane 0 ('A' in'AX+BY+CZ+D=0')
+General.Clip0B = 0; //Second coefficient in equation for clipping plane 0 ('B' in'AX+BY+CZ+D=0')
+General.Clip0C = 0; //Third coefficient in equation for clipping plane 0 ('C' in'AX+BY+CZ+D=0')
+General.Clip0D = 0; //Fourth coefficient in equation for clipping plane 0 ('D' in'AX+BY+CZ+D=0')
+General.Clip1A = 0; //First coefficient in equation for clipping plane 1
+General.Clip1B = 1; //Second coefficient in equation for clipping plane 1
+General.Clip1C = 0; //Third coefficient in equation for clipping plane 1
+General.Clip1D = 0; //Fourth coefficient in equation for clipping plane 1
+General.Clip2A = 0; //First coefficient in equation for clipping plane 2
+General.Clip2B = 0; //Second coefficient in equation for clipping plane 2
+General.Clip2C = 1; //Third coefficient in equation for clipping plane 2
+General.Clip2D = 0; //Fourth coefficient in equation for clipping plane 2
+General.Clip3A = -1; //First coefficient in equation for clipping plane 3
+General.Clip3B = 0; //Second coefficient in equation for clipping plane 3
+General.Clip3C = 0; //Third coefficient in equation for clipping plane 3
+General.Clip3D = 1; //Fourth coefficient in equation for clipping plane 3
+General.Clip4A = 0; //First coefficient in equation for clipping plane 4
+General.Clip4B = -1; //Second coefficient in equation for clipping plane 4
+General.Clip4C = 0; //Third coefficient in equation for clipping plane 4
+General.Clip4D = 1; //Fourth coefficient in equation for clipping plane 4
+General.Clip5A = 0; //First coefficient in equation for clipping plane 5
+General.Clip5B = 0; //Second coefficient in equation for clipping plane 5
+General.Clip5C = -1; //Third coefficient in equation for clipping plane 5
+General.Clip5D = 1; //Fourth coefficient in equation for clipping plane 5
+General.ClipFactor = 5; //Near and far clipping plane distance factor (decrease value forbetter z-buffer resolution)
+General.ClipOnlyDrawIntersectingVolume = 0; //Only draw layer of elements that intersect the clipping plane
+General.ClipOnlyVolume = 0; //Only clip volume elements
+General.ClipPositionX = 650; //Horizontal position (in pixels) of the upper left corner of theclipping planes window
+General.ClipPositionY = 150; //Vertical position (in pixels) of the upper left corner of theclipping planes window
+General.ClipWholeElements = 0; //Clip whole elements
+General.ColorScheme = 1; //Default color scheme for graphics (0=dark, 1=light, 2=grayscale,3=reverse)
+General.ConfirmOverwrite = 1; //Ask confirmation before overwriting files?
+General.ContextPositionX = 650; //Horizontal position (in pixels) of the upper left corner of thecontextual windows
+General.ContextPositionY = 150; //Vertical position (in pixels) of the upper left corner of thecontextual windows
+General.DetachedMenu = 0; //Should the menu window be detached from the graphic window?
+General.DisplayBorderFactor = 0.2; //Border factor for model display (0: model fits window size exactly)
+General.DoubleBuffer = 1; //Use a double buffered graphic window (on Unix, should be set to 0when working on a remote host without GLX)
+General.DrawBoundingBoxes = 0; //Draw bounding boxes
+General.ExpertMode = 0; //Enable expert mode (to disable all the messages meant forinexperienced users)
+General.ExtraPositionX = 650; //Horizontal position (in pixels) of the upper left corner of thegeneric extra window
+General.ExtraPositionY = 350; //Vertical position (in pixels) of the upper left corner of thegeneric extra window
+General.ExtraHeight = 100; //Height (in pixels) of the generic extra window
+General.ExtraWidth = 100; //Width (in pixels) of the generic extra window
+General.FastRedraw = 0; //Draw simplified model while rotating, panning and zooming
+General.FieldPositionX = 650; //Horizontal position (in pixels) of the upper left corner of thefield window
+General.FieldPositionY = 550; //Vertical position (in pixels) of the upper left corner of the fieldwindow
+General.FieldHeight = 320; //Height (in pixels) of the field window
+General.FieldWidth = 420; //Width (in pixels) of the field window
+General.FileChooserPositionX = 200; //Horizontal position (in pixels) of the upper left corner of thefile chooser windows
+General.FileChooserPositionY = 200; //Vertical position (in pixels) of the upper left corner of the filechooser windows
+General.FltkColorScheme = 0; //FLTK user interface color theme (0: standard, 1:dark)
+General.FontSize = -1; //Size of the font in the user interface (-1=automatic)
+General.GraphicsFontSize = 15; //Size of the font in the graphic window
+General.GraphicsFontSizeTitle = 18; //Size of the font in the graphic window for titles
+General.GraphicsHeight = 600; //Height (in pixels) of the graphic window
+General.GraphicsPositionX = 50; //Horizontal position (in pixels) of the upper left corner of thegraphic window
+General.GraphicsPositionY = 50; //Vertical position (in pixels) of the upper left corner of thegraphic window
+General.GraphicsWidth = 800; //Width (in pixels) of the graphic window
+General.HighOrderToolsPositionX = 650; //Horizontal position (in pixels) of the upper left corner of thehigh order tools window
+General.HighOrderToolsPositionY = 150; //Vertical position (in pixels) of the upper left corner of the highorder tools window
+General.HighResolutionGraphics = 1; //Use high-resolution OpenGL graphics (e.g.  for Macs with retinadisplays)
+General.HighResolutionPointSizeFactor = 2; //Point size factor when using high-resolution OpenGL graphics
+General.InitialModule = 0; //Module launched on startup (0=automatic, 1=geometry, 2=mesh,3=solver, 4=post-processing)
+General.Light0 = 1; //Enable light source 0
+General.Light0X = 0.65; //X position of light source 0
+General.Light0Y = 0.65; //Y position of light source 0
+General.Light0Z = 1; //Z position of light source 0
+General.Light0W = 0; //Divisor of the X, Y and Z coordinates of light source 0 (W=0 meansinfinitely far source)
+General.Light1 = 0; //Enable light source 1
+General.Light1X = 0.5; //X position of light source 1
+General.Light1Y = 0.3; //Y position of light source 1
+General.Light1Z = 1; //Z position of light source 1
+General.Light1W = 0; //Divisor of the X, Y and Z coordinates of light source 1 (W=0 meansinfinitely far source)
+General.Light2 = 0; //Enable light source 2
+General.Light2X = 0.5; //X position of light source 2
+General.Light2Y = 0.3; //Y position of light source 2
+General.Light2Z = 1; //Z position of light source 2
+General.Light2W = 0; //Divisor of the X, Y and Z coordinates of light source 2 (W=0 meansinfinitely far source)
+General.Light3 = 0; //Enable light source 3
+General.Light3X = 0.5; //X position of light source 3
+General.Light3Y = 0.3; //Y position of light source 3
+General.Light3Z = 1; //Z position of light source 3
+General.Light3W = 0; //Divisor of the X, Y and Z coordinates of light source 3 (W=0 meansinfinitely far source)
+General.Light4 = 0; //Enable light source 4
+General.Light4X = 0.5; //X position of light source 4
+General.Light4Y = 0.3; //Y position of light source 4
+General.Light4Z = 1; //Z position of light source 4
+General.Light4W = 0; //Divisor of the X, Y and Z coordinates of light source 4 (W=0 meansinfinitely far source)
+General.Light5 = 0; //Enable light source 5
+General.Light5X = 0.5; //X position of light source 5
+General.Light5Y = 0.3; //Y position of light source 5
+General.Light5Z = 1; //Z position of light source 5
+General.Light5W = 0; //Divisor of the X, Y and Z coordinates of light source 5 (W=0 meansinfinitely far source)
+General.LineWidth = 1; //Display width of lines (in pixels)
+General.ManipulatorPositionX = 650; //Horizontal position (in pixels) of the upper left corner of themanipulator window
+General.ManipulatorPositionY = 150; //Vertical position (in pixels) of the upper left corner of themanipulator window
+General.MaxX = 0; //Maximum model coordinate along the X-axis (read-only)
+General.MaxY = 0; //Maximum model coordinate along the Y-axis (read-only)
+General.MaxZ = 0; //Maximum model coordinate along the Z-axis (read-only)
+General.MenuWidth = 200; //Width (in pixels) of the menu tree
+General.MenuHeight = 200; //Height (in pixels) of the (detached) menu tree
+General.MenuPositionX = 400; //Horizontal position (in pixels) of the (detached) menu tree
+General.MenuPositionY = 400; //Vertical position (in pixels) of the (detached) menu tree
+General.MessageFontSize = -1; //Size of the font in the message window (-1=automatic)
+General.MessageHeight = 300; //Height (in pixels) of the message console when it is visible(should be > 0)
+General.MinX = 0; //Minimum model coordinate along the X-axis (read-only)
+General.MinY = 0; //Minimum model coordinate along the Y-axis (read-only)
+General.MinZ = 0; //Minimum model coordinate along the Z-axis (read-only)
+General.MouseHoverMeshes = 0; //Enable mouse hover on meshes
+General.MouseSelection = 1; //Enable mouse selection
+General.NonModalWindows = 1; //Force all control windows to be on top of the graphic window("non-modal")
+General.NoPopup = 0; //Disable interactive dialog windows in scripts (and use defaultvalues instead)
+General.OptionsPositionX = 650; //Horizontal position (in pixels) of the upper left corner of theoption window
+General.OptionsPositionY = 150; //Vertical position (in pixels) of the upper left corner of theoption window
+General.Orthographic = 1; //Orthographic projection mode (0=perspective projection)
+General.PluginPositionX = 650; //Horizontal position (in pixels) of the upper left corner of theplugin window
+General.PluginPositionY = 550; //Vertical position (in pixels) of the upper left corner of theplugin window
+General.PluginHeight = 320; //Height (in pixels) of the plugin window
+General.PluginWidth = 420; //Width (in pixels) of the plugin window
+General.PointSize = 3; //Display size of points (in pixels)
+General.PolygonOffsetAlwaysOn = 0; //Always apply polygon offset, instead of trying to detect when it isrequired
+General.PolygonOffsetFactor = 0.5; //Polygon offset factor (offset = factor * DZ + r * units)
+General.PolygonOffsetUnits = 1; //Polygon offset units (offset = factor * DZ + r * units)
+General.ProgressMeterStep = 20; //Increment (in percent) of the progress meter bar
+General.QuadricSubdivisions = 6; //Number of subdivisions used to draw points or lines as spheres orcylinders
+General.RotationX = 0; //First Euler angle (used if Trackball=0)
+General.RotationY = 0; //Second Euler angle (used if Trackball=0)
+General.RotationZ = 0; //Third Euler angle (used if Trackball=0)
+General.RotationCenterGravity = 1; //Rotate around the (pseudo) center of mass instead of(RotationCenterX, RotationCenterY, RotationCenterZ)
+General.RotationCenterX = 0; //X coordinate of the center of rotation
+General.RotationCenterY = 0; //Y coordinate of the center of rotation
+General.RotationCenterZ = 0; //Z coordinate of the center of rotation
+General.SaveOptions = 0; //Automatically save current options in General.OptionsFileName (1)or per model (2)each time you quit Gmsh?
+General.SaveSession = 1; //Automatically save session specific information inGeneral.SessionFileName each time you quit Gmsh?
+General.ScaleX = 1; //X-axis scale factor
+General.ScaleY = 1; //Y-axis scale factor
+General.ScaleZ = 1; //Z-axis scale factor
+General.Shininess = 0.4; //Material shininess
+General.ShininessExponent = 40; //Material shininess exponent (between 0 and 128)
+General.SmallAxes = 1; //Display the small axes
+General.SmallAxesPositionX = -60; //X position (in pixels) of small axes (< 0: measure from rightwindow edge; >= 1e5: centered)
+General.SmallAxesPositionY = -40; //Y position (in pixels) of small axes (< 0: measure from bottomwindow edge; >= 1e5: centered)
+General.SmallAxesSize = 30; //Size (in pixels) of small axes
+General.StatisticsPositionX = 650; //Horizontal position (in pixels) of the upper left corner of thestatistic window
+General.StatisticsPositionY = 150; //Vertical position (in pixels) of the upper left corner of thestatistic window
+General.Stereo = 0; //Use stereo rendering
+General.SystemMenuBar = 1; //Use the system menu bar on Mac OS X?
+General.Terminal = 0; //Should information be printed on the terminal (if available)?
+General.Tooltips = 1; //Show tooltips in the user interface
+General.Trackball = 1; //Use trackball rotation mode
+General.TrackballHyperbolicSheet = 1; //Use hyperbolic sheet away from trackball center for z-rotations
+General.TrackballQuaternion0 = 0; //First trackball quaternion component (used if General.Trackball=1)
+General.TrackballQuaternion1 = 0; //Second trackball quaternion component (used if General.Trackball=1)
+General.TrackballQuaternion2 = 0; //Third trackball quaternion component (used if General.Trackball=1)
+General.TrackballQuaternion3 = 1; //Fourth trackball quaternion component (used if General.Trackball=1)
+General.TranslationX = 0; //X-axis translation (in model units)
+General.TranslationY = 0; //Y-axis translation (in model units)
+General.TranslationZ = 0; //Z-axis translation (in model units)
+General.VectorType = 4; //Default vector display type (for normals, etc.)
+General.Verbosity = 5; //Level of information printed during processing (0=no information)
+General.VisibilityPositionX = 650; //Horizontal position (in pixels) of the upper left corner of thevisibility window
+General.VisibilityPositionY = 150; //Vertical position (in pixels) of the upper left corner of thevisibility window
+General.ZoomFactor = 4; //Middle mouse button zoom acceleration factor
+General.Color.Background = {255,255,255}; //Background color
+General.Color.BackgroundGradient = {208,215,255}; //Background gradient color
+General.Color.Foreground = {85,85,85}; //Foreground color
+General.Color.Text = {0,0,0}; //Text color
+General.Color.Axes = {0,0,0}; //Axes color
+General.Color.SmallAxes = {0,0,0}; //Small axes color
+General.Color.AmbientLight = {25,25,25}; //Ambient light color
+General.Color.DiffuseLight = {255,255,255}; //Diffuse light color
+General.Color.SpecularLight = {255,255,255}; //Specular light color
+Geometry.DoubleClickedPointCommand = ""; //Command parsed when double-clicking on a point
+Geometry.DoubleClickedLineCommand = ""; //Command parsed when double-clicking on a line
+Geometry.DoubleClickedSurfaceCommand = ""; //Command parsed when double-clicking on a surface
+Geometry.DoubleClickedVolumeCommand = ""; //Command parsed when double-clicking on a volume
+Geometry.AutoCoherence = 1; //Should all duplicate entities be automatically removed?  (IfAutoCoherence == 2, also remove degenerate entities)
+Geometry.Clip = 0; //Enable clipping planes?  (Plane[i]=2^i, i=0,...,5)
+Geometry.CopyMeshingMethod = 0; //Copy meshing method (unstructured or transfinite) when duplicatinggeometrical entities?
+Geometry.CopyDisplayAttributes = 0; //Copy display attributes (visibiliy, color) when duplicatinggeometrical entities?
+Geometry.DoubleClickedEntityTag = 0; //Tag of last double-clicked geometrical entity
+Geometry.ExactExtrusion = 1; //Use exact extrusion formula in interpolations (set to 0 to allowgeometrical transformations of extruded entities)
+Geometry.ExtrudeReturnLateralEntities = 1; //Add lateral entities in lists returned by extrusion commands?
+Geometry.ExtrudeSplinePoints = 5; //Number of control points for splines created during extrusion
+Geometry.HideCompounds = 1; //Hide entities that make up compound entities?
+Geometry.HighlightOrphans = 0; //Highlight orphan entities (lines connected to a single surface,etc.)?
+Geometry.LabelType = 1; //Type of entity label (1=elementary number, 2=physical number)
+Geometry.Light = 1; //Enable lighting for the geometry
+Geometry.LightTwoSide = 1; //Light both sides of surfaces (leads to slower rendering)
+Geometry.Lines = 1; //Display geometry curves?
+Geometry.LineNumbers = 0; //Display curve numbers?
+Geometry.LineSelectWidth = 2; //Display width of selected lines (in pixels)
+Geometry.LineType = 0; //Display lines as solid color segments (0), 3D cylinders (1) ortapered cylinders (2)
+Geometry.LineWidth = 2; //Display width of lines (in pixels)
+Geometry.MatchGeomAndMesh = 0; //Matches geometries and meshes
+Geometry.Normals = 0; //Display size of normal vectors (in pixels)
+Geometry.NumSubEdges = 20; //Number of edge subdivisions between control points when displayingcurves
+Geometry.OCCFixDegenerated = 0; //Fix degenerated edges/faces in STEP, IGES and BRep models
+Geometry.OCCFixSmallEdges = 0; //Fix small edges in STEP, IGES and BRep models
+Geometry.OCCFixSmallFaces = 0; //Fix small faces in STEP, IGES and BRep models
+Geometry.OCCSewFaces = 0; //Sew faces in STEP, IGES and BRep models
+Geometry.OCCConnectFaces = 0; //Cut and connect faces in STEP, IGES and BRep models (0=no,1=internal, 2=Salome)
+Geometry.OCCScaling = 1; //Scale STEP, IGES and BRep model by given factor
+Geometry.OffsetX = 0; //Model display offset along X-axis (in model coordinates)
+Geometry.OffsetY = 0; //Model display offset along Y-axis (in model coordinates)
+Geometry.OffsetZ = 0; //Model display offset along Z-axis (in model coordinates)
+Geometry.OldCircle = 0; //Use old circle description (compatibility option for old Gmshgeometries)
+Geometry.OldRuledSurface = 0; //Use old 3-sided ruled surface interpolation (compatibility optionfor old Gmsh geometries)
+Geometry.OldNewReg = 1; //Use old newreg definition for geometrical transformations(compatibility option for old Gmsh geometries)
+Geometry.Points = 1; //Display geometry points?
+Geometry.PointNumbers = 0; //Display points numbers?
+Geometry.PointSelectSize = 5; //Display size of selected points (in pixels)
+Geometry.PointSize = 4; //Display size of points (in pixels)
+Geometry.PointType = 0; //Display points as solid color dots (0) or 3D spheres (1)
+Geometry.ScalingFactor = 1; //Global geometry scaling factor
+Geometry.OrientedPhysicals = 1; //Use sign of elementary entity in physical definition as orientationindicator
+Geometry.SnapX = 0.1; //Snapping grid spacing along the X-axis
+Geometry.SnapY = 0.1; //Snapping grid spacing along the Y-axis
+Geometry.SnapZ = 0.1; //Snapping grid spacing along the Z-axis
+Geometry.Surfaces = 0; //Display geometry surfaces?
+Geometry.SurfaceNumbers = 0; //Display surface numbers?
+Geometry.SurfaceType = 2; //Surface display type (0=cross, 1=wireframe, 2=solid)
+Geometry.Tangents = 0; //Display size of tangent vectors (in pixels)
+Geometry.Tolerance = 1e-08; //Geometrical tolerance
+Geometry.Transform = 0; //Transform model display coordinates (0=no, 1=scale)
+Geometry.TransformXX = 1; //Element (1,1) of the 3x3 model display transformation matrix
+Geometry.TransformXY = 0; //Element (1,2) of the 3x3 model display transformation matrix
+Geometry.TransformXZ = 0; //Element (1,3) of the 3x3 model display transformation matrix
+Geometry.TransformYX = 0; //Element (2,1) of the 3x3 model display transformation matrix
+Geometry.TransformYY = 1; //Element (2,2) of the 3x3 model display transformation matrix
+Geometry.TransformYZ = 0; //Element (2,3) of the 3x3 model display transformation matrix
+Geometry.TransformZX = 0; //Element (3,1) of the 3x3 model display transformation matrix
+Geometry.TransformZY = 0; //Element (3,2) of the 3x3 model display transformation matrix
+Geometry.TransformZZ = 1; //Element (3,3) of the 3x3 model display transformation matrix
+Geometry.Volumes = 0; //Display geometry volumes?  (not implemented yet)
+Geometry.VolumeNumbers = 0; //Display volume numbers?  (not implemented yet)
+Geometry.Color.Points = {90,90,90}; //Normal geometry point color
+Geometry.Color.Lines = {0,0,255}; //Normal geometry curve color
+Geometry.Color.Surfaces = {128,128,128}; //Normal geometry surface color
+Geometry.Color.Volumes = {255,255,0}; //Normal geometry volume color
+Geometry.Color.Selection = {255,0,0}; //Selected geometry color
+Geometry.Color.HighlightZero = {255,0,0}; //Highlight 0 color
+Geometry.Color.HighlightOne = {255,150,0}; //Highlight 1 color
+Geometry.Color.HighlightTwo = {255,255,0}; //Highlight 2 color
+Geometry.Color.Tangents = {255,255,0}; //Tangent geometry vectors color
+Geometry.Color.Normals = {255,0,0}; //Normal geometry vectors color
+Geometry.Color.Projection = {0,255,0}; //Projection surface color
+Mesh.Algorithm = 2; //2D mesh algorithm (1=MeshAdapt, 2=Automatic, 5=Delaunay, 6=Frontal,7=bamg, 8=delquad)
+Mesh.Algorithm3D = 1; //3D mesh algorithm (1=Delaunay, 4=Frontal, 5=Frontal Delaunay,6=Frontal Hex, 7=MMG3D, 9=R-tree)
+Mesh.AngleSmoothNormals = 30; //Threshold angle below which normals are not smoothed
+Mesh.AnisoMax = 1e+33; //Maximum anisotropy of the mesh
+Mesh.AllowSwapAngle = 10; //Threshold angle (in degrees) between faces normals under which weallow an edge swap
+Mesh.BdfFieldFormat = 1; //Field format for Nastran BDF files (0=free, 1=small, 2=large)
+Mesh.Binary = 0; //Write mesh files in binary format (if possible)
+Mesh.Lloyd = 0; //Apply lloyd optimization on surface meshes
+Mesh.SmoothCrossField = 0; //Apply n barycentric smoothing passes to the cross field
+Mesh.CgnsImportOrder = 1; //Enable the creation of high-order mesh from CGNS structuredmeshes(1, 2, 4, 8, ...)
+Mesh.ChacoArchitecture = 1; //(Adv.  Chaco): Parallel architecture topology (0=hypercube,1-3=mesh dimensions)
+Mesh.ChacoEigensolver = 1; //(Adv.  Chaco): Type of eigensolver for a spectral algorithm(0=Lanczos, 1=Multilevel RQI/Symmlq)
+Mesh.ChacoEigTol = 0.001; //(Adv.  Chaco): Tolerance of the eigensolver for spectral ormultilevel-KL algorithms
+Mesh.ChacoGlobalMethod = 1; //Chaco partitioning algorithm (1=Multilevel-KL, 2=Spectral,4=Linear, 5=Random, 6=Scattered)
+Mesh.ChacoHypercubeDim = 0; //(Adv.  Chaco): Dimensional partitioning for a hypercube topology
+Mesh.ChacoLocalMethod = 1; //(Adv.  Chaco): Local partitioning algorithm
+Mesh.ChacoMeshDim1 = 1; //(Adv.  Chaco): Number of partitions in the first dimension of amesh topology
+Mesh.ChacoMeshDim2 = 1; //(Adv.  Chaco): Number of partitions in the second dimension of amesh topology
+Mesh.ChacoMeshDim3 = 1; //(Adv.  Chaco): Number of partitions in the third dimension of amesh topology
+Mesh.ChacoPartitionSection = 1; //(Adv.  Chaco): Partition by (1=bisection, 2=quadrisection,3=octasection
+Mesh.ChacoSeed = 7.65432e+06; //(Adv.  Chaco): Seed for random number generator
+Mesh.ChacoVMax = 250; //(Adv.  Chaco): Maximum vertices in a coarse graph (formultilevel-KL algorithm and Multilevel RQI/Symmlq eigensolver)
+Mesh.ChacoParamINTERNAL_VERTICES = 0; //(Adv.  Chaco): Parameter INTERNAL_VERTICES
+Mesh.ChacoParamREFINE_MAP = 1; //(Adv.  Chaco): Parameter REFINE_MAP
+Mesh.ChacoParamREFINE_PARTITION = 0; //(Adv.  Chaco): Parameter REFINE_PARTITION
+Mesh.ChacoParamTERMINAL_PROPOGATION = 0; //(Adv.  Chaco): Parameter TERMINAL_PROPOGATION
+Mesh.CharacteristicLengthExtendFromBoundary = 1; //Extend computation of mesh element sizes from the boundaries intothe surfaces/volumes
+Mesh.CharacteristicLengthFactor = 1; //Factor applied to all mesh element sizes
+Mesh.CharacteristicLengthMin = 0; //Minimum mesh element size
+Mesh.CharacteristicLengthMax = 1e+22; //Maximum mesh element size
+Mesh.CharacteristicLengthFromCurvature = 0; //Automatically compute mesh element sizes from curvature(experimental)
+Mesh.CharacteristicLengthFromPoints = 1; //Compute mesh element sizes from values given at geometry points
+Mesh.Clip = 0; //Enable clipping planes?  (Plane[i]=2^i, i=0,...,5)
+Mesh.ColorCarousel = 1; //Mesh coloring (0=by element type, 1=by elementary entity, 2=byphysical entity, 3=by partition)
+Mesh.CpuTime = 0; //CPU time (in seconds) for the generation of the current mesh(read-only)
+Mesh.DrawSkinOnly = 0; //Draw only the skin of 3D meshes?
+Mesh.Dual = 0; //Display the dual mesh obtained by barycentric subdivision
+Mesh.ElementOrder = 1; //Element order (1=linear elements, N (<6) = elements of higherorder)
+Mesh.Explode = 1; //Element shrinking factor (between 0 and 1)
+Mesh.FlexibleTransfinite = 0; //Allow transfinite contraints to be modified for Blossom or byglobal mesh size factor
+Mesh.NewtonConvergenceTestXYZ = 0; //Force inverse surface mapping algorithm (Newton-Raphson) toconverge in real coordinates (experimental)
+Mesh.Format = 10; //Mesh output format (1=msh, 2=unv, 10=automatic, 19=vrml, 26=posstatistics, 27=stl, 30=mesh, 31=bdf, 32=cgns, 33=med, 39=inp,40=ply2)
+Mesh.Hexahedra = 1; //Display mesh hexahedra?
+Mesh.HighOrderNumLayers = 6; //Number of high order mesh elements to consider for optimization
+Mesh.HighOrderOptimize = 0; //Optimize high order meshes?
+Mesh.HighOrderPoissonRatio = 0.33; //Poisson ratio of the material used in the elastic smoother for highorder meshesMust be between -1.0 and 0.5, excluded
+Mesh.HighOrderThresholdMin = 0.1; //Minimum threshold for high order element optimization
+Mesh.HighOrderThresholdMax = 2; //Maximum threshold for high order element optimization
+Mesh.HighOrderOptPrimSurfMesh = 0; //Try to fix flipped surface mesh elements in high-order optimizer
+Mesh.LabelSampling = 1; //Label sampling rate (display one label every 'LabelSampling'elements)
+Mesh.LabelType = 0; //Type of element label (0=element number, 1=elementary entitynumber, 2=physical entity number, 3=partition number,4=coordinates)
+Mesh.LcIntegrationPrecision = 1e-09; //Accuracy of evaluation of the LC field for 1D mesh generation
+Mesh.Light = 1; //Enable lighting for the mesh
+Mesh.LightLines = 1; //Enable lighting for mesh lines (element edges)
+Mesh.LightTwoSide = 1; //Light both sides of surfaces (leads to slower rendering)
+Mesh.Lines = 0; //Display mesh lines (1D elements)?
+Mesh.LineNumbers = 0; //Display mesh line numbers?
+Mesh.LineWidth = 1; //Display width of mesh lines (in pixels)
+Mesh.MeshOnlyVisible = 0; //Mesh only visible entities (experimental: use with caution!)
+Mesh.MetisAlgorithm = 1; //METIS partitioning algorithm (1=Recursive, 2=K-way, 3=Nodal weight)
+Mesh.MetisEdgeMatching = 3; //(Adv.  METIS): Determines the matching type (1=Random,2=Heavy-Edge, 3=Sorted Heavy-Edge)
+Mesh.MetisRefinementAlgorithm = 3; //(Adv.  METIS): Algorithm for k-way refinement (1=Random, 2=Greedy,3=Random with minimized connectivity)
+Mesh.MinimumCirclePoints = 7; //Minimum number of points used to mesh a circle
+Mesh.MinimumCurvePoints = 3; //Minimum number of points used to mesh a (non-straight) curve
+Mesh.MshFileVersion = 2.2; //Version of the MSH file format to use
+Mesh.MshFilePartitioned = 0; //Split MSH file by mesh partition (0: no, 1: yes, 2: createphysicals by partition)
+Mesh.PartitionHexWeight = 1; //Weight of hexahedral element for METIS load balancing
+Mesh.PartitionPrismWeight = 1; //Weight of prismatic element (wedge) for METIS load balancing
+Mesh.PartitionPyramidWeight = 1; //Weight of pyramidal element for METIS load balancing
+Mesh.PartitionTrihedronWeight = 0; //Weight of trihedron element for METIS load balancing
+Mesh.PartitionQuadWeight = 1; //Weight of quadrangle for METIS load balancing
+Mesh.PartitionTetWeight = 1; //Weight of tetrahedral element for METIS load balancing
+Mesh.PartitionTriWeight = 1; //Weight of triangle for METIS load balancing
+Mesh.NbHexahedra = 0; //Number of hexahedra in the current mesh (read-only)
+Mesh.NbNodes = 0; //Number of nodes in the current mesh (read-only)
+Mesh.NbPartitions = 1; //Number of partitions
+Mesh.NbPrisms = 0; //Number of prisms in the current mesh (read-only)
+Mesh.NbPyramids = 0; //Number of pyramids in the current mesh (read-only)
+Mesh.NbTrihedra = 0; //Number of trihedra in the current mesh (read-only)
+Mesh.NbQuadrangles = 0; //Number of quadrangles in the current mesh (read-only)
+Mesh.NbTetrahedra = 0; //Number of tetrahedra in the current mesh (read-only)
+Mesh.NbTriangles = 0; //Number of triangles in the current mesh (read-only)
+Mesh.Normals = 0; //Display size of normal vectors (in pixels)
+Mesh.NumSubEdges = 2; //Number of edge subdivisions when displaying high order elements
+Mesh.Optimize = 0; //Optimize the mesh to improve the quality of tetrahedral elements
+Mesh.OptimizeNetgen = 0; //Optimize the mesh using Netgen to improve the quality oftetrahedral elements
+Mesh.Partitioner = 2; //Partitioner software (1=Chacho, 2=METIS)
+Mesh.Points = 0; //Display mesh vertices (nodes)?
+Mesh.PointNumbers = 0; //Display mesh node numbers?
+Mesh.PointSize = 4; //Display size of mesh vertices (in pixels)
+Mesh.PointType = 0; //Display mesh vertices as solid color dots (0) or 3D spheres (1)
+Mesh.Prisms = 1; //Display mesh prisms?
+Mesh.Pyramids = 1; //Display mesh pyramids?
+Mesh.Trihedra = 1; //Display mesh trihedra?
+Mesh.Quadrangles = 1; //Display mesh quadrangles?
+Mesh.QualityInf = 0; //Only display elements whose quality measure is greater thanQualityInf
+Mesh.QualitySup = 0; //Only display elements whose quality measure is smaller thanQualitySup
+Mesh.QualityType = 2; //Type of quality measure (0=gamma~vol/sum_face/max_edge,1=eta~vol^(2/3)/sum_edge^2, 2=rho~min_edge/max_edge)
+Mesh.RadiusInf = 0; //Only display elements whose longest edge is greater than RadiusInf
+Mesh.RadiusSup = 0; //Only display elements whose longest edge is smaller than RadiusSup
+Mesh.RandomFactor = 1e-09; //Random factor used in the 2D meshing algorithm (should be increasedif RandomFactor * size(triangle)/size(model) approaches machineaccuracy)
+Mesh.IgnorePartitionBoundary = 0; //Ignore partitions boundaries (0=no, 1=yes)
+Mesh.PreserveNumberingMsh2 = 0; //Preserve element numbering in MSH2 format (will break meshes withmultiple physical groups for a single elementary entity)
+Mesh.RecombinationAlgorithm = 1; //Mesh recombination algorithm (0=standard, 1=blossom)
+Mesh.RecombineAll = 0; //Apply recombination algorithm to all surfaces, ignoring per-surfacespec
+Mesh.Recombine3DAll = 0; //Apply recombination3D algorithm to all volumes, ignoring per-volumespec
+Mesh.Recombine3DLevel = 0; //3d recombination level (0: hex, 1: hex+prisms, 2:hex+prism+pyramids)
+Mesh.Recombine3DConformity = 0; //3d recombination conformity type (0: nonconforming, 1: trihedra, 2:pyramids+trihedra, 3:pyramids+hexSplit+trihedra,4:hexSplit+trihedra)
+Mesh.DoRecombinationTest = 0; //Apply recombination algorithm for test
+Mesh.RecombinationTestHorizStart = 1; //Depth start
+Mesh.RecombinationTestNoGreedyStrat = 0; //No greedy (global) strategies
+Mesh.RemeshAlgorithm = 0; //Remeshing algorithm (0=no split, 1=automatic, 2=automatic only withmetis)
+Mesh.RemeshParametrization = 4; //Remeshing using discrete parametrization (0=harmonic_circle,1=conformal_spectral, 2=rbf, 3=harmonic_plane, 4=convex_circle,5=convex_plane, 6=harmonic square, 7=conformal_fe
+Mesh.RefineSteps = 10; //Number of refinement steps in the MeshAdapt-based 2D algorithms
+Mesh.ReverseAllNormals = 0; //Reverse all the mesh normals (for display)
+Mesh.SaveAll = 0; //Ignore Physical definitions and save all elements
+Mesh.SaveElementTagType = 1; //Type of the element tag saved in mesh formats that don't supportsaving physical or partition ids (1=elementary, 2=physical,3=partition)
+Mesh.SaveParametric = 0; //Save parametric coordinates of nodes
+Mesh.SaveGroupsOfNodes = 0; //Save groups of nodes for each physical line and surface (UNV meshformat only)
+Mesh.ScalingFactor = 1; //Global scaling factor applied to the saved mesh
+Mesh.SecondOrderExperimental = 0; //Use experimental code to generate second order mesh
+Mesh.SecondOrderIncomplete = 0; //Create incomplete second order elements?  (8-node quads, 20-nodehexas, etc.)
+Mesh.SecondOrderLinear = 0; //Should second order vertices simply be created by linearinterpolation?
+Mesh.Smoothing = 1; //Number of smoothing steps applied to the final mesh
+Mesh.SmoothNormals = 0; //Smooth the mesh normals?
+Mesh.SmoothRatio = 1.8; //Ratio between mesh sizes at vertices of a same edeg (used in BAMG)
+Mesh.SubdivisionAlgorithm = 0; //Mesh subdivision algorithm (0=none, 1=all quadrangles, 2=allhexahedra)
+Mesh.SurfaceEdges = 1; //Display edges of surface mesh?
+Mesh.SurfaceFaces = 0; //Display faces of surface mesh?
+Mesh.SurfaceNumbers = 0; //Display surface mesh element numbers?
+Mesh.SwitchElementTags = 0; //Invert elementary and physical tags when reading the mesh
+Mesh.Tangents = 0; //Display size of tangent vectors (in pixels)
+Mesh.Tetrahedra = 1; //Display mesh tetrahedra?
+Mesh.ToleranceEdgeLength = 0; //Skip a model edge in mesh generation if its length is less thanuser's defined tolerance
+Mesh.ToleranceInitialDelaunay = 1e-08; //Tolerance for initial 3D Delaunay mesher
+Mesh.Triangles = 1; //Display mesh triangles?
+Mesh.VolumeEdges = 1; //Display edges of volume mesh?
+Mesh.VolumeFaces = 0; //Display faces of volume mesh?
+Mesh.VolumeNumbers = 0; //Display volume mesh element numbers?
+Mesh.Voronoi = 0; //Display the voronoi diagram
+Mesh.ZoneDefinition = 0; //Method for defining a zone (0=single zone, 1=by partition, 2=byphysical)
+Mesh.Color.Points = {0,0,255}; //Mesh node color
+Mesh.Color.PointsSup = {255,0,255}; //Second order mesh node color
+Mesh.Color.Lines = {0,0,0}; //Mesh line color
+Mesh.Color.Triangles = {160,150,255}; //Mesh triangle color (if Mesh.ColorCarousel=0)
+Mesh.Color.Quadrangles = {130,120,225}; //Mesh quadrangle color (if Mesh.ColorCarousel=0)
+Mesh.Color.Tetrahedra = {160,150,255}; //Mesh tetrahedron color (if Mesh.ColorCarousel=0)
+Mesh.Color.Hexahedra = {130,120,225}; //Mesh hexahedron color (if Mesh.ColorCarousel=0)
+Mesh.Color.Prisms = {232,210,23}; //Mesh prism color (if Mesh.ColorCarousel=0)
+Mesh.Color.Pyramids = {217,113,38}; //Mesh pyramid color (if Mesh.ColorCarousel=0)
+Mesh.Color.Trihedra = {20,255,0}; //Mesh trihedron color (if Mesh.ColorCarousel=0)
+Mesh.Color.Tangents = {255,255,0}; //Tangent mesh vector color
+Mesh.Color.Normals = {255,0,0}; //Normal mesh vector color
+Mesh.Color.Zero = {255,120,0}; //Color 0 in color carousel
+Mesh.Color.One = {0,255,132}; //Color 1 in color carousel
+Mesh.Color.Two = {255,160,0}; //Color 2 in color carousel
+Mesh.Color.Three = {0,255,192}; //Color 3 in color carousel
+Mesh.Color.Four = {255,200,0}; //Color 4 in color carousel
+Mesh.Color.Five = {0,216,255}; //Color 5 in color carousel
+Mesh.Color.Six = {255,240,0}; //Color 6 in color carousel
+Mesh.Color.Seven = {0,176,255}; //Color 7 in color carousel
+Mesh.Color.Eight = {228,255,0}; //Color 8 in color carousel
+Mesh.Color.Nine = {0,116,255}; //Color 9 in color carousel
+Mesh.Color.Ten = {188,255,0}; //Color 10 in color carousel
+Mesh.Color.Eleven = {0,76,255}; //Color 11 in color carousel
+Mesh.Color.Twelve = {148,255,0}; //Color 12 in color carousel
+Mesh.Color.Thirteen = {24,0,255}; //Color 13 in color carousel
+Mesh.Color.Fourteen = {108,255,0}; //Color 14 in color carousel
+Mesh.Color.Fifteen = {84,0,255}; //Color 15 in color carousel
+Mesh.Color.Sixteen = {68,255,0}; //Color 16 in color carousel
+Mesh.Color.Seventeen = {104,0,255}; //Color 17 in color carousel
+Mesh.Color.Eighteen = {0,255,52}; //Color 18 in color carousel
+Mesh.Color.Nineteen = {184,0,255}; //Color 19 in color carousel

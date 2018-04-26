@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+	<appender name="FILE" class="ch.qos.logback.core.FileAppender">
+		<file>debug.log</file>
+		<append>false</append>
+		<encoder>
+			<pattern>%date %level %logger{10} [%file:%line] %msg%n</pattern>
+		</encoder>
+	</appender>
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%date %level [%logger] %msg%n</pattern>
+		</encoder>
+	</appender>
+	<logger name="spis" additivity="false">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="FILE" />
+	</logger>
+	<logger name="ucar.nc2.NetcdfFile" level="info" additivity="false">
+		<appender-ref ref="FILE" />
+	</logger>
+	<root level="trace">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="FILE" />
+	</root>
+</configuration>

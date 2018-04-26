@@ -1,0 +1,44 @@
+<Property>
+  <id>100</id>
+  <name>Plasma Model in Volume, default</name>
+  <description>Default volume settings: no volume interaction nor background density</description>
+  <isCompound>false</isCompound>
+  <type>Volume plasma model</type>
+  
+  <characteristicList>
+    <entry>
+      <string>VolInteracFlag</string>
+      <IntegerCharacteristic>
+        <id>5</id>
+        <name>VolInteracFlag</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit></unit>
+          <standardUnit></standardUnit>
+        </unit>
+        <localisation>3</localisation>
+        <informationLink></informationLink>
+        <value>0</value>
+      </IntegerCharacteristic>
+    </entry>
+    
+    <entry>
+      <string>BackGroundDens</string>
+      <DoubleCharacteristic>
+        <id>6</id>
+        <name>BackGroundDens</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit>[m-3]</unit>
+          <standardUnit>m-3</standardUnit>
+        </unit>
+        <localisation>3</localisation>
+        <informationLink></informationLink>
+        <value>0.0</value>
+      </DoubleCharacteristic>
+    </entry>
+
+
+  </characteristicList>
+    
+</Property>

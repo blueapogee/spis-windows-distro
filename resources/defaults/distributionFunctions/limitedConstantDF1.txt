@@ -1,0 +1,6 @@
+"# limited constant DF ; 1st row velocity (m/s); 2nd row DF"	
+0.0	1
+0.5e6	1
+1.875e6	1
+1.8752e6 0
+

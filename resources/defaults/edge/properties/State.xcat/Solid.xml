@@ -1,0 +1,8 @@
+<Property>
+  <id>42</id>
+  <name>solid</name>
+  <description>Solid</description>
+  <isCompound>false</isCompound>
+  <type>State</type>
+  <characteristicList/>
+</Property>

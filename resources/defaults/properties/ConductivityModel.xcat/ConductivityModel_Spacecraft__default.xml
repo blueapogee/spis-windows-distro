@@ -1,0 +1,64 @@
+<Property>
+  <id>200</id>
+  <name>Default conductivity model - Spacecraft default</name>
+  <description>Default S/C settings</description>
+  <isCompound>false</isCompound>
+  <type>S/C conductivity model</type>
+
+  <characteristicList>
+  
+     <!-- imported from imported_AL_oxyde -->
+     <entry>
+      <string>VolConduct</string>
+      <IntegerCharacteristic>
+        <id>7</id>
+        <name>VolConduct</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit></unit>
+          <standardUnit></standardUnit>
+        </unit>
+        <localisation>2</localisation>
+        <informationLink></informationLink>
+        <value>1</value>
+      </IntegerCharacteristic>
+    </entry>
+    
+    
+    <!-- imported from imported_AL_oxyde -->
+    <entry>
+      <string>SurfConduct</string>
+      <IntegerCharacteristic>
+        <id>9</id>
+        <name>SurfConduct</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit></unit>
+          <standardUnit></standardUnit>
+        </unit>
+        <localisation>2</localisation>
+        <informationLink></informationLink>
+        <value>1</value>
+      </IntegerCharacteristic>
+    </entry>
+ 
+   <!-- imported from imported_AL_oxyde -->
+   <entry>
+      <string>IndConduct</string>
+      <IntegerCharacteristic>
+        <id>8</id>
+        <name>IndConduct</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit></unit>
+          <standardUnit></standardUnit>
+        </unit>
+        <localisation>2</localisation>
+        <informationLink></informationLink>
+        <value>1</value>
+      </IntegerCharacteristic>
+    </entry>
+ 
+  </characteristicList>
+
+</Property>

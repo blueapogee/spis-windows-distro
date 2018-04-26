@@ -1,0 +1,1342 @@
+########################################################################
+SpisUI 5.1.10-IC thirdparty components
+########################################################################
+
+------------------------------------------------------------------------
+Internal modules names:
+
+SPIS-UI Super POM
+SPIS UI bundle archetype
+SPIS data model
+SPIS data mining module
+SPIS electrical circuit module
+SPIS geometry editor
+SPIS project module
+SPIS UI to NUM conversion module
+SPIS global parameters module
+SPIS group editor
+Instruments configuration bundle
+SPIS mesh module
+SPIS project converter
+SPIS reporting module
+SPIS simulation launch and monitoring module
+SPIS external tools launcher module
+SPIS internal charging module
+SPIS-UI developer module
+SpisUI
+                                                                        
+------------------------------------------------------------------------
+Building SPIS-UI Super POM 5.1.10-IC
+------------------------------------------------------------------------
+
+--- maven-dependency-plugin:2.8:tree (default-cli) @ org-spis-ui-super-pom ---
+org.spis.ui:org-spis-ui-super-pom:pom:5.1.10-IC
+\- junit:concjunit:jar:4.7:test
+                                                                        
+------------------------------------------------------------------------
+Building SPIS UI bundle archetype 5.1.9-IC-SNAPSHOT
+------------------------------------------------------------------------
+
+--- maven-dependency-plugin:2.8:tree (default-cli) @ org-spis-ui-archetype ---
+org.spis.ui:org-spis-ui-archetype:jar:5.1.9-IC-SNAPSHOT
+                                                                        
+------------------------------------------------------------------------
+Building SPIS data model 5.1.10-IC
+------------------------------------------------------------------------
+
+--- maven-dependency-plugin:2.8:tree (default-cli) @ org-spis-ui-model ---
+org.spis.ui:org-spis-ui-model:bundle:5.1.10-IC
++- org.keridwen.modelling:org-keridwen-modelling-group-editor:jar:2.0.16:compile
+|  +- org.keridwen.modelling:org-keridwen-modelling-utils:jar:2.0.16:compile
+|  +- com.artenum.penelope:com-artenum-penelope-plugin-xml:jar:3.0.16:compile
+|  +- com.artenum.penelope:com-artenum-penelope-plugin-vtk:jar:3.0.16:compile
+|  +- com.artenum.cassandra:com-artenum-cassandra-core:jar:2.5.16:compile
+|  |  +- com.artenum.cassandra:com-artenum-cassandra-renderer:jar:2.5.16:compile
+|  |  +- org.python:jython-standalone:jar:2.5.3:compile
+|  |  +- com.artenum:jyconsole:jar:1.5:compile
+|  |  +- com.artenum.graph:DedalEGraph:jar:1.0.1:compile
+|  |  +- org.keridwen.vtk:org-keridwen-vtk:jar:2.0.16:compile
+|  |  \- org.keridwen.core:org-keridwen-core-logging:jar:2.0.16:compile
+|  |     +- ch.qos.logback:logback-core:jar:1.1.2:compile
+|  |     \- ch.qos.logback:logback-classic:jar:1.1.2:compile
+|  +- com.artenum.tk:ArtTk:jar:2.0.20:compile
+|  |  +- jfree:jfreechart:jar:1.0.13:compile
+|  |  +- jfree:jcommon:jar:1.0.16:compile
+|  |  \- commons-logging:commons-logging:jar:1.1.1:compile
+|  +- org.slf4j:slf4j-api:jar:1.7.12:compile
+|  \- org.swinglabs:swingx-core:jar:1.6.2-2:compile
++- org.keridwen.modelling:org-keridwen-modelling-data-model:jar:2.0.16:compile
++- org.keridwen.core:org-keridwen-core-data-model:jar:2.0.16:compile
+|  +- xom:xom:jar:1.2.5:compile
+|  |  +- xml-apis:xml-apis:jar:1.3.03:compile
+|  |  +- xerces:xercesImpl:jar:2.8.0:compile
+|  |  \- xalan:xalan:jar:2.7.0:compile
+|  \- com.google.guava:guava:jar:16.0.1:compile
++- org.keridwen.core:org-keridwen-core-state:jar:2.0.16:compile
+|  +- commons-scxml:commons-scxml:jar:0.9:compile
+|  |  +- commons-digester:commons-digester:jar:1.8:compile
+|  |  \- commons-beanutils:commons-beanutils:jar:1.7.0:compile
+|  \- commons-jexl:commons-jexl:jar:1.1:compile
+|     \- junit:junit:jar:3.8.1:compile
++- org.keridwen.core:org-keridwen-core-messaging:jar:2.0.16:compile
+|  \- org.osgi:org.osgi.core:jar:5.0.0:compile
++- org.keridwen.core:org-keridwen-core-i18n:jar:2.0.16:compile
++- org.keridwen.core:org-keridwen-core-settings:jar:2.0.16:compile
++- com.artenum.penelope:com-artenum-penelope-core:jar:3.0.16:compile
+|  +- com.artenum:nisaba:jar:1.0.16:compile
+|  |  \- org.jblas:jblas:jar:1.2.3:compile
+|  +- net.sf.trove4j:trove4j:jar:3.0.2:compile
+|  \- org.apache.felix:org.apache.felix.ipojo.handler.extender:jar:1.4.0:compile
+|     \- org.apache.felix:org.apache.felix.ipojo:jar:1.4.0:compile
+|        +- org.apache.felix:org.osgi.compendium:jar:1.2.0:compile
+|        |  \- org.apache.felix:javax.servlet:jar:1.0.0:compile
+|        \- org.apache.felix:org.apache.felix.ipojo.metadata:jar:1.4.0:compile
++- org.keridwen.modelling:org-keridwen-modelling-global-parameters:jar:2.0.16:compile
+|  +- com.thoughtworks.xstream:xstream:jar:1.4.2:compile
+|  |  +- xmlpull:xmlpull:jar:1.1.3.1:compile
+|  |  \- xpp3:xpp3_min:jar:1.1.4c:compile
+|  \- net.sourceforge.jexcelapi:jxl:jar:2.6.12:compile
+|     \- log4j:log4j:jar:1.2.14:compile
++- com.artenum.penelope:com-artenum-penelope-plugin-netcdf:jar:3.0.16:compile
+|  +- com.artenum.penelope:com-artenum-penelope-plugin-gmsh:jar:3.0.16:compile
+|  \- edu.ucar:netcdf:jar:4.2.20:compile
+|     +- edu.ucar:unidataCommon:jar:4.2.20:compile
+|     |  \- net.jcip:jcip-annotations:jar:1.0:compile
+|     \- commons-httpclient:commons-httpclient:jar:3.1:compile
+|        \- commons-codec:commons-codec:jar:1.2:compile
++- commons-io:commons-io:jar:2.4:compile
++- com.artenum.frida:Frida:jar:0.0.16:compile
+|  \- vtk:vtk:jar:5.8.0:compile
++- org.spis.num:org-spis-num-sci-geo:jar:5.1.10-IC-3DMICS:compile
+|  +- org.spis:org-spis-instruments-dust:jar:1.0.8:compile
+|  +- net.sourceforge.f2j:arpack_combined_all:jar:0.1:compile
+|  \- org.apache.commons:commons-math3:jar:3.2:compile
+\- junit:concjunit:jar:4.7:test
+                                                                        
+------------------------------------------------------------------------
+Building SPIS data mining module 5.1.10-IC
+------------------------------------------------------------------------
+
+--- maven-dependency-plugin:2.8:tree (default-cli) @ org-spis-ui-data-mining ---
+org.spis.ui:org-spis-ui-data-mining:bundle:5.1.10-IC
++- org.keridwen.modelling:org-keridwen-modelling-ui-manager:jar:2.0.16:compile
+|  +- com.artenum.tk:ArtTk:jar:2.0.20:compile
+|  |  +- jfree:jcommon:jar:1.0.16:compile
+|  |  \- commons-logging:commons-logging:jar:1.1.1:compile
+|  +- org.keridwen.core:org-keridwen-core-ui-dockingframes:jar:2.0.16:compile
+|  |  +- org.dockingframes:docking-frames-core:jar:1.1.2p10a:compile
+|  |  \- org.dockingframes:docking-frames-common:jar:1.1.2p10a:compile
+|  \- org.keridwen.modelling:org-keridwen-modelling-text-editor:jar:2.0.16:compile
++- org.keridwen.modelling:org-keridwen-modelling-data-model:jar:2.0.16:compile
+|  +- org.keridwen.core:org-keridwen-core-state:jar:2.0.16:compile
+|  |  +- commons-scxml:commons-scxml:jar:0.9:compile
+|  |  |  +- commons-digester:commons-digester:jar:1.8:compile
+|  |  |  \- commons-beanutils:commons-beanutils:jar:1.7.0:compile
+|  |  \- commons-jexl:commons-jexl:jar:1.1:compile
+|  |     \- junit:junit:jar:3.8.1:compile
+|  +- com.artenum.penelope:com-artenum-penelope-plugin-netcdf:jar:3.0.16:compile
+|  |  +- com.artenum.penelope:com-artenum-penelope-plugin-gmsh:jar:3.0.16:compile
+|  |  \- edu.ucar:netcdf:jar:4.2.20:compile
+|  |     +- edu.ucar:unidataCommon:jar:4.2.20:compile
+|  |     |  \- net.jcip:jcip-annotations:jar:1.0:compile
+|  |     \- commons-httpclient:commons-httpclient:jar:3.1:compile
+|  |        \- commons-codec:commons-codec:jar:1.2:compile
+|  +- com.artenum.frida:Frida:jar:0.0.16:compile
+|  |  +- xom:xom:jar:1.2.5:compile
+|  |  |  +- xml-apis:xml-apis:jar:1.3.03:compile
+|  |  |  +- xerces:xercesImpl:jar:2.8.0:compile
+|  |  |  \- xalan:xalan:jar:2.7.0:compile
+|  |  +- com.thoughtworks.xstream:xstream:jar:1.4.2:compile
+|  |  |  +- xmlpull:xmlpull:jar:1.1.3.1:compile
+|  |  |  \- xpp3:xpp3_min:jar:1.1.4c:compile
+|  |  +- com.artenum.penelope:com-artenum-penelope-plugin-xml:jar:3.0.16:compile
+|  |  \- vtk:vtk:jar:5.8.0:compile
+|  \- org.keridwen.modelling:org-keridwen-modelling-global-parameters:jar:2.0.16:compile
+|     \- net.sourceforge.jexcelapi:jxl:jar:2.6.12:compile
+|        \- log4j:log4j:jar:1.2.14:compile
++- org.spis.ui:org-spis-ui-model:jar:5.1.10-IC:compile
+|  +- org.keridwen.modelling:org-keridwen-modelling-group-editor:jar:2.0.16:compile
+|  +- org.keridwen.core:org-keridwen-core-data-model:jar:2.0.16:compile
+|  +- org.keridwen.core:org-keridwen-core-settings:jar:2.0.16:compile
+|  +- com.artenum.penelope:com-artenum-penelope-core:jar:3.0.16:compile
+|  |  +- com.artenum:nisaba:jar:1.0.16:compile
+|  |  |  \- org.jblas:jblas:jar:1.2.3:compile
+|  |  +- net.sf.trove4j:trove4j:jar:3.0.2:compile
+|  |  \- org.apache.felix:org.apache.felix.ipojo.handler.extender:jar:1.4.0:compile
+|  |     \- org.apache.felix:org.apache.felix.ipojo:jar:1.4.0:compile
+|  |        +- org.apache.felix:org.osgi.compendium:jar:1.2.0:compile
+|  |        |  \- org.apache.felix:javax.servlet:jar:1.0.0:compile
+|  |        \- org.apache.felix:org.apache.felix.ipojo.metadata:jar:1.4.0:compile
+|  +- commons-io:commons-io:jar:2.4:compile
+|  \- org.spis.num:org-spis-num-sci-geo:jar:5.1.10-IC-3DMICS:compile
+|     +- org.spis:org-spis-instruments-dust:jar:1.0.8:compile
+|     +- net.sourceforge.f2j:arpack_combined_all:jar:0.1:compile
+|     \- org.apache.commons:commons-math3:jar:3.2:compile
++- org.keridwen.core:org-keridwen-core-messaging:jar:2.0.16:compile
+|  +- org.slf4j:slf4j-api:jar:1.7.12:compile
+|  +- org.osgi:org.osgi.core:jar:5.0.0:compile
+|  \- com.google.guava:guava:jar:16.0.1:compile
++- org.keridwen.modelling:org-keridwen-modelling-monitoring:jar:2.0.16:compile
+|  +- org.swinglabs:swingx-core:jar:1.6.2-2:compile
+|  +- org.keridwen.modelling:org-keridwen-modelling-utils:jar:2.0.16:compile
+|  +- jfree:jfreechart:jar:1.0.13:compile
+|  +- com.artenum.penelope:com-artenum-penelope-plugin-vtk:jar:3.0.16:compile
+|  +- com.artenum.cassandra:com-artenum-cassandra-renderer:jar:2.5.16:compile
+|  \- com.artenum.cassandra:com-artenum-cassandra-core:jar:2.5.16:compile
+|     +- org.python:jython-standalone:jar:2.5.3:compile
+|     +- com.artenum:jyconsole:jar:1.5:compile
+|     +- com.artenum.graph:DedalEGraph:jar:1.0.1:compile
+|     +- org.keridwen.vtk:org-keridwen-vtk:jar:2.0.16:compile
+|     \- org.keridwen.core:org-keridwen-core-logging:jar:2.0.16:compile
+|        +- ch.qos.logback:logback-core:jar:1.1.2:compile
+|        \- ch.qos.logback:logback-classic:jar:1.1.2:compile
++- org.keridwen.core:org-keridwen-core-i18n:jar:2.0.16:compile
+\- junit:concjunit:jar:4.7:test
+                                                                        
+------------------------------------------------------------------------
+Building SPIS electrical circuit module 5.1.10-IC
+------------------------------------------------------------------------
+
+--- maven-dependency-plugin:2.8:tree (default-cli) @ org-spis-ui-electrical-circuit ---
+org.spis.ui:org-spis-ui-electrical-circuit:bundle:5.1.10-IC
++- org.keridwen.modelling:org-keridwen-modelling-ui-manager:jar:2.0.16:compile
+|  +- com.artenum.tk:ArtTk:jar:2.0.20:compile
+|  |  +- jfree:jfreechart:jar:1.0.13:compile
+|  |  +- jfree:jcommon:jar:1.0.16:compile
+|  |  \- commons-logging:commons-logging:jar:1.1.1:compile
+|  \- org.keridwen.core:org-keridwen-core-ui-dockingframes:jar:2.0.16:compile
+|     +- org.dockingframes:docking-frames-core:jar:1.1.2p10a:compile
+|     \- org.dockingframes:docking-frames-common:jar:1.1.2p10a:compile
++- org.keridwen.modelling:org-keridwen-modelling-data-model:jar:2.0.16:compile
+|  +- org.keridwen.core:org-keridwen-core-state:jar:2.0.16:compile
+|  |  +- commons-scxml:commons-scxml:jar:0.9:compile
+|  |  |  +- commons-digester:commons-digester:jar:1.8:compile
+|  |  |  \- commons-beanutils:commons-beanutils:jar:1.7.0:compile
+|  |  \- commons-jexl:commons-jexl:jar:1.1:compile
+|  |     \- junit:junit:jar:3.8.1:compile
+|  +- com.artenum.penelope:com-artenum-penelope-plugin-netcdf:jar:3.0.16:compile
+|  |  +- com.artenum.penelope:com-artenum-penelope-plugin-gmsh:jar:3.0.16:compile
+|  |  \- edu.ucar:netcdf:jar:4.2.20:compile
+|  |     +- edu.ucar:unidataCommon:jar:4.2.20:compile
+|  |     |  \- net.jcip:jcip-annotations:jar:1.0:compile
+|  |     \- commons-httpclient:commons-httpclient:jar:3.1:compile
+|  |        \- commons-codec:commons-codec:jar:1.2:compile
+|  +- com.artenum.frida:Frida:jar:0.0.16:compile
+|  |  +- xom:xom:jar:1.2.5:compile
+|  |  |  +- xml-apis:xml-apis:jar:1.3.03:compile
+|  |  |  +- xerces:xercesImpl:jar:2.8.0:compile
+|  |  |  \- xalan:xalan:jar:2.7.0:compile
+|  |  +- com.thoughtworks.xstream:xstream:jar:1.4.2:compile
+|  |  |  +- xmlpull:xmlpull:jar:1.1.3.1:compile
+|  |  |  \- xpp3:xpp3_min:jar:1.1.4c:compile
+|  |  +- com.artenum.penelope:com-artenum-penelope-plugin-xml:jar:3.0.16:compile
+|  |  +- vtk:vtk:jar:5.8.0:compile
+|  |  \- com.artenum.penelope:com-artenum-penelope-plugin-vtk:jar:3.0.16:compile
+|  \- org.keridwen.modelling:org-keridwen-modelling-global-parameters:jar:2.0.16:compile
+|     +- org.keridwen.modelling:org-keridwen-modelling-utils:jar:2.0.16:compile
+|     \- net.sourceforge.jexcelapi:jxl:jar:2.6.12:compile
+|        \- log4j:log4j:jar:1.2.14:compile
++- org.keridwen.core:org-keridwen-core-messaging:jar:2.0.16:compile
+|  +- org.keridwen.core:org-keridwen-core-data-model:jar:2.0.16:compile
+|  |  \- org.swinglabs:swingx-core:jar:1.6.2-2:compile
+|  +- org.slf4j:slf4j-api:jar:1.7.12:compile
+|  +- org.osgi:org.osgi.core:jar:5.0.0:compile
+|  \- com.google.guava:guava:jar:16.0.1:compile
++- org.keridwen.core:org-keridwen-core-i18n:jar:2.0.16:compile
++- org.keridwen.modelling:org-keridwen-modelling-text-editor:jar:2.0.16:compile
++- org.spis.ui:org-spis-ui-model:jar:5.1.10-IC:compile
+|  +- org.keridwen.modelling:org-keridwen-modelling-group-editor:jar:2.0.16:compile
+|  |  \- com.artenum.cassandra:com-artenum-cassandra-core:jar:2.5.16:compile
+|  |     +- com.artenum.cassandra:com-artenum-cassandra-renderer:jar:2.5.16:compile
+|  |     +- org.python:jython-standalone:jar:2.5.3:compile
+|  |     +- com.artenum:jyconsole:jar:1.5:compile
+|  |     +- com.artenum.graph:DedalEGraph:jar:1.0.1:compile
+|  |     +- org.keridwen.vtk:org-keridwen-vtk:jar:2.0.16:compile
+|  |     \- org.keridwen.core:org-keridwen-core-logging:jar:2.0.16:compile
+|  |        +- ch.qos.logback:logback-core:jar:1.1.2:compile
+|  |        \- ch.qos.logback:logback-classic:jar:1.1.2:compile
+|  +- org.keridwen.core:org-keridwen-core-settings:jar:2.0.16:compile
+|  +- com.artenum.penelope:com-artenum-penelope-core:jar:3.0.16:compile
+|  |  +- com.artenum:nisaba:jar:1.0.16:compile
+|  |  |  \- org.jblas:jblas:jar:1.2.3:compile
+|  |  +- net.sf.trove4j:trove4j:jar:3.0.2:compile
+|  |  \- org.apache.felix:org.apache.felix.ipojo.handler.extender:jar:1.4.0:compile
+|  |     \- org.apache.felix:org.apache.felix.ipojo:jar:1.4.0:compile
+|  |        +- org.apache.felix:org.osgi.compendium:jar:1.2.0:compile
+|  |        |  \- org.apache.felix:javax.servlet:jar:1.0.0:compile
+|  |        \- org.apache.felix:org.apache.felix.ipojo.metadata:jar:1.4.0:compile
+|  \- org.spis.num:org-spis-num-sci-geo:jar:5.1.10-IC-3DMICS:compile
+|     +- org.spis:org-spis-instruments-dust:jar:1.0.8:compile
+|     +- net.sourceforge.f2j:arpack_combined_all:jar:0.1:compile
+|     \- org.apache.commons:commons-math3:jar:3.2:compile
++- commons-io:commons-io:jar:2.4:compile
+\- junit:concjunit:jar:4.7:test
+                                                                        
+------------------------------------------------------------------------
+Building SPIS geometry editor 5.1.10-IC
+------------------------------------------------------------------------
+
+--- maven-dependency-plugin:2.8:tree (default-cli) @ org-spis-ui-geometry-editor ---
+org.spis.ui:org-spis-ui-geometry-editor:bundle:5.1.10-IC
++- org.keridwen.modelling:org-keridwen-modelling-ui-manager:jar:2.0.16:compile
++- org.keridwen.modelling:org-keridwen-modelling-data-model:jar:2.0.16:compile
+|  +- org.keridwen.core:org-keridwen-core-state:jar:2.0.16:compile
+|  |  +- commons-scxml:commons-scxml:jar:0.9:compile
+|  |  |  +- commons-digester:commons-digester:jar:1.8:compile
+|  |  |  \- commons-beanutils:commons-beanutils:jar:1.7.0:compile
+|  |  \- commons-jexl:commons-jexl:jar:1.1:compile
+|  |     \- junit:junit:jar:3.8.1:compile
+|  +- com.artenum.penelope:com-artenum-penelope-plugin-netcdf:jar:3.0.16:compile
+|  |  \- edu.ucar:netcdf:jar:4.2.20:compile
+|  |     +- edu.ucar:unidataCommon:jar:4.2.20:compile
+|  |     |  \- net.jcip:jcip-annotations:jar:1.0:compile
+|  |     \- commons-httpclient:commons-httpclient:jar:3.1:compile
+|  |        \- commons-codec:commons-codec:jar:1.2:compile
+|  +- com.artenum.frida:Frida:jar:0.0.16:compile
+|  |  +- xom:xom:jar:1.2.5:compile
+|  |  |  +- xml-apis:xml-apis:jar:1.3.03:compile
+|  |  |  +- xerces:xercesImpl:jar:2.8.0:compile
+|  |  |  \- xalan:xalan:jar:2.7.0:compile
+|  |  +- com.thoughtworks.xstream:xstream:jar:1.4.2:compile
+|  |  |  +- xmlpull:xmlpull:jar:1.1.3.1:compile
+|  |  |  \- xpp3:xpp3_min:jar:1.1.4c:compile
+|  |  \- com.artenum.penelope:com-artenum-penelope-plugin-xml:jar:3.0.16:compile
+|  \- org.keridwen.modelling:org-keridwen-modelling-global-parameters:jar:2.0.16:compile
+|     \- net.sourceforge.jexcelapi:jxl:jar:2.6.12:compile
+|        \- log4j:log4j:jar:1.2.14:compile
++- org.spis.ui:org-spis-ui-model:jar:5.1.10-IC:compile
+|  +- org.keridwen.modelling:org-keridwen-modelling-group-editor:jar:2.0.16:compile
+|  +- org.keridwen.core:org-keridwen-core-data-model:jar:2.0.16:compile
+|  +- org.keridwen.core:org-keridwen-core-settings:jar:2.0.16:compile
+|  +- com.artenum.penelope:com-artenum-penelope-core:jar:3.0.16:compile
+|  |  +- net.sf.trove4j:trove4j:jar:3.0.2:compile
+|  |  \- org.apache.felix:org.apache.felix.ipojo.handler.extender:jar:1.4.0:compile
+|  |     \- org.apache.felix:org.apache.felix.ipojo:jar:1.4.0:compile
+|  |        +- org.apache.felix:org.osgi.compendium:jar:1.2.0:compile
+|  |        |  \- org.apache.felix:javax.servlet:jar:1.0.0:compile
+|  |        \- org.apache.felix:org.apache.felix.ipojo.metadata:jar:1.4.0:compile
+|  \- org.spis.num:org-spis-num-sci-geo:jar:5.1.10-IC-3DMICS:compile
+|     +- org.spis:org-spis-instruments-dust:jar:1.0.8:compile
+|     +- net.sourceforge.f2j:arpack_combined_all:jar:0.1:compile
+|     \- org.apache.commons:commons-math3:jar:3.2:compile
++- org.keridwen.modelling:org-keridwen-modelling-gmsh:jar:2.0.16:compile
+|  +- com.artenum.penelope:com-artenum-penelope-plugin-gmsh:jar:3.0.16:compile
+|  +- com.artenum.penelope:com-artenum-penelope-plugin-vtk:jar:3.0.16:compile
+|  +- org.geuz:gmsh:jar:2.5.0:compile
+|  \- org.keridwen.gmsh:org-keridwen-gmsh:jar:2.0.16:compile
++- org.keridwen.core:org-keridwen-core-messaging:jar:2.0.16:compile
+|  +- org.slf4j:slf4j-api:jar:1.7.12:compile
+|  +- org.osgi:org.osgi.core:jar:5.0.0:compile
+|  \- com.google.guava:guava:jar:16.0.1:compile
++- org.keridwen.core:org-keridwen-core-ui-dockingframes:jar:2.0.16:compile
+|  +- org.dockingframes:docking-frames-core:jar:1.1.2p10a:compile
+|  \- org.dockingframes:docking-frames-common:jar:1.1.2p10a:compile
++- org.keridwen.core:org-keridwen-core-i18n:jar:2.0.16:compile
++- org.keridwen.modelling:org-keridwen-modelling-text-editor:jar:2.0.16:compile
++- org.keridwen.modelling:org-keridwen-modelling-utils:jar:2.0.16:compile
++- com.artenum.tk:ArtTk:jar:2.0.20:compile
+|  +- jfree:jfreechart:jar:1.0.13:compile
+|  +- jfree:jcommon:jar:1.0.16:compile
+|  \- commons-logging:commons-logging:jar:1.1.1:compile
++- org.swinglabs:swingx-core:jar:1.6.2-2:compile
++- org.keridwen.vtk:org-keridwen-vtk:jar:2.0.16:compile
++- com.artenum.cassandra:com-artenum-cassandra-core:jar:2.5.16:compile
+|  +- org.python:jython-standalone:jar:2.5.3:compile
+|  +- com.artenum:jyconsole:jar:1.5:compile
+|  +- com.artenum.graph:DedalEGraph:jar:1.0.1:compile
+|  \- org.keridwen.core:org-keridwen-core-logging:jar:2.0.16:compile
+|     +- ch.qos.logback:logback-core:jar:1.1.2:compile
+|     \- ch.qos.logback:logback-classic:jar:1.1.2:compile
++- com.artenum.cassandra:com-artenum-cassandra-renderer:jar:2.5.16:compile
+|  \- vtk:vtk:jar:5.8.0:compile
++- commons-io:commons-io:jar:2.4:compile
++- org.keridwen.modelling:org-keridwen-modelling-cad:jar:2.0.16:compile
+|  +- com.artenum.penelope:com-artenum-penelope-plugin-ray-tracing:jar:3.0.16:compile
+|  \- com.artenum:nisaba:jar:1.0.16:compile
+|     \- org.jblas:jblas:jar:1.2.3:compile
+\- junit:concjunit:jar:4.7:test
+                                                                        
+------------------------------------------------------------------------
+Building SPIS project module 5.1.10-IC
+------------------------------------------------------------------------
+
+--- maven-dependency-plugin:2.8:tree (default-cli) @ org-spis-ui-project ---
+org.spis.ui:org-spis-ui-project:bundle:5.1.10-IC
++- org.keridwen.modelling:org-keridwen-modelling-ui-manager:jar:2.0.16:compile
+|  \- org.keridwen.modelling:org-keridwen-modelling-text-editor:jar:2.0.16:compile
++- org.keridwen.modelling:org-keridwen-modelling-data-model:jar:2.0.16:compile
+|  +- org.keridwen.core:org-keridwen-core-state:jar:2.0.16:compile
+|  |  +- commons-scxml:commons-scxml:jar:0.9:compile
+|  |  |  +- commons-digester:commons-digester:jar:1.8:compile
+|  |  |  \- commons-beanutils:commons-beanutils:jar:1.7.0:compile
+|  |  \- commons-jexl:commons-jexl:jar:1.1:compile
+|  |     \- junit:junit:jar:3.8.1:compile
+|  +- com.artenum.penelope:com-artenum-penelope-plugin-netcdf:jar:3.0.16:compile
+|  |  \- edu.ucar:netcdf:jar:4.2.20:compile
+|  |     +- edu.ucar:unidataCommon:jar:4.2.20:compile
+|  |     |  \- net.jcip:jcip-annotations:jar:1.0:compile
+|  |     \- commons-httpclient:commons-httpclient:jar:3.1:compile
+|  |        \- commons-codec:commons-codec:jar:1.2:compile
+|  +- com.artenum.frida:Frida:jar:0.0.16:compile
+|  |  +- xom:xom:jar:1.2.5:compile
+|  |  |  +- xml-apis:xml-apis:jar:1.3.03:compile
+|  |  |  +- xerces:xercesImpl:jar:2.8.0:compile
+|  |  |  \- xalan:xalan:jar:2.7.0:compile
+|  |  +- com.thoughtworks.xstream:xstream:jar:1.4.2:compile
+|  |  |  +- xmlpull:xmlpull:jar:1.1.3.1:compile
+|  |  |  \- xpp3:xpp3_min:jar:1.1.4c:compile
+|  |  +- vtk:vtk:jar:5.8.0:compile
+|  |  \- com.artenum.penelope:com-artenum-penelope-plugin-vtk:jar:3.0.16:compile
+|  \- org.keridwen.modelling:org-keridwen-modelling-global-parameters:jar:2.0.16:compile
+|     \- net.sourceforge.jexcelapi:jxl:jar:2.6.12:compile
+|        \- log4j:log4j:jar:1.2.14:compile
++- org.spis.ui:org-spis-ui-model:jar:5.1.10-IC:compile
+|  +- org.keridwen.modelling:org-keridwen-modelling-group-editor:jar:2.0.16:compile
+|  |  \- com.artenum.cassandra:com-artenum-cassandra-core:jar:2.5.16:compile
+|  |     +- com.artenum.cassandra:com-artenum-cassandra-renderer:jar:2.5.16:compile
+|  |     +- org.python:jython-standalone:jar:2.5.3:compile
+|  |     +- com.artenum:jyconsole:jar:1.5:compile
+|  |     +- com.artenum.graph:DedalEGraph:jar:1.0.1:compile
+|  |     +- org.keridwen.vtk:org-keridwen-vtk:jar:2.0.16:compile
+|  |     \- org.keridwen.core:org-keridwen-core-logging:jar:2.0.16:compile
+|  |        +- ch.qos.logback:logback-core:jar:1.1.2:compile
+|  |        \- ch.qos.logback:logback-classic:jar:1.1.2:compile
+|  +- org.keridwen.core:org-keridwen-core-data-model:jar:2.0.16:compile
+|  +- org.keridwen.core:org-keridwen-core-settings:jar:2.0.16:compile
+|  +- com.artenum.penelope:com-artenum-penelope-core:jar:3.0.16:compile
+|  |  +- com.artenum:nisaba:jar:1.0.16:compile
+|  |  |  \- org.jblas:jblas:jar:1.2.3:compile
+|  |  +- net.sf.trove4j:trove4j:jar:3.0.2:compile
+|  |  \- org.apache.felix:org.apache.felix.ipojo.handler.extender:jar:1.4.0:compile
+|  |     \- org.apache.felix:org.apache.felix.ipojo:jar:1.4.0:compile
+|  |        +- org.apache.felix:org.osgi.compendium:jar:1.2.0:compile
+|  |        |  \- org.apache.felix:javax.servlet:jar:1.0.0:compile
+|  |        \- org.apache.felix:org.apache.felix.ipojo.metadata:jar:1.4.0:compile
+|  +- commons-io:commons-io:jar:2.4:compile
+|  \- org.spis.num:org-spis-num-sci-geo:jar:5.1.10-IC-3DMICS:compile
+|     +- org.spis:org-spis-instruments-dust:jar:1.0.8:compile
+|     +- net.sourceforge.f2j:arpack_combined_all:jar:0.1:compile
+|     \- org.apache.commons:commons-math3:jar:3.2:compile
++- org.keridwen.core:org-keridwen-core-messaging:jar:2.0.16:compile
+|  +- org.slf4j:slf4j-api:jar:1.7.12:compile
+|  +- org.osgi:org.osgi.core:jar:5.0.0:compile
+|  \- com.google.guava:guava:jar:16.0.1:compile
++- org.keridwen.core:org-keridwen-core-ui-dockingframes:jar:2.0.16:compile
+|  +- org.dockingframes:docking-frames-core:jar:1.1.2p10a:compile
+|  \- org.dockingframes:docking-frames-common:jar:1.1.2p10a:compile
++- org.keridwen.core:org-keridwen-core-i18n:jar:2.0.16:compile
++- com.artenum.tk:ArtTk:jar:2.0.20:compile
+|  +- jfree:jfreechart:jar:1.0.13:compile
+|  +- jfree:jcommon:jar:1.0.16:compile
+|  \- commons-logging:commons-logging:jar:1.1.1:compile
++- com.artenum.penelope:com-artenum-penelope-plugin-jfreemesh:jar:3.0.16:compile
+|  +- com.artenum.penelope:com-artenum-penelope-plugin-gmsh:jar:3.0.16:compile
+|  \- com.artenum.jfreemesh:jfreemesh:jar:2.4.1:compile
++- com.artenum.penelope:com-artenum-penelope-plugin-xml:jar:3.0.16:compile
++- org.keridwen.modelling:org-keridwen-modelling-utils:jar:2.0.16:compile
+|  \- org.swinglabs:swingx-core:jar:1.6.2-2:compile
+\- junit:concjunit:jar:4.7:test
+                                                                        
+------------------------------------------------------------------------
+Building SPIS UI to NUM conversion module 5.1.10-IC
+------------------------------------------------------------------------
+
+--- maven-dependency-plugin:2.8:tree (default-cli) @ org-spis-ui-ui2num ---
+org.spis.ui:org-spis-ui-ui2num:bundle:5.1.10-IC
++- org.keridwen.core:org-keridwen-core-messaging:jar:2.0.16:compile
+|  +- org.keridwen.core:org-keridwen-core-data-model:jar:2.0.16:compile
+|  |  +- org.swinglabs:swingx-core:jar:1.6.2-2:compile
+|  |  \- xom:xom:jar:1.2.5:compile
+|  |     +- xml-apis:xml-apis:jar:1.3.03:compile
+|  |     +- xerces:xercesImpl:jar:2.8.0:compile
+|  |     \- xalan:xalan:jar:2.7.0:compile
+|  +- org.slf4j:slf4j-api:jar:1.7.12:compile
+|  +- org.osgi:org.osgi.core:jar:5.0.0:compile
+|  +- com.google.guava:guava:jar:16.0.1:compile
+|  +- commons-io:commons-io:jar:2.4:compile
+|  \- org.keridwen.core:org-keridwen-core-i18n:jar:2.0.16:compile
++- org.keridwen.modelling:org-keridwen-modelling-data-model:jar:2.0.16:compile
+|  +- org.keridwen.core:org-keridwen-core-state:jar:2.0.16:compile
+|  |  +- commons-scxml:commons-scxml:jar:0.9:compile
+|  |  |  +- commons-digester:commons-digester:jar:1.8:compile
+|  |  |  \- commons-beanutils:commons-beanutils:jar:1.7.0:compile
+|  |  \- commons-jexl:commons-jexl:jar:1.1:compile
+|  |     \- junit:junit:jar:3.8.1:compile
+|  +- com.artenum.penelope:com-artenum-penelope-plugin-netcdf:jar:3.0.16:compile
+|  \- com.artenum.frida:Frida:jar:0.0.16:compile
++- org.keridwen.modelling:org-keridwen-modelling-global-parameters:jar:2.0.16:compile
+|  +- org.keridwen.modelling:org-keridwen-modelling-utils:jar:2.0.16:compile
+|  +- com.thoughtworks.xstream:xstream:jar:1.4.2:compile
+|  |  +- xmlpull:xmlpull:jar:1.1.3.1:compile
+|  |  \- xpp3:xpp3_min:jar:1.1.4c:compile
+|  \- net.sourceforge.jexcelapi:jxl:jar:2.6.12:compile
+|     \- log4j:log4j:jar:1.2.14:compile
++- com.artenum.penelope:com-artenum-penelope-plugin-xml:jar:3.0.16:compile
+|  \- com.artenum.penelope:com-artenum-penelope-plugin-gmsh:jar:3.0.16:compile
++- com.artenum.tk:ArtTk:jar:2.0.20:compile
+|  +- jfree:jfreechart:jar:1.0.13:compile
+|  +- jfree:jcommon:jar:1.0.16:compile
+|  \- commons-logging:commons-logging:jar:1.1.1:compile
++- com.artenum.penelope:com-artenum-penelope-plugin-jfreemesh:jar:3.0.16:compile
+|  \- com.artenum.jfreemesh:jfreemesh:jar:2.4.1:compile
++- com.artenum.penelope:com-artenum-penelope-plugin-vtk:jar:3.0.16:compile
+|  +- com.artenum.penelope:com-artenum-penelope-core:jar:3.0.16:compile
+|  |  +- com.artenum:nisaba:jar:1.0.16:compile
+|  |  |  \- org.jblas:jblas:jar:1.2.3:compile
+|  |  +- net.sf.trove4j:trove4j:jar:3.0.2:compile
+|  |  \- org.apache.felix:org.apache.felix.ipojo.handler.extender:jar:1.4.0:compile
+|  |     \- org.apache.felix:org.apache.felix.ipojo:jar:1.4.0:compile
+|  |        +- org.apache.felix:org.osgi.compendium:jar:1.2.0:compile
+|  |        |  \- org.apache.felix:javax.servlet:jar:1.0.0:compile
+|  |        \- org.apache.felix:org.apache.felix.ipojo.metadata:jar:1.4.0:compile
+|  \- vtk:vtk:jar:5.8.0:compile
++- org.spis.num:org-spis-num-sci-geo:jar:5.1.10-IC-3DMICS:compile
+|  +- net.sourceforge.f2j:arpack_combined_all:jar:0.1:compile
+|  +- org.apache.commons:commons-math3:jar:3.2:compile
+|  \- edu.ucar:netcdf:jar:4.2.20:compile
+|     +- edu.ucar:unidataCommon:jar:4.2.20:compile
+|     |  \- net.jcip:jcip-annotations:jar:1.0:compile
+|     \- commons-httpclient:commons-httpclient:jar:3.1:compile
+|        \- commons-codec:commons-codec:jar:1.2:compile
++- org.spis:org-spis-instruments-dust:jar:1.0.8:compile
++- org.spis.ui:org-spis-ui-model:jar:5.1.10-IC:compile
+|  +- org.keridwen.modelling:org-keridwen-modelling-group-editor:jar:2.0.16:compile
+|  |  \- com.artenum.cassandra:com-artenum-cassandra-core:jar:2.5.16:compile
+|  |     +- com.artenum.cassandra:com-artenum-cassandra-renderer:jar:2.5.16:compile
+|  |     +- org.python:jython-standalone:jar:2.5.3:compile
+|  |     +- com.artenum:jyconsole:jar:1.5:compile
+|  |     +- com.artenum.graph:DedalEGraph:jar:1.0.1:compile
+|  |     +- org.keridwen.vtk:org-keridwen-vtk:jar:2.0.16:compile
+|  |     \- org.keridwen.core:org-keridwen-core-logging:jar:2.0.16:compile
+|  |        +- ch.qos.logback:logback-core:jar:1.1.2:compile
+|  |        \- ch.qos.logback:logback-classic:jar:1.1.2:compile
+|  \- org.keridwen.core:org-keridwen-core-settings:jar:2.0.16:compile
+\- junit:concjunit:jar:4.7:test
+                                                                        
+------------------------------------------------------------------------
+Building SPIS global parameters module 5.1.10-IC
+------------------------------------------------------------------------
+
+--- maven-dependency-plugin:2.8:tree (default-cli) @ org-spis-ui-global-parameters ---
+org.spis.ui:org-spis-ui-global-parameters:bundle:5.1.10-IC
++- org.keridwen.modelling:org-keridwen-modelling-ui-manager:jar:2.0.16:compile
+|  +- com.artenum.tk:ArtTk:jar:2.0.20:compile
+|  |  +- jfree:jfreechart:jar:1.0.13:compile
+|  |  +- jfree:jcommon:jar:1.0.16:compile
+|  |  \- commons-logging:commons-logging:jar:1.1.1:compile
+|  +- org.keridwen.core:org-keridwen-core-ui-dockingframes:jar:2.0.16:compile
+|  |  +- org.dockingframes:docking-frames-core:jar:1.1.2p10a:compile
+|  |  \- org.dockingframes:docking-frames-common:jar:1.1.2p10a:compile
+|  \- org.keridwen.modelling:org-keridwen-modelling-text-editor:jar:2.0.16:compile
++- org.keridwen.modelling:org-keridwen-modelling-data-model:jar:2.0.16:compile
+|  +- org.keridwen.core:org-keridwen-core-state:jar:2.0.16:compile
+|  |  +- commons-scxml:commons-scxml:jar:0.9:compile
+|  |  |  +- commons-digester:commons-digester:jar:1.8:compile
+|  |  |  \- commons-beanutils:commons-beanutils:jar:1.7.0:compile
+|  |  \- commons-jexl:commons-jexl:jar:1.1:compile
+|  |     \- junit:junit:jar:3.8.1:compile
+|  +- com.artenum.penelope:com-artenum-penelope-plugin-netcdf:jar:3.0.16:compile
+|  |  \- com.artenum.penelope:com-artenum-penelope-plugin-gmsh:jar:3.0.16:compile
+|  \- com.artenum.frida:Frida:jar:0.0.16:compile
+|     \- xom:xom:jar:1.2.5:compile
+|        +- xml-apis:xml-apis:jar:1.3.03:compile
+|        +- xerces:xercesImpl:jar:2.8.0:compile
+|        \- xalan:xalan:jar:2.7.0:compile
++- org.spis.ui:org-spis-ui-project:jar:5.1.10-IC:compile
+|  +- com.artenum.penelope:com-artenum-penelope-plugin-jfreemesh:jar:3.0.16:compile
+|  |  \- com.artenum.jfreemesh:jfreemesh:jar:2.4.1:compile
+|  \- com.artenum.penelope:com-artenum-penelope-plugin-xml:jar:3.0.16:compile
++- org.keridwen.core:org-keridwen-core-messaging:jar:2.0.16:compile
+|  +- org.keridwen.core:org-keridwen-core-data-model:jar:2.0.16:compile
+|  +- org.slf4j:slf4j-api:jar:1.7.12:compile
+|  +- org.osgi:org.osgi.core:jar:5.0.0:compile
+|  +- com.google.guava:guava:jar:16.0.1:compile
+|  \- commons-io:commons-io:jar:2.4:compile
++- org.keridwen.core:org-keridwen-core-i18n:jar:2.0.16:compile
++- org.keridwen.modelling:org-keridwen-modelling-global-parameters:jar:2.0.16:compile
+|  +- com.thoughtworks.xstream:xstream:jar:1.4.2:compile
+|  |  +- xmlpull:xmlpull:jar:1.1.3.1:compile
+|  |  \- xpp3:xpp3_min:jar:1.1.4c:compile
+|  \- net.sourceforge.jexcelapi:jxl:jar:2.6.12:compile
+|     \- log4j:log4j:jar:1.2.14:compile
++- org.spis.ui:org-spis-ui-ui2num:jar:5.1.10-IC:compile
+|  \- com.artenum.penelope:com-artenum-penelope-plugin-vtk:jar:3.0.16:compile
++- org.spis.ui:org-spis-ui-model:jar:5.1.10-IC:compile
+|  +- org.keridwen.modelling:org-keridwen-modelling-group-editor:jar:2.0.16:compile
+|  +- org.keridwen.core:org-keridwen-core-settings:jar:2.0.16:compile
+|  \- com.artenum.penelope:com-artenum-penelope-core:jar:3.0.16:compile
+|     +- net.sf.trove4j:trove4j:jar:3.0.2:compile
+|     \- org.apache.felix:org.apache.felix.ipojo.handler.extender:jar:1.4.0:compile
+|        \- org.apache.felix:org.apache.felix.ipojo:jar:1.4.0:compile
+|           +- org.apache.felix:org.osgi.compendium:jar:1.2.0:compile
+|           |  \- org.apache.felix:javax.servlet:jar:1.0.0:compile
+|           \- org.apache.felix:org.apache.felix.ipojo.metadata:jar:1.4.0:compile
++- org.spis.num:org-spis-num-sci-geo:jar:5.1.10-IC-3DMICS:compile
+|  +- org.apache.commons:commons-math3:jar:3.2:compile
+|  \- edu.ucar:netcdf:jar:4.2.20:compile
+|     +- edu.ucar:unidataCommon:jar:4.2.20:compile
+|     |  \- net.jcip:jcip-annotations:jar:1.0:compile
+|     \- commons-httpclient:commons-httpclient:jar:3.1:compile
+|        \- commons-codec:commons-codec:jar:1.2:compile
++- org.spis:org-spis-instruments-dust:jar:1.0.8:compile
++- net.sourceforge.f2j:arpack_combined_all:jar:0.1:compile
++- org.keridwen.modelling:org-keridwen-modelling-utils:jar:2.0.16:compile
+|  \- org.swinglabs:swingx-core:jar:1.6.2-2:compile
++- org.keridwen.vtk:org-keridwen-vtk:jar:2.0.16:compile
++- com.artenum.cassandra:com-artenum-cassandra-core:jar:2.5.16:compile
+|  +- org.python:jython-standalone:jar:2.5.3:compile
+|  +- com.artenum:jyconsole:jar:1.5:compile
+|  +- com.artenum.graph:DedalEGraph:jar:1.0.1:compile
+|  \- org.keridwen.core:org-keridwen-core-logging:jar:2.0.16:compile
+|     +- ch.qos.logback:logback-core:jar:1.1.2:compile
+|     \- ch.qos.logback:logback-classic:jar:1.1.2:compile
++- com.artenum.cassandra:com-artenum-cassandra-renderer:jar:2.5.16:compile
+|  \- vtk:vtk:jar:5.8.0:compile
++- com.artenum:nisaba:jar:1.0.16:compile
+|  \- org.jblas:jblas:jar:1.2.3:compile
+\- junit:concjunit:jar:4.7:test
+                                                                        
+------------------------------------------------------------------------
+Building SPIS group editor 5.1.10-IC
+------------------------------------------------------------------------
+
+--- maven-dependency-plugin:2.8:tree (default-cli) @ org-spis-ui-group-editor ---
+org.spis.ui:org-spis-ui-group-editor:bundle:5.1.10-IC
++- org.keridwen.modelling:org-keridwen-modelling-ui-manager:jar:2.0.16:compile
+|  \- org.keridwen.modelling:org-keridwen-modelling-text-editor:jar:2.0.16:compile
++- org.keridwen.modelling:org-keridwen-modelling-data-model:jar:2.0.16:compile
+|  +- org.keridwen.core:org-keridwen-core-state:jar:2.0.16:compile
+|  |  +- commons-scxml:commons-scxml:jar:0.9:compile
+|  |  |  +- commons-digester:commons-digester:jar:1.8:compile
+|  |  |  \- commons-beanutils:commons-beanutils:jar:1.7.0:compile
+|  |  \- commons-jexl:commons-jexl:jar:1.1:compile
+|  |     \- junit:junit:jar:3.8.1:compile
+|  +- com.artenum.penelope:com-artenum-penelope-plugin-netcdf:jar:3.0.16:compile
+|  |  \- edu.ucar:netcdf:jar:4.2.20:compile
+|  |     +- edu.ucar:unidataCommon:jar:4.2.20:compile
+|  |     |  \- net.jcip:jcip-annotations:jar:1.0:compile
+|  |     \- commons-httpclient:commons-httpclient:jar:3.1:compile
+|  |        \- commons-codec:commons-codec:jar:1.2:compile
+|  \- org.keridwen.modelling:org-keridwen-modelling-global-parameters:jar:2.0.16:compile
+|     \- net.sourceforge.jexcelapi:jxl:jar:2.6.12:compile
+|        \- log4j:log4j:jar:1.2.14:compile
++- org.keridwen.core:org-keridwen-core-messaging:jar:2.0.16:compile
+|  +- org.keridwen.core:org-keridwen-core-data-model:jar:2.0.16:compile
+|  +- org.slf4j:slf4j-api:jar:1.7.12:compile
+|  +- org.osgi:org.osgi.core:jar:5.0.0:compile
+|  +- com.google.guava:guava:jar:16.0.1:compile
+|  \- commons-io:commons-io:jar:2.4:compile
++- org.keridwen.core:org-keridwen-core-ui-dockingframes:jar:2.0.16:compile
+|  +- org.keridwen.core:org-keridwen-core-settings:jar:2.0.16:compile
+|  +- org.dockingframes:docking-frames-core:jar:1.1.2p10a:compile
+|  \- org.dockingframes:docking-frames-common:jar:1.1.2p10a:compile
++- org.keridwen.core:org-keridwen-core-i18n:jar:2.0.16:compile
++- org.keridwen.vtk:org-keridwen-vtk:jar:2.0.16:compile
++- com.artenum.tk:ArtTk:jar:2.0.20:compile
+|  +- jfree:jfreechart:jar:1.0.13:compile
+|  +- jfree:jcommon:jar:1.0.16:compile
+|  \- commons-logging:commons-logging:jar:1.1.1:compile
++- com.artenum.penelope:com-artenum-penelope-core:jar:3.0.16:compile
+|  +- com.artenum:nisaba:jar:1.0.16:compile
+|  |  \- org.jblas:jblas:jar:1.2.3:compile
+|  +- net.sf.trove4j:trove4j:jar:3.0.2:compile
+|  \- org.apache.felix:org.apache.felix.ipojo.handler.extender:jar:1.4.0:compile
+|     \- org.apache.felix:org.apache.felix.ipojo:jar:1.4.0:compile
+|        +- org.apache.felix:org.osgi.compendium:jar:1.2.0:compile
+|        |  \- org.apache.felix:javax.servlet:jar:1.0.0:compile
+|        \- org.apache.felix:org.apache.felix.ipojo.metadata:jar:1.4.0:compile
++- com.artenum.penelope:com-artenum-penelope-plugin-gmsh:jar:3.0.16:compile
++- com.artenum.penelope:com-artenum-penelope-plugin-jfreemesh:jar:3.0.16:compile
+|  \- com.artenum.jfreemesh:jfreemesh:jar:2.4.1:compile
++- org.spis.ui:org-spis-ui-model:jar:5.1.10-IC:compile
+|  \- org.spis.num:org-spis-num-sci-geo:jar:5.1.10-IC-3DMICS:compile
+|     +- org.spis:org-spis-instruments-dust:jar:1.0.8:compile
+|     +- net.sourceforge.f2j:arpack_combined_all:jar:0.1:compile
+|     \- org.apache.commons:commons-math3:jar:3.2:compile
++- com.artenum.frida:Frida:jar:0.0.16:compile
+|  +- xom:xom:jar:1.2.5:compile
+|  |  +- xml-apis:xml-apis:jar:1.3.03:compile
+|  |  +- xerces:xercesImpl:jar:2.8.0:compile
+|  |  \- xalan:xalan:jar:2.7.0:compile
+|  +- com.thoughtworks.xstream:xstream:jar:1.4.2:compile
+|  |  +- xmlpull:xmlpull:jar:1.1.3.1:compile
+|  |  \- xpp3:xpp3_min:jar:1.1.4c:compile
+|  +- com.artenum.penelope:com-artenum-penelope-plugin-xml:jar:3.0.16:compile
+|  +- vtk:vtk:jar:5.8.0:compile
+|  \- com.artenum.penelope:com-artenum-penelope-plugin-vtk:jar:3.0.16:compile
++- org.keridwen.modelling:org-keridwen-modelling-group-editor:jar:2.0.16:compile
+|  +- com.artenum.cassandra:com-artenum-cassandra-core:jar:2.5.16:compile
+|  |  +- com.artenum.cassandra:com-artenum-cassandra-renderer:jar:2.5.16:compile
+|  |  +- org.python:jython-standalone:jar:2.5.3:compile
+|  |  +- com.artenum:jyconsole:jar:1.5:compile
+|  |  +- com.artenum.graph:DedalEGraph:jar:1.0.1:compile
+|  |  \- org.keridwen.core:org-keridwen-core-logging:jar:2.0.16:compile
+|  |     +- ch.qos.logback:logback-core:jar:1.1.2:compile
+|  |     \- ch.qos.logback:logback-classic:jar:1.1.2:compile
+|  \- org.swinglabs:swingx-core:jar:1.6.2-2:compile
++- org.keridwen.modelling:org-keridwen-modelling-utils:jar:2.0.16:compile
+\- junit:concjunit:jar:4.7:test
+                                                                        
+------------------------------------------------------------------------
+Building Instruments configuration bundle 5.1.10-IC
+------------------------------------------------------------------------
+
+--- maven-dependency-plugin:2.8:tree (default-cli) @ org-spis-ui-instruments ---
+org.spis.ui:org-spis-ui-instruments:bundle:5.1.10-IC
++- org.keridwen.core:org-keridwen-core-messaging:jar:2.0.16:compile
+|  +- org.keridwen.core:org-keridwen-core-data-model:jar:2.0.16:compile
+|  |  +- org.swinglabs:swingx-core:jar:1.6.2-2:compile
+|  |  \- xom:xom:jar:1.2.5:compile
+|  |     +- xml-apis:xml-apis:jar:1.3.03:compile
+|  |     +- xerces:xercesImpl:jar:2.8.0:compile
+|  |     \- xalan:xalan:jar:2.7.0:compile
+|  +- org.slf4j:slf4j-api:jar:1.7.12:compile
+|  +- org.osgi:org.osgi.core:jar:5.0.0:compile
+|  +- com.google.guava:guava:jar:16.0.1:compile
+|  \- commons-io:commons-io:jar:2.4:compile
++- org.keridwen.modelling:org-keridwen-modelling-data-model:jar:2.0.16:compile
+|  +- org.keridwen.core:org-keridwen-core-state:jar:2.0.16:compile
+|  |  +- commons-scxml:commons-scxml:jar:0.9:compile
+|  |  |  +- commons-digester:commons-digester:jar:1.8:compile
+|  |  |  \- commons-beanutils:commons-beanutils:jar:1.7.0:compile
+|  |  \- commons-jexl:commons-jexl:jar:1.1:compile
+|  |     \- junit:junit:jar:3.8.1:compile
+|  +- com.artenum.penelope:com-artenum-penelope-plugin-netcdf:jar:3.0.16:compile
+|  |  \- com.artenum.penelope:com-artenum-penelope-plugin-gmsh:jar:3.0.16:compile
+|  \- com.artenum.frida:Frida:jar:0.0.16:compile
+|     \- vtk:vtk:jar:5.8.0:compile
++- org.keridwen.core:org-keridwen-core-i18n:jar:2.0.16:compile
++- org.keridwen.modelling:org-keridwen-modelling-global-parameters:jar:2.0.16:compile
+|  +- org.keridwen.modelling:org-keridwen-modelling-utils:jar:2.0.16:compile
+|  +- com.thoughtworks.xstream:xstream:jar:1.4.2:compile
+|  |  +- xmlpull:xmlpull:jar:1.1.3.1:compile
+|  |  \- xpp3:xpp3_min:jar:1.1.4c:compile
+|  +- com.artenum.tk:ArtTk:jar:2.0.20:compile
+|  |  +- jfree:jfreechart:jar:1.0.13:compile
+|  |  +- jfree:jcommon:jar:1.0.16:compile
+|  |  \- commons-logging:commons-logging:jar:1.1.1:compile
+|  \- net.sourceforge.jexcelapi:jxl:jar:2.6.12:compile
+|     \- log4j:log4j:jar:1.2.14:compile
++- org.keridwen.modelling:org-keridwen-modelling-ui-manager:jar:2.0.16:compile
+|  +- org.keridwen.core:org-keridwen-core-ui-dockingframes:jar:2.0.16:compile
+|  |  +- org.dockingframes:docking-frames-core:jar:1.1.2p10a:compile
+|  |  \- org.dockingframes:docking-frames-common:jar:1.1.2p10a:compile
+|  \- org.keridwen.modelling:org-keridwen-modelling-text-editor:jar:2.0.16:compile
++- org.spis.ui:org-spis-ui-model:jar:5.1.10-IC:compile
+|  +- org.keridwen.modelling:org-keridwen-modelling-group-editor:jar:2.0.16:compile
+|  |  \- com.artenum.cassandra:com-artenum-cassandra-core:jar:2.5.16:compile
+|  |     +- com.artenum.cassandra:com-artenum-cassandra-renderer:jar:2.5.16:compile
+|  |     +- org.python:jython-standalone:jar:2.5.3:compile
+|  |     +- com.artenum:jyconsole:jar:1.5:compile
+|  |     +- com.artenum.graph:DedalEGraph:jar:1.0.1:compile
+|  |     +- org.keridwen.vtk:org-keridwen-vtk:jar:2.0.16:compile
+|  |     \- org.keridwen.core:org-keridwen-core-logging:jar:2.0.16:compile
+|  |        +- ch.qos.logback:logback-core:jar:1.1.2:compile
+|  |        \- ch.qos.logback:logback-classic:jar:1.1.2:compile
+|  +- org.keridwen.core:org-keridwen-core-settings:jar:2.0.16:compile
+|  \- com.artenum.penelope:com-artenum-penelope-core:jar:3.0.16:compile
+|     +- com.artenum:nisaba:jar:1.0.16:compile
+|     |  \- org.jblas:jblas:jar:1.2.3:compile
+|     +- net.sf.trove4j:trove4j:jar:3.0.2:compile
+|     \- org.apache.felix:org.apache.felix.ipojo.handler.extender:jar:1.4.0:compile
+|        \- org.apache.felix:org.apache.felix.ipojo:jar:1.4.0:compile
+|           +- org.apache.felix:org.osgi.compendium:jar:1.2.0:compile
+|           |  \- org.apache.felix:javax.servlet:jar:1.0.0:compile
+|           \- org.apache.felix:org.apache.felix.ipojo.metadata:jar:1.4.0:compile
++- org.spis.ui:org-spis-ui-ui2num:jar:5.1.10-IC:compile
+|  +- com.artenum.penelope:com-artenum-penelope-plugin-xml:jar:3.0.16:compile
+|  +- com.artenum.penelope:com-artenum-penelope-plugin-jfreemesh:jar:3.0.16:compile
+|  |  \- com.artenum.jfreemesh:jfreemesh:jar:2.4.1:compile
+|  +- com.artenum.penelope:com-artenum-penelope-plugin-vtk:jar:3.0.16:compile
+|  \- org.spis:org-spis-instruments-dust:jar:1.0.8:compile
++- org.spis.ui:org-spis-ui-project:jar:5.1.10-IC:compile
++- org.spis.num:org-spis-num-sci-geo:jar:5.1.10-IC-3DMICS:compile
+|  +- net.sourceforge.f2j:arpack_combined_all:jar:0.1:compile
+|  +- org.apache.commons:commons-math3:jar:3.2:compile
+|  \- edu.ucar:netcdf:jar:4.2.20:compile
+|     +- edu.ucar:unidataCommon:jar:4.2.20:compile
+|     |  \- net.jcip:jcip-annotations:jar:1.0:compile
+|     \- commons-httpclient:commons-httpclient:jar:3.1:compile
+|        \- commons-codec:commons-codec:jar:1.2:compile
+\- junit:concjunit:jar:4.7:test
+                                                                        
+------------------------------------------------------------------------
+Building SPIS mesh module 5.1.10-IC
+------------------------------------------------------------------------
+
+--- maven-dependency-plugin:2.8:tree (default-cli) @ org-spis-ui-mesh ---
+org.spis.ui:org-spis-ui-mesh:bundle:5.1.10-IC
++- org.keridwen.core:org-keridwen-core-messaging:jar:2.0.16:compile
+|  +- org.keridwen.core:org-keridwen-core-data-model:jar:2.0.16:compile
+|  |  \- xom:xom:jar:1.2.5:compile
+|  |     +- xml-apis:xml-apis:jar:1.3.03:compile
+|  |     +- xerces:xercesImpl:jar:2.8.0:compile
+|  |     \- xalan:xalan:jar:2.7.0:compile
+|  +- org.slf4j:slf4j-api:jar:1.7.12:compile
+|  +- org.osgi:org.osgi.core:jar:5.0.0:compile
+|  +- com.google.guava:guava:jar:16.0.1:compile
+|  \- commons-io:commons-io:jar:2.4:compile
++- org.keridwen.modelling:org-keridwen-modelling-data-model:jar:2.0.16:compile
+|  +- org.keridwen.core:org-keridwen-core-state:jar:2.0.16:compile
+|  |  +- commons-scxml:commons-scxml:jar:0.9:compile
+|  |  |  +- commons-digester:commons-digester:jar:1.8:compile
+|  |  |  \- commons-beanutils:commons-beanutils:jar:1.7.0:compile
+|  |  \- commons-jexl:commons-jexl:jar:1.1:compile
+|  |     \- junit:junit:jar:3.8.1:compile
+|  +- com.artenum.penelope:com-artenum-penelope-plugin-netcdf:jar:3.0.16:compile
+|  |  \- edu.ucar:netcdf:jar:4.2.20:compile
+|  |     +- edu.ucar:unidataCommon:jar:4.2.20:compile
+|  |     |  \- net.jcip:jcip-annotations:jar:1.0:compile
+|  |     \- commons-httpclient:commons-httpclient:jar:3.1:compile
+|  |        \- commons-codec:commons-codec:jar:1.2:compile
+|  +- com.artenum.frida:Frida:jar:0.0.16:compile
+|  |  +- com.thoughtworks.xstream:xstream:jar:1.4.2:compile
+|  |  |  +- xmlpull:xmlpull:jar:1.1.3.1:compile
+|  |  |  \- xpp3:xpp3_min:jar:1.1.4c:compile
+|  |  \- com.artenum.penelope:com-artenum-penelope-plugin-xml:jar:3.0.16:compile
+|  \- org.keridwen.modelling:org-keridwen-modelling-global-parameters:jar:2.0.16:compile
+|     \- net.sourceforge.jexcelapi:jxl:jar:2.6.12:compile
+|        \- log4j:log4j:jar:1.2.14:compile
++- org.keridwen.core:org-keridwen-core-i18n:jar:2.0.16:compile
++- org.keridwen.modelling:org-keridwen-modelling-utils:jar:2.0.16:compile
+|  +- org.keridwen.core:org-keridwen-core-settings:jar:2.0.16:compile
+|  \- org.swinglabs:swingx-core:jar:1.6.2-2:compile
++- org.spis.ui:org-spis-ui-model:jar:5.1.10-IC:compile
+|  +- org.keridwen.modelling:org-keridwen-modelling-group-editor:jar:2.0.16:compile
+|  +- com.artenum.penelope:com-artenum-penelope-core:jar:3.0.16:compile
+|  |  +- com.artenum:nisaba:jar:1.0.16:compile
+|  |  |  \- org.jblas:jblas:jar:1.2.3:compile
+|  |  +- net.sf.trove4j:trove4j:jar:3.0.2:compile
+|  |  \- org.apache.felix:org.apache.felix.ipojo.handler.extender:jar:1.4.0:compile
+|  |     \- org.apache.felix:org.apache.felix.ipojo:jar:1.4.0:compile
+|  |        +- org.apache.felix:org.osgi.compendium:jar:1.2.0:compile
+|  |        |  \- org.apache.felix:javax.servlet:jar:1.0.0:compile
+|  |        \- org.apache.felix:org.apache.felix.ipojo.metadata:jar:1.4.0:compile
+|  \- org.spis.num:org-spis-num-sci-geo:jar:5.1.10-IC-3DMICS:compile
+|     +- org.spis:org-spis-instruments-dust:jar:1.0.8:compile
+|     +- net.sourceforge.f2j:arpack_combined_all:jar:0.1:compile
+|     \- org.apache.commons:commons-math3:jar:3.2:compile
++- org.keridwen.modelling:org-keridwen-modelling-gmsh:jar:2.0.16:compile
+|  +- com.artenum.penelope:com-artenum-penelope-plugin-gmsh:jar:3.0.16:compile
+|  +- com.artenum.penelope:com-artenum-penelope-plugin-vtk:jar:3.0.16:compile
+|  +- org.geuz:gmsh:jar:2.5.0:compile
+|  +- org.keridwen.gmsh:org-keridwen-gmsh:jar:2.0.16:compile
+|  \- org.keridwen.vtk:org-keridwen-vtk:jar:2.0.16:compile
++- org.keridwen.modelling:org-keridwen-modelling-ui-manager:jar:2.0.16:compile
+|  +- com.artenum.tk:ArtTk:jar:2.0.20:compile
+|  |  +- jfree:jfreechart:jar:1.0.13:compile
+|  |  +- jfree:jcommon:jar:1.0.16:compile
+|  |  \- commons-logging:commons-logging:jar:1.1.1:compile
+|  +- org.keridwen.core:org-keridwen-core-ui-dockingframes:jar:2.0.16:compile
+|  |  +- org.dockingframes:docking-frames-core:jar:1.1.2p10a:compile
+|  |  \- org.dockingframes:docking-frames-common:jar:1.1.2p10a:compile
+|  \- org.keridwen.modelling:org-keridwen-modelling-text-editor:jar:2.0.16:compile
++- com.artenum.cassandra:com-artenum-cassandra-renderer:jar:2.5.16:compile
+|  \- vtk:vtk:jar:5.8.0:compile
++- com.artenum.cassandra:com-artenum-cassandra-core:jar:2.5.16:compile
+|  +- org.python:jython-standalone:jar:2.5.3:compile
+|  +- com.artenum:jyconsole:jar:1.5:compile
+|  +- com.artenum.graph:DedalEGraph:jar:1.0.1:compile
+|  \- org.keridwen.core:org-keridwen-core-logging:jar:2.0.16:compile
+|     +- ch.qos.logback:logback-core:jar:1.1.2:compile
+|     \- ch.qos.logback:logback-classic:jar:1.1.2:compile
+\- junit:concjunit:jar:4.7:test
+                                                                        
+------------------------------------------------------------------------
+Building SPIS project converter 5.1.10-IC
+------------------------------------------------------------------------
+
+--- maven-dependency-plugin:2.8:tree (default-cli) @ org-spis-ui-project-converter ---
+org.spis.ui:org-spis-ui-project-converter:bundle:5.1.10-IC
++- org.keridwen.core:org-keridwen-core-messaging:jar:2.0.16:compile
+|  +- org.keridwen.core:org-keridwen-core-data-model:jar:2.0.16:compile
+|  |  \- xom:xom:jar:1.2.5:compile
+|  |     +- xml-apis:xml-apis:jar:1.3.03:compile
+|  |     +- xerces:xercesImpl:jar:2.8.0:compile
+|  |     \- xalan:xalan:jar:2.7.0:compile
+|  +- org.slf4j:slf4j-api:jar:1.7.12:compile
+|  +- org.osgi:org.osgi.core:jar:5.0.0:compile
+|  +- com.google.guava:guava:jar:16.0.1:compile
+|  \- commons-io:commons-io:jar:2.4:compile
++- org.keridwen.modelling:org-keridwen-modelling-data-model:jar:2.0.16:compile
+|  +- org.keridwen.core:org-keridwen-core-state:jar:2.0.16:compile
+|  |  +- commons-scxml:commons-scxml:jar:0.9:compile
+|  |  |  +- commons-digester:commons-digester:jar:1.8:compile
+|  |  |  \- commons-beanutils:commons-beanutils:jar:1.7.0:compile
+|  |  \- commons-jexl:commons-jexl:jar:1.1:compile
+|  |     \- junit:junit:jar:3.8.1:compile
+|  +- com.artenum.penelope:com-artenum-penelope-plugin-netcdf:jar:3.0.16:compile
+|  |  \- edu.ucar:netcdf:jar:4.2.20:compile
+|  |     +- edu.ucar:unidataCommon:jar:4.2.20:compile
+|  |     |  \- net.jcip:jcip-annotations:jar:1.0:compile
+|  |     \- commons-httpclient:commons-httpclient:jar:3.1:compile
+|  |        \- commons-codec:commons-codec:jar:1.2:compile
+|  +- com.artenum.frida:Frida:jar:0.0.16:compile
+|  |  +- com.thoughtworks.xstream:xstream:jar:1.4.2:compile
+|  |  |  +- xmlpull:xmlpull:jar:1.1.3.1:compile
+|  |  |  \- xpp3:xpp3_min:jar:1.1.4c:compile
+|  |  \- vtk:vtk:jar:5.8.0:compile
+|  \- org.keridwen.modelling:org-keridwen-modelling-global-parameters:jar:2.0.16:compile
+|     \- net.sourceforge.jexcelapi:jxl:jar:2.6.12:compile
+|        \- log4j:log4j:jar:1.2.14:compile
++- org.keridwen.core:org-keridwen-core-i18n:jar:2.0.16:compile
++- org.keridwen.modelling:org-keridwen-modelling-ui-manager:jar:2.0.16:compile
+|  +- com.artenum.tk:ArtTk:jar:2.0.20:compile
+|  |  +- jfree:jfreechart:jar:1.0.13:compile
+|  |  +- jfree:jcommon:jar:1.0.16:compile
+|  |  \- commons-logging:commons-logging:jar:1.1.1:compile
+|  +- org.keridwen.core:org-keridwen-core-ui-dockingframes:jar:2.0.16:compile
+|  |  +- org.dockingframes:docking-frames-core:jar:1.1.2p10a:compile
+|  |  \- org.dockingframes:docking-frames-common:jar:1.1.2p10a:compile
+|  \- org.keridwen.modelling:org-keridwen-modelling-text-editor:jar:2.0.16:compile
++- org.spis.ui:org-spis-ui-model:jar:5.1.10-IC:compile
+|  +- org.keridwen.modelling:org-keridwen-modelling-group-editor:jar:2.0.16:compile
+|  |  \- com.artenum.cassandra:com-artenum-cassandra-core:jar:2.5.16:compile
+|  |     +- com.artenum.cassandra:com-artenum-cassandra-renderer:jar:2.5.16:compile
+|  |     +- org.python:jython-standalone:jar:2.5.3:compile
+|  |     +- com.artenum:jyconsole:jar:1.5:compile
+|  |     +- com.artenum.graph:DedalEGraph:jar:1.0.1:compile
+|  |     \- org.keridwen.core:org-keridwen-core-logging:jar:2.0.16:compile
+|  |        +- ch.qos.logback:logback-core:jar:1.1.2:compile
+|  |        \- ch.qos.logback:logback-classic:jar:1.1.2:compile
+|  +- org.keridwen.core:org-keridwen-core-settings:jar:2.0.16:compile
+|  +- com.artenum.penelope:com-artenum-penelope-core:jar:3.0.16:compile
+|  |  +- com.artenum:nisaba:jar:1.0.16:compile
+|  |  |  \- org.jblas:jblas:jar:1.2.3:compile
+|  |  +- net.sf.trove4j:trove4j:jar:3.0.2:compile
+|  |  \- org.apache.felix:org.apache.felix.ipojo.handler.extender:jar:1.4.0:compile
+|  |     \- org.apache.felix:org.apache.felix.ipojo:jar:1.4.0:compile
+|  |        +- org.apache.felix:org.osgi.compendium:jar:1.2.0:compile
+|  |        |  \- org.apache.felix:javax.servlet:jar:1.0.0:compile
+|  |        \- org.apache.felix:org.apache.felix.ipojo.metadata:jar:1.4.0:compile
+|  \- org.spis.num:org-spis-num-sci-geo:jar:5.1.10-IC-3DMICS:compile
+|     +- net.sourceforge.f2j:arpack_combined_all:jar:0.1:compile
+|     \- org.apache.commons:commons-math3:jar:3.2:compile
++- org.spis.ui:org-spis-ui-ui2num:jar:5.1.10-IC:compile
+|  +- com.artenum.penelope:com-artenum-penelope-plugin-xml:jar:3.0.16:compile
+|  +- com.artenum.penelope:com-artenum-penelope-plugin-jfreemesh:jar:3.0.16:compile
+|  |  \- com.artenum.jfreemesh:jfreemesh:jar:2.4.1:compile
+|  +- com.artenum.penelope:com-artenum-penelope-plugin-vtk:jar:3.0.16:compile
+|  \- org.spis:org-spis-instruments-dust:jar:1.0.8:compile
++- org.keridwen.modelling:org-keridwen-modelling-gmsh:jar:2.0.16:compile
+|  +- com.artenum.penelope:com-artenum-penelope-plugin-gmsh:jar:3.0.16:compile
+|  +- org.geuz:gmsh:jar:2.5.0:compile
+|  +- org.keridwen.gmsh:org-keridwen-gmsh:jar:2.0.16:compile
+|  \- org.keridwen.vtk:org-keridwen-vtk:jar:2.0.16:compile
++- org.keridwen.modelling:org-keridwen-modelling-utils:jar:2.0.16:compile
+|  \- org.swinglabs:swingx-core:jar:1.6.2-2:compile
+\- junit:concjunit:jar:4.7:test
+                                                                        
+------------------------------------------------------------------------
+Building SPIS reporting module 5.1.10-IC
+------------------------------------------------------------------------
+
+--- maven-dependency-plugin:2.8:tree (default-cli) @ org-spis-ui-reporting ---
+org.spis.ui:org-spis-ui-reporting:bundle:5.1.10-IC
++- org.spis.ui:org-spis-ui-model:jar:5.1.10-IC:compile
+|  +- org.keridwen.modelling:org-keridwen-modelling-group-editor:jar:2.0.16:compile
+|  |  +- com.artenum.penelope:com-artenum-penelope-plugin-xml:jar:3.0.16:compile
+|  |  +- com.artenum.penelope:com-artenum-penelope-plugin-vtk:jar:3.0.16:compile
+|  |  \- com.artenum.cassandra:com-artenum-cassandra-core:jar:2.5.16:compile
+|  |     +- com.artenum.cassandra:com-artenum-cassandra-renderer:jar:2.5.16:compile
+|  |     +- org.python:jython-standalone:jar:2.5.3:compile
+|  |     +- com.artenum:jyconsole:jar:1.5:compile
+|  |     +- com.artenum.graph:DedalEGraph:jar:1.0.1:compile
+|  |     +- org.keridwen.vtk:org-keridwen-vtk:jar:2.0.16:compile
+|  |     \- org.keridwen.core:org-keridwen-core-logging:jar:2.0.16:compile
+|  |        +- ch.qos.logback:logback-core:jar:1.1.2:compile
+|  |        \- ch.qos.logback:logback-classic:jar:1.1.2:compile
+|  +- org.keridwen.core:org-keridwen-core-data-model:jar:2.0.16:compile
+|  |  \- xom:xom:jar:1.2.5:compile
+|  |     +- xml-apis:xml-apis:jar:1.3.03:compile
+|  |     \- xalan:xalan:jar:2.7.0:compile
+|  +- org.keridwen.core:org-keridwen-core-state:jar:2.0.16:compile
+|  |  +- commons-scxml:commons-scxml:jar:0.9:compile
+|  |  |  +- commons-digester:commons-digester:jar:1.8:compile
+|  |  |  \- commons-beanutils:commons-beanutils:jar:1.7.0:compile
+|  |  \- commons-jexl:commons-jexl:jar:1.1:compile
+|  |     \- junit:junit:jar:3.8.1:compile
+|  +- org.keridwen.core:org-keridwen-core-settings:jar:2.0.16:compile
+|  +- com.artenum.penelope:com-artenum-penelope-core:jar:3.0.16:compile
+|  |  +- com.artenum:nisaba:jar:1.0.16:compile
+|  |  |  \- org.jblas:jblas:jar:1.2.3:compile
+|  |  +- net.sf.trove4j:trove4j:jar:3.0.2:compile
+|  |  \- org.apache.felix:org.apache.felix.ipojo.handler.extender:jar:1.4.0:compile
+|  |     \- org.apache.felix:org.apache.felix.ipojo:jar:1.4.0:compile
+|  |        +- org.apache.felix:org.osgi.compendium:jar:1.2.0:compile
+|  |        |  \- org.apache.felix:javax.servlet:jar:1.0.0:compile
+|  |        \- org.apache.felix:org.apache.felix.ipojo.metadata:jar:1.4.0:compile
+|  +- org.keridwen.modelling:org-keridwen-modelling-global-parameters:jar:2.0.16:compile
+|  |  +- com.thoughtworks.xstream:xstream:jar:1.4.2:compile
+|  |  |  +- xmlpull:xmlpull:jar:1.1.3.1:compile
+|  |  |  \- xpp3:xpp3_min:jar:1.1.4c:compile
+|  |  \- net.sourceforge.jexcelapi:jxl:jar:2.6.12:compile
+|  |     \- log4j:log4j:jar:1.2.14:compile
+|  +- com.artenum.penelope:com-artenum-penelope-plugin-netcdf:jar:3.0.16:compile
+|  |  +- com.artenum.penelope:com-artenum-penelope-plugin-gmsh:jar:3.0.16:compile
+|  |  \- edu.ucar:netcdf:jar:4.2.20:compile
+|  |     +- edu.ucar:unidataCommon:jar:4.2.20:compile
+|  |     |  \- net.jcip:jcip-annotations:jar:1.0:compile
+|  |     \- commons-httpclient:commons-httpclient:jar:3.1:compile
+|  |        \- commons-codec:commons-codec:jar:1.2:compile
+|  +- commons-io:commons-io:jar:2.4:compile
+|  +- com.artenum.frida:Frida:jar:0.0.16:compile
+|  |  \- vtk:vtk:jar:5.8.0:compile
+|  \- org.spis.num:org-spis-num-sci-geo:jar:5.1.10-IC-3DMICS:compile
+|     +- org.spis:org-spis-instruments-dust:jar:1.0.8:compile
+|     +- net.sourceforge.f2j:arpack_combined_all:jar:0.1:compile
+|     \- org.apache.commons:commons-math3:jar:3.2:compile
++- org.keridwen.modelling:org-keridwen-modelling-data-model:jar:2.0.16:compile
++- org.keridwen.modelling:org-keridwen-modelling-ui-manager:jar:2.0.16:compile
+|  +- com.artenum.tk:ArtTk:jar:2.0.20:compile
+|  |  +- jfree:jfreechart:jar:1.0.13:compile
+|  |  +- jfree:jcommon:jar:1.0.16:compile
+|  |  \- commons-logging:commons-logging:jar:1.1.1:compile
+|  +- org.keridwen.core:org-keridwen-core-ui-dockingframes:jar:2.0.16:compile
+|  |  +- org.dockingframes:docking-frames-core:jar:1.1.2p10a:compile
+|  |  \- org.dockingframes:docking-frames-common:jar:1.1.2p10a:compile
+|  \- org.keridwen.modelling:org-keridwen-modelling-text-editor:jar:2.0.16:compile
++- org.keridwen.core:org-keridwen-core-messaging:jar:2.0.16:compile
+|  +- org.slf4j:slf4j-api:jar:1.7.12:compile
+|  +- org.osgi:org.osgi.core:jar:5.0.0:compile
+|  \- com.google.guava:guava:jar:16.0.1:compile
++- org.keridwen.core:org-keridwen-core-i18n:jar:2.0.16:compile
++- org.keridwen.modelling:org-keridwen-modelling-reporting:jar:2.0.16:compile
+|  +- org.apache.odftoolkit:odftoolkit:pom:0.5-incubating:compile
+|  \- org.apache.odftoolkit:simple-odf:jar:0.7-incubating:compile
+|     +- org.apache.odftoolkit:odfdom-java:jar:0.8.8-incubating:compile
+|     |  \- org.apache.odftoolkit:taglets:jar:0.8.8-incubating:compile
+|     \- xerces:xercesImpl:jar:2.9.1:compile
++- org.keridwen.modelling:org-keridwen-modelling-utils:jar:2.0.16:compile
+|  \- org.swinglabs:swingx-core:jar:1.6.2-2:compile
+\- junit:concjunit:jar:4.7:test
+                                                                        
+------------------------------------------------------------------------
+Building SPIS simulation launch and monitoring module 5.1.10-IC
+------------------------------------------------------------------------
+
+--- maven-dependency-plugin:2.8:tree (default-cli) @ org-spis-ui-simulation ---
+org.spis.ui:org-spis-ui-simulation:bundle:5.1.10-IC
++- org.keridwen.modelling:org-keridwen-modelling-ui-manager:jar:2.0.16:compile
+|  +- org.keridwen.core:org-keridwen-core-ui-dockingframes:jar:2.0.16:compile
+|  |  +- org.dockingframes:docking-frames-core:jar:1.1.2p10a:compile
+|  |  \- org.dockingframes:docking-frames-common:jar:1.1.2p10a:compile
+|  +- org.keridwen.core:org-keridwen-core-i18n:jar:2.0.16:compile
+|  \- org.keridwen.modelling:org-keridwen-modelling-text-editor:jar:2.0.16:compile
++- org.keridwen.modelling:org-keridwen-modelling-data-model:jar:2.0.16:compile
+|  +- org.keridwen.core:org-keridwen-core-state:jar:2.0.16:compile
+|  |  +- commons-scxml:commons-scxml:jar:0.9:compile
+|  |  |  +- commons-digester:commons-digester:jar:1.8:compile
+|  |  |  \- commons-beanutils:commons-beanutils:jar:1.7.0:compile
+|  |  \- commons-jexl:commons-jexl:jar:1.1:compile
+|  |     \- junit:junit:jar:3.8.1:compile
+|  +- com.artenum.frida:Frida:jar:0.0.16:compile
+|  |  +- xom:xom:jar:1.2.5:compile
+|  |  |  +- xml-apis:xml-apis:jar:1.3.03:compile
+|  |  |  +- xerces:xercesImpl:jar:2.8.0:compile
+|  |  |  \- xalan:xalan:jar:2.7.0:compile
+|  |  +- com.thoughtworks.xstream:xstream:jar:1.4.2:compile
+|  |  |  +- xmlpull:xmlpull:jar:1.1.3.1:compile
+|  |  |  \- xpp3:xpp3_min:jar:1.1.4c:compile
+|  |  \- vtk:vtk:jar:5.8.0:compile
+|  \- org.keridwen.modelling:org-keridwen-modelling-global-parameters:jar:2.0.16:compile
+|     \- net.sourceforge.jexcelapi:jxl:jar:2.6.12:compile
+|        \- log4j:log4j:jar:1.2.14:compile
++- org.keridwen.core:org-keridwen-core-messaging:jar:2.0.16:compile
+|  +- org.keridwen.core:org-keridwen-core-data-model:jar:2.0.16:compile
+|  +- org.slf4j:slf4j-api:jar:1.7.12:compile
+|  +- org.osgi:org.osgi.core:jar:5.0.0:compile
+|  +- com.google.guava:guava:jar:16.0.1:compile
+|  \- commons-io:commons-io:jar:2.4:compile
++- org.spis.ui:org-spis-ui-ui2num:jar:5.1.10-IC:compile
+|  +- com.artenum.penelope:com-artenum-penelope-plugin-xml:jar:3.0.16:compile
+|  +- com.artenum.penelope:com-artenum-penelope-plugin-jfreemesh:jar:3.0.16:compile
+|  |  \- com.artenum.jfreemesh:jfreemesh:jar:2.4.1:compile
+|  \- com.artenum.penelope:com-artenum-penelope-plugin-vtk:jar:3.0.16:compile
++- org.spis.ui:org-spis-ui-project:jar:5.1.10-IC:compile
+|  \- org.keridwen.modelling:org-keridwen-modelling-utils:jar:2.0.16:compile
++- com.artenum.tk:ArtTk:jar:2.0.20:compile
+|  +- jfree:jfreechart:jar:1.0.13:compile
+|  +- jfree:jcommon:jar:1.0.16:compile
+|  \- commons-logging:commons-logging:jar:1.1.1:compile
++- org.spis.ui:org-spis-ui-model:jar:5.1.10-IC:compile
+|  +- org.keridwen.modelling:org-keridwen-modelling-group-editor:jar:2.0.16:compile
+|  +- org.keridwen.core:org-keridwen-core-settings:jar:2.0.16:compile
+|  \- com.artenum.penelope:com-artenum-penelope-core:jar:3.0.16:compile
+|     +- com.artenum:nisaba:jar:1.0.16:compile
+|     |  \- org.jblas:jblas:jar:1.2.3:compile
+|     +- net.sf.trove4j:trove4j:jar:3.0.2:compile
+|     \- org.apache.felix:org.apache.felix.ipojo.handler.extender:jar:1.4.0:compile
+|        \- org.apache.felix:org.apache.felix.ipojo:jar:1.4.0:compile
+|           +- org.apache.felix:org.osgi.compendium:jar:1.2.0:compile
+|           |  \- org.apache.felix:javax.servlet:jar:1.0.0:compile
+|           \- org.apache.felix:org.apache.felix.ipojo.metadata:jar:1.4.0:compile
++- org.keridwen.core:org-keridwen-core-logging:jar:2.0.16:compile
+|  +- ch.qos.logback:logback-core:jar:1.1.2:compile
+|  \- ch.qos.logback:logback-classic:jar:1.1.2:compile
++- org.keridwen.modelling:org-keridwen-modelling-monitoring:jar:2.0.16:compile
+|  +- org.swinglabs:swingx-core:jar:1.6.2-2:compile
+|  +- com.artenum.cassandra:com-artenum-cassandra-renderer:jar:2.5.16:compile
+|  \- com.artenum.cassandra:com-artenum-cassandra-core:jar:2.5.16:compile
+|     +- org.python:jython-standalone:jar:2.5.3:compile
+|     +- com.artenum:jyconsole:jar:1.5:compile
+|     +- com.artenum.graph:DedalEGraph:jar:1.0.1:compile
+|     \- org.keridwen.vtk:org-keridwen-vtk:jar:2.0.16:compile
++- org.spis:org-spis-instruments-dust:jar:1.0.8:compile
++- com.artenum.penelope:com-artenum-penelope-plugin-netcdf:jar:3.0.16:compile
+|  +- com.artenum.penelope:com-artenum-penelope-plugin-gmsh:jar:3.0.16:compile
+|  \- edu.ucar:netcdf:jar:4.2.20:compile
+|     +- edu.ucar:unidataCommon:jar:4.2.20:compile
+|     |  \- net.jcip:jcip-annotations:jar:1.0:compile
+|     \- commons-httpclient:commons-httpclient:jar:3.1:compile
+|        \- commons-codec:commons-codec:jar:1.2:compile
++- org.spis.num:org-spis-num-sci-geo:jar:5.1.10-IC-3DMICS:compile
+|  +- net.sourceforge.f2j:arpack_combined_all:jar:0.1:compile
+|  \- org.apache.commons:commons-math3:jar:3.2:compile
+\- junit:concjunit:jar:4.7:test
+                                                                        
+------------------------------------------------------------------------
+Building SPIS external tools launcher module 5.1.10-IC
+------------------------------------------------------------------------
+
+--- maven-dependency-plugin:2.8:tree (default-cli) @ org-spis-ui-tools ---
+org.spis.ui:org-spis-ui-tools:bundle:5.1.10-IC
++- org.spis.ui:org-spis-ui-model:jar:5.1.10-IC:compile
+|  +- org.keridwen.modelling:org-keridwen-modelling-group-editor:jar:2.0.16:compile
+|  |  +- org.keridwen.modelling:org-keridwen-modelling-utils:jar:2.0.16:compile
+|  |  +- com.artenum.penelope:com-artenum-penelope-plugin-xml:jar:3.0.16:compile
+|  |  +- com.artenum.penelope:com-artenum-penelope-plugin-vtk:jar:3.0.16:compile
+|  |  \- org.swinglabs:swingx-core:jar:1.6.2-2:compile
+|  +- org.keridwen.core:org-keridwen-core-data-model:jar:2.0.16:compile
+|  |  \- xom:xom:jar:1.2.5:compile
+|  |     +- xml-apis:xml-apis:jar:1.3.03:compile
+|  |     +- xerces:xercesImpl:jar:2.8.0:compile
+|  |     \- xalan:xalan:jar:2.7.0:compile
+|  +- org.keridwen.core:org-keridwen-core-state:jar:2.0.16:compile
+|  |  +- commons-scxml:commons-scxml:jar:0.9:compile
+|  |  |  +- commons-digester:commons-digester:jar:1.8:compile
+|  |  |  \- commons-beanutils:commons-beanutils:jar:1.7.0:compile
+|  |  \- commons-jexl:commons-jexl:jar:1.1:compile
+|  |     \- junit:junit:jar:3.8.1:compile
+|  +- org.keridwen.core:org-keridwen-core-i18n:jar:2.0.16:compile
+|  +- org.keridwen.core:org-keridwen-core-settings:jar:2.0.16:compile
+|  +- com.artenum.penelope:com-artenum-penelope-core:jar:3.0.16:compile
+|  |  +- com.artenum:nisaba:jar:1.0.16:compile
+|  |  |  \- org.jblas:jblas:jar:1.2.3:compile
+|  |  +- net.sf.trove4j:trove4j:jar:3.0.2:compile
+|  |  \- org.apache.felix:org.apache.felix.ipojo.handler.extender:jar:1.4.0:compile
+|  |     \- org.apache.felix:org.apache.felix.ipojo:jar:1.4.0:compile
+|  |        +- org.apache.felix:org.osgi.compendium:jar:1.2.0:compile
+|  |        |  \- org.apache.felix:javax.servlet:jar:1.0.0:compile
+|  |        \- org.apache.felix:org.apache.felix.ipojo.metadata:jar:1.4.0:compile
+|  +- org.keridwen.modelling:org-keridwen-modelling-global-parameters:jar:2.0.16:compile
+|  |  +- com.thoughtworks.xstream:xstream:jar:1.4.2:compile
+|  |  |  +- xmlpull:xmlpull:jar:1.1.3.1:compile
+|  |  |  \- xpp3:xpp3_min:jar:1.1.4c:compile
+|  |  \- net.sourceforge.jexcelapi:jxl:jar:2.6.12:compile
+|  |     \- log4j:log4j:jar:1.2.14:compile
+|  +- com.artenum.penelope:com-artenum-penelope-plugin-netcdf:jar:3.0.16:compile
+|  |  +- com.artenum.penelope:com-artenum-penelope-plugin-gmsh:jar:3.0.16:compile
+|  |  \- edu.ucar:netcdf:jar:4.2.20:compile
+|  |     +- edu.ucar:unidataCommon:jar:4.2.20:compile
+|  |     |  \- net.jcip:jcip-annotations:jar:1.0:compile
+|  |     \- commons-httpclient:commons-httpclient:jar:3.1:compile
+|  |        \- commons-codec:commons-codec:jar:1.2:compile
+|  +- commons-io:commons-io:jar:2.4:compile
+|  +- com.artenum.frida:Frida:jar:0.0.16:compile
+|  \- org.spis.num:org-spis-num-sci-geo:jar:5.1.10-IC-3DMICS:compile
+|     +- org.spis:org-spis-instruments-dust:jar:1.0.8:compile
+|     +- net.sourceforge.f2j:arpack_combined_all:jar:0.1:compile
+|     \- org.apache.commons:commons-math3:jar:3.2:compile
++- org.keridwen.modelling:org-keridwen-modelling-data-model:jar:2.0.16:compile
++- org.keridwen.modelling:org-keridwen-modelling-ui-manager:jar:2.0.16:compile
+|  +- com.artenum.tk:ArtTk:jar:2.0.20:compile
+|  |  +- jfree:jfreechart:jar:1.0.13:compile
+|  |  +- jfree:jcommon:jar:1.0.16:compile
+|  |  \- commons-logging:commons-logging:jar:1.1.1:compile
+|  +- org.keridwen.core:org-keridwen-core-ui-dockingframes:jar:2.0.16:compile
+|  |  +- org.dockingframes:docking-frames-core:jar:1.1.2p10a:compile
+|  |  \- org.dockingframes:docking-frames-common:jar:1.1.2p10a:compile
+|  \- org.keridwen.modelling:org-keridwen-modelling-text-editor:jar:2.0.16:compile
++- org.keridwen.core:org-keridwen-core-messaging:jar:2.0.16:compile
+|  +- org.slf4j:slf4j-api:jar:1.7.12:compile
+|  +- org.osgi:org.osgi.core:jar:5.0.0:compile
+|  \- com.google.guava:guava:jar:16.0.1:compile
++- org.keridwen.core:org-keridwen-core-logging:jar:2.0.16:compile
+|  +- ch.qos.logback:logback-core:jar:1.1.2:compile
+|  \- ch.qos.logback:logback-classic:jar:1.1.2:compile
++- com.artenum.cassandra:com-artenum-cassandra-renderer:jar:2.5.16:compile
+|  \- vtk:vtk:jar:5.8.0:compile
++- com.artenum.cassandra:com-artenum-cassandra-core:jar:2.5.16:compile
+|  +- org.python:jython-standalone:jar:2.5.3:compile
+|  +- com.artenum:jyconsole:jar:1.5:compile
+|  \- com.artenum.graph:DedalEGraph:jar:1.0.1:compile
++- org.keridwen.vtk:org-keridwen-vtk:jar:2.0.16:compile
++- org.keridwen.modelling:org-keridwen-modelling-console:jar:2.0.16:compile
+\- junit:concjunit:jar:4.7:test
+                                                                        
+------------------------------------------------------------------------
+Building SPIS internal charging module 5.1.10-IC
+------------------------------------------------------------------------
+
+--- maven-dependency-plugin:2.8:tree (default-cli) @ org-spis-ui-internal-charging ---
+org.spis.ui:org-spis-ui-internal-charging:bundle:5.1.10-IC
++- org.keridwen.core:org-keridwen-core-messaging:jar:2.0.16:compile
+|  +- org.keridwen.core:org-keridwen-core-data-model:jar:2.0.16:compile
+|  |  +- org.swinglabs:swingx-core:jar:1.6.2-2:compile
+|  |  \- xom:xom:jar:1.2.5:compile
+|  |     +- xml-apis:xml-apis:jar:1.3.03:compile
+|  |     +- xerces:xercesImpl:jar:2.8.0:compile
+|  |     \- xalan:xalan:jar:2.7.0:compile
+|  +- org.slf4j:slf4j-api:jar:1.7.12:compile
+|  +- org.osgi:org.osgi.core:jar:5.0.0:compile
+|  +- com.google.guava:guava:jar:16.0.1:compile
+|  \- commons-io:commons-io:jar:2.4:compile
++- org.keridwen.modelling:org-keridwen-modelling-data-model:jar:2.0.16:compile
+|  +- org.keridwen.core:org-keridwen-core-state:jar:2.0.16:compile
+|  |  +- commons-scxml:commons-scxml:jar:0.9:compile
+|  |  |  +- commons-digester:commons-digester:jar:1.8:compile
+|  |  |  \- commons-beanutils:commons-beanutils:jar:1.7.0:compile
+|  |  \- commons-jexl:commons-jexl:jar:1.1:compile
+|  |     \- junit:junit:jar:3.8.1:compile
+|  +- com.artenum.frida:Frida:jar:0.0.16:compile
+|  |  +- com.thoughtworks.xstream:xstream:jar:1.4.2:compile
+|  |  |  +- xmlpull:xmlpull:jar:1.1.3.1:compile
+|  |  |  \- xpp3:xpp3_min:jar:1.1.4c:compile
+|  |  \- com.artenum.penelope:com-artenum-penelope-plugin-xml:jar:3.0.16:compile
+|  \- org.keridwen.modelling:org-keridwen-modelling-global-parameters:jar:2.0.16:compile
+|     +- org.keridwen.modelling:org-keridwen-modelling-utils:jar:2.0.16:compile
+|     \- net.sourceforge.jexcelapi:jxl:jar:2.6.12:compile
+|        \- log4j:log4j:jar:1.2.14:compile
++- org.keridwen.core:org-keridwen-core-i18n:jar:2.0.16:compile
++- org.keridwen.modelling:org-keridwen-modelling-ui-manager:jar:2.0.16:compile
+|  +- com.artenum.tk:ArtTk:jar:2.0.20:compile
+|  |  +- jfree:jfreechart:jar:1.0.13:compile
+|  |  +- jfree:jcommon:jar:1.0.16:compile
+|  |  \- commons-logging:commons-logging:jar:1.1.1:compile
+|  +- org.keridwen.core:org-keridwen-core-ui-dockingframes:jar:2.0.16:compile
+|  |  +- org.dockingframes:docking-frames-core:jar:1.1.2p10a:compile
+|  |  \- org.dockingframes:docking-frames-common:jar:1.1.2p10a:compile
+|  \- org.keridwen.modelling:org-keridwen-modelling-text-editor:jar:2.0.16:compile
++- org.spis.ui:org-spis-ui-model:jar:5.1.10-IC:compile
+|  +- org.keridwen.modelling:org-keridwen-modelling-group-editor:jar:2.0.16:compile
+|  |  \- com.artenum.cassandra:com-artenum-cassandra-core:jar:2.5.16:compile
+|  |     +- com.artenum.cassandra:com-artenum-cassandra-renderer:jar:2.5.16:compile
+|  |     +- org.python:jython-standalone:jar:2.5.3:compile
+|  |     +- com.artenum:jyconsole:jar:1.5:compile
+|  |     +- com.artenum.graph:DedalEGraph:jar:1.0.1:compile
+|  |     +- org.keridwen.vtk:org-keridwen-vtk:jar:2.0.16:compile
+|  |     \- org.keridwen.core:org-keridwen-core-logging:jar:2.0.16:compile
+|  |        +- ch.qos.logback:logback-core:jar:1.1.2:compile
+|  |        \- ch.qos.logback:logback-classic:jar:1.1.2:compile
+|  +- org.keridwen.core:org-keridwen-core-settings:jar:2.0.16:compile
+|  +- com.artenum.penelope:com-artenum-penelope-core:jar:3.0.16:compile
+|  |  +- com.artenum:nisaba:jar:1.0.16:compile
+|  |  |  \- org.jblas:jblas:jar:1.2.3:compile
+|  |  +- net.sf.trove4j:trove4j:jar:3.0.2:compile
+|  |  \- org.apache.felix:org.apache.felix.ipojo.handler.extender:jar:1.4.0:compile
+|  |     \- org.apache.felix:org.apache.felix.ipojo:jar:1.4.0:compile
+|  |        +- org.apache.felix:org.osgi.compendium:jar:1.2.0:compile
+|  |        |  \- org.apache.felix:javax.servlet:jar:1.0.0:compile
+|  |        \- org.apache.felix:org.apache.felix.ipojo.metadata:jar:1.4.0:compile
+|  \- org.spis.num:org-spis-num-sci-geo:jar:5.1.10-IC-3DMICS:compile
+|     +- org.spis:org-spis-instruments-dust:jar:1.0.8:compile
+|     +- net.sourceforge.f2j:arpack_combined_all:jar:0.1:compile
+|     \- org.apache.commons:commons-math3:jar:3.2:compile
++- com.artenum.penelope:com-artenum-penelope-plugin-netcdf:jar:3.0.16:compile
+|  +- com.artenum.penelope:com-artenum-penelope-plugin-gmsh:jar:3.0.16:compile
+|  \- edu.ucar:netcdf:jar:4.2.20:compile
+|     +- edu.ucar:unidataCommon:jar:4.2.20:compile
+|     |  \- net.jcip:jcip-annotations:jar:1.0:compile
+|     \- commons-httpclient:commons-httpclient:jar:3.1:compile
+|        \- commons-codec:commons-codec:jar:1.2:compile
++- com.artenum.penelope:com-artenum-penelope-plugin-vtk:jar:3.0.16:compile
+|  \- vtk:vtk:jar:5.8.0:compile
+\- junit:concjunit:jar:4.7:test
+                                                                        
+------------------------------------------------------------------------
+Building SPIS-UI developer module 5.1.10-IC
+------------------------------------------------------------------------
+
+--- maven-dependency-plugin:2.8:tree (default-cli) @ org-spis-ui-developer ---
+org.spis.ui:org-spis-ui-developer:bundle:5.1.10-IC
++- org.keridwen.core:org-keridwen-core-messaging:jar:2.0.16:compile
+|  +- org.keridwen.core:org-keridwen-core-data-model:jar:2.0.16:compile
+|  |  +- org.swinglabs:swingx-core:jar:1.6.2-2:compile
+|  |  \- xom:xom:jar:1.2.5:compile
+|  |     +- xml-apis:xml-apis:jar:1.3.03:compile
+|  |     +- xerces:xercesImpl:jar:2.8.0:compile
+|  |     \- xalan:xalan:jar:2.7.0:compile
+|  +- org.slf4j:slf4j-api:jar:1.7.12:compile
+|  +- org.osgi:org.osgi.core:jar:5.0.0:compile
+|  +- com.google.guava:guava:jar:16.0.1:compile
+|  \- commons-io:commons-io:jar:2.4:compile
++- org.keridwen.modelling:org-keridwen-modelling-data-model:jar:2.0.16:compile
+|  +- org.keridwen.core:org-keridwen-core-state:jar:2.0.16:compile
+|  |  +- commons-scxml:commons-scxml:jar:0.9:compile
+|  |  |  +- commons-digester:commons-digester:jar:1.8:compile
+|  |  |  \- commons-beanutils:commons-beanutils:jar:1.7.0:compile
+|  |  \- commons-jexl:commons-jexl:jar:1.1:compile
+|  |     \- junit:junit:jar:3.8.1:compile
+|  +- com.artenum.frida:Frida:jar:0.0.16:compile
+|  |  +- com.thoughtworks.xstream:xstream:jar:1.4.2:compile
+|  |  |  +- xmlpull:xmlpull:jar:1.1.3.1:compile
+|  |  |  \- xpp3:xpp3_min:jar:1.1.4c:compile
+|  |  \- com.artenum.penelope:com-artenum-penelope-plugin-xml:jar:3.0.16:compile
+|  \- org.keridwen.modelling:org-keridwen-modelling-global-parameters:jar:2.0.16:compile
+|     +- org.keridwen.modelling:org-keridwen-modelling-utils:jar:2.0.16:compile
+|     \- net.sourceforge.jexcelapi:jxl:jar:2.6.12:compile
+|        \- log4j:log4j:jar:1.2.14:compile
++- org.keridwen.core:org-keridwen-core-i18n:jar:2.0.16:compile
++- org.keridwen.modelling:org-keridwen-modelling-ui-manager:jar:2.0.16:compile
+|  +- com.artenum.tk:ArtTk:jar:2.0.20:compile
+|  |  +- jfree:jfreechart:jar:1.0.13:compile
+|  |  +- jfree:jcommon:jar:1.0.16:compile
+|  |  \- commons-logging:commons-logging:jar:1.1.1:compile
+|  +- org.keridwen.core:org-keridwen-core-ui-dockingframes:jar:2.0.16:compile
+|  |  +- org.dockingframes:docking-frames-core:jar:1.1.2p10a:compile
+|  |  \- org.dockingframes:docking-frames-common:jar:1.1.2p10a:compile
+|  \- org.keridwen.modelling:org-keridwen-modelling-text-editor:jar:2.0.16:compile
++- org.spis.ui:org-spis-ui-model:jar:5.1.10-IC:compile
+|  +- org.keridwen.modelling:org-keridwen-modelling-group-editor:jar:2.0.16:compile
+|  |  \- com.artenum.cassandra:com-artenum-cassandra-core:jar:2.5.16:compile
+|  |     +- com.artenum.cassandra:com-artenum-cassandra-renderer:jar:2.5.16:compile
+|  |     +- org.python:jython-standalone:jar:2.5.3:compile
+|  |     +- com.artenum:jyconsole:jar:1.5:compile
+|  |     +- com.artenum.graph:DedalEGraph:jar:1.0.1:compile
+|  |     +- org.keridwen.vtk:org-keridwen-vtk:jar:2.0.16:compile
+|  |     \- org.keridwen.core:org-keridwen-core-logging:jar:2.0.16:compile
+|  |        +- ch.qos.logback:logback-core:jar:1.1.2:compile
+|  |        \- ch.qos.logback:logback-classic:jar:1.1.2:compile
+|  +- org.keridwen.core:org-keridwen-core-settings:jar:2.0.16:compile
+|  +- com.artenum.penelope:com-artenum-penelope-core:jar:3.0.16:compile
+|  |  +- com.artenum:nisaba:jar:1.0.16:compile
+|  |  |  \- org.jblas:jblas:jar:1.2.3:compile
+|  |  +- net.sf.trove4j:trove4j:jar:3.0.2:compile
+|  |  \- org.apache.felix:org.apache.felix.ipojo.handler.extender:jar:1.4.0:compile
+|  |     \- org.apache.felix:org.apache.felix.ipojo:jar:1.4.0:compile
+|  |        +- org.apache.felix:org.osgi.compendium:jar:1.2.0:compile
+|  |        |  \- org.apache.felix:javax.servlet:jar:1.0.0:compile
+|  |        \- org.apache.felix:org.apache.felix.ipojo.metadata:jar:1.4.0:compile
+|  \- org.spis.num:org-spis-num-sci-geo:jar:5.1.10-IC-3DMICS:compile
+|     +- org.spis:org-spis-instruments-dust:jar:1.0.8:compile
+|     +- net.sourceforge.f2j:arpack_combined_all:jar:0.1:compile
+|     \- org.apache.commons:commons-math3:jar:3.2:compile
++- com.artenum.penelope:com-artenum-penelope-plugin-netcdf:jar:3.0.16:compile
+|  +- com.artenum.penelope:com-artenum-penelope-plugin-gmsh:jar:3.0.16:compile
+|  \- edu.ucar:netcdf:jar:4.2.20:compile
+|     +- edu.ucar:unidataCommon:jar:4.2.20:compile
+|     |  \- net.jcip:jcip-annotations:jar:1.0:compile
+|     \- commons-httpclient:commons-httpclient:jar:3.1:compile
+|        \- commons-codec:commons-codec:jar:1.2:compile
++- com.artenum.penelope:com-artenum-penelope-plugin-vtk:jar:3.0.16:compile
+|  \- vtk:vtk:jar:5.8.0:compile
+\- junit:concjunit:jar:4.7:test
+                                                                        
+------------------------------------------------------------------------
+Building SpisUI 5.1.10-IC
+------------------------------------------------------------------------
+
+--- maven-dependency-plugin:2.8:tree (default-cli) @ spis ---
+org.spis.ui:spis:pom:5.1.10-IC
+

@@ -1,0 +1,8 @@
+<Property>
+  <id>41</id>
+  <name>gas</name>
+  <description>Gas</description>
+  <isCompound>false</isCompound>
+  <type>State</type>
+  <characteristicList/>
+</Property>

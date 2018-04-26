@@ -1,0 +1,8 @@
+<Property>
+  <id>14</id>
+  <name>Fraction of isotope</name>
+  <description>Material made of fractions of isotopes</description>
+  <isCompound>false</isCompound>
+  <type>Material type</type>
+  <characteristicList/>
+</Property>

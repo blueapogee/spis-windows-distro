@@ -1,0 +1,7 @@
+# Example of Spinning Spacecraft around Z axis (first three lines),  at angular velocity corresponding to a rotation each 40 s, update of attitude each 1 second.
+# Author: JC Mateo-Velez (ONERA), 18/02/2013
+0.0
+0.0
+1.0
+-0.1570796327
+1.0

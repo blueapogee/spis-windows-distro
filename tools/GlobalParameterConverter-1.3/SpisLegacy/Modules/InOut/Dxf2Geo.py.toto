@@ -1,0 +1,2692 @@
+##########################################################################
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#   Copyright : Artenum SARL         Modifications : 17/06/2003  FW      #
+#                                                                        #
+#                                                                        #
+#   File name : Dxf2Geo.py                                               #
+#                                                                        #
+#   Description :                                                        #
+#      This file convert the dxf format (geometry data of AutoCad) to the#
+#      geo format (.geo)  which is the geometry data used by Gmsh (.geo).#
+#                                                                        #
+#   Command line :                                                       #
+#       python Dxf2Geo.py <Refinement> <file name 1> <file name 2>       #
+#       <refinement> is the caracteristic length value used by Gmsh for  #
+#       the local meshing refinement defined for each point                               
+#       <file name 1> <file name 2> ... are the input dxf files.         #
+#                                                                        #
+#   Comments :                                                           #
+#                                                                        #
+##########################################################################
+                                         #
+##########################################################################
+#                                                                        #
+# Import                                                                 #
+#                                                                        #
+##########################################################################
+                                         #
+import sys, string, math                 # Import sys, string and
+                                         #  math libraries.
+                                         #            
+##########################################################################
+#                                                                        #
+#  Internal Function                                                     #
+#                                                                        #
+##########################################################################
+                                         #
+##########################################################################
+#                                                                        #
+#   Function ReadLine :              Status: Implemented                 #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  :                                                                #
+#                                                                        #
+#   Out : Line, string, Local                                            #
+#                                                                        #
+#   Description :                                                        #
+#      Read a line of the input file                                     #
+#                                                                        #
+#   Comments :                                                           #
+#                                                                        #
+##########################################################################
+                                         #
+def ReadLine():                          # ReadLine Function  
+   global LineCounter                    #
+   global OldLineCounter                 #
+   if Debug == 1:                        # For Debug
+      print 'ReadLine() function Start'  #
+   LineCounter = LineCounter+1           #
+   if LineCounter == OldLineCounter:     #
+      print 'Line =',LineCounter         #
+      OldLineCounter = LineCounter+1000  #    
+   line = FileIn.readline()              # Read the current line
+   i = string.find(line,chr(13))         # Look for ^ (LF in Windows file)
+   if i <>  -1:                          # If ^ is found take off LF and 
+      line = string.strip(line[0:i])     #  CR comming from windows file
+   i = string.find(line,chr(10))         # Look for ^ (LF in Windows file)
+   if i <>  -1:                          # If ^ is found take off LF and 
+      line = string.strip(line[0:i])     #  CR comming from windows file
+   i = string.find(line,'#')             # Look for '#' char use for Comments
+   if i <>  -1:                          # If '#' is found take off comments 
+      line = string.strip(line[0:i])     # 
+   if Debug == 1:                        #
+      print 'ReadLine() function End'    # For Debug
+   return line                           # ouput variables
+                                         #
+##########################################################################
+#                                                                        #
+#   Function F_3DFACE :              Status: Implemented                 #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  : NbPoint, Integer, Glopbal                                      #
+#         NbCurve, Integer, Glopbal                                      #
+#         NbSurface, Integer, Glopbal                                    #
+#         ReadValue , Integer, Global                                    #
+#                                                                        #
+#   Out : NbPoint, Integer, Glopbal                                      #
+#         NbCurve, Integer, Glopbal                                      #
+#         NbSurface, Integer, Glopbal                                    #
+#         ReadValue , Integer, Global                                    #
+#         code, list of string, Local                                    #
+#                                                                        #
+#   Description :                                                        #
+#      The F_3DFACE function convert the 3DFACE entity of the dxf format #
+#      to the planar surface object of the geo format. 3 or 4 points in  #
+#      the dxf format are converted in 3 or 4 points in the geo format,  #
+#      then create the line between the points and the plane surface     #
+#      based on these lines.                                             #
+#                                                                        #
+#   Comments :                                                           #
+#      In the 3DFACE section we read the line until we find the value    #
+#      '0' whih is the end of section. If the read line is '10','20',    #
+#      '30', '11', '21', '31', '12', '22', '32', '13', '23' or '33': the #
+#      line after is a coordinate of one of the 4 points. All the other  #
+#      lines are not significant. If the 4th point is equal to the third #
+#      one, then the geometrical object is a triangle and not a          #
+#      quadrilateral                                                     #
+#                                                                        #
+##########################################################################
+                                         #
+def F_3DFACE():                          # F_3DFACE Function  
+                                         #
+   global NbPoint                        # Declare NbPoint scope
+   global NbCurve                        # Declare NbCurve scope 
+   global NbLoop                         # Declare NbLoop scope 
+   global NbSurface                      # Declare NbSurface scope   
+   global ReadValue                      # Declare ReadValue scope
+   global PointList                      # Declare Point scope
+   global LineList                       # Declare Line scope
+   global FaceList                       # Declare Face scope
+   if Debug == 1:                        # For Debug
+      print 'F_3DFACE() function Start'  # 
+   ReadValue = 1                         # Variable has to be read in the
+                                         #  Value_Cmd function
+   code = []                             # Init return code
+   code.append('1')                      # Fisrt element of code is a 
+                                         #  return code which indicates 
+                                         #  which treatment has to be done
+                                         #  in the main loop after the 
+                                         #  call of the present function
+                                         #  1 means write in the output
+                                         #  file, 0 means do nothing
+   Value = []                            # Init Value List
+   NumPoint = []                         # Init NumPoint List
+   NumLine = []                          # Init NumLine List
+   line = ReadLine()                     # Read the next line
+   while line <> '0':                    # While line is different to '0'
+      ret = AC_KeyWord[line]()           #  call the corresponding 
+                                         #   function 
+      if ret <> '0':                     #  if the return of the function 
+         Value.append(ret)               #   is different to 0 then update
+      if line == '33':                   #  If line = '33' ReadValue = 0 
+         ReadValue = 0                   #   We have all the coordinates,
+                                         #   we don't need to read more 
+                                         #   values 
+      line = ReadLine()                  #   the Value List.
+   j = 0                                 # Init counter
+   for i in range(4):                    # Create the 4 string for the
+      TempPoint = [str(Value[i*2+j]),    # Temporary Point
+                   str(Value[i*2+1+j]),  #
+                   str(Value[i*2+2+j])]  #
+      if TempPoint not in PointList:     # 
+         code.append('Point('+           #  geo format corresponding to
+               str(NbPoint)+             #  the 4 points. for 1 point,
+               ') = {'+str(Value[i*2+j])+#  string is: 'Point(PointNunber)
+               ', '+str(Value[i*2+1+j])+ #  'Point(PointNunber) = {XValue,
+               ', '+str(Value[i*2+2+j])+ #   YValue, ZValue};'
+               ', '+str(Refine)+'};\n')  #   
+         NumPoint.append(NbPoint)        #  Save the point Number in the
+                                         #   NumPoint List
+         NbPoint = NbPoint+1             #
+         PointList.append([              #
+                    str(Value[i*2+j]),   #  
+                    str(Value[i*2+1+j]), #  'Point(PointNunber) = {XValue,
+                    str(Value[i*2+2+j])])#
+      else:                              #
+         NumPoint.append(PointList.index(#
+                   TempPoint)+1)         #
+      j = j+1                            #  Update counter
+   i = 1                                 # Init counter
+   for Val in NumPoint:                  # Create the line between the
+      if i == len(NumPoint):             #
+         TempLine =[NumPoint[i-1],       #
+                    NumPoint[0]]         # 
+      else:                              #
+         TempLine =[NumPoint[i-1],       #
+                    NumPoint[i]]         #
+      TempLine.sort()                    #          
+      if ((TempLine not in LineList) and #
+          (TempLine[0] <> TempLine[1])): #
+         code.append('Line('+            # 'Line(LineNumber) = {Point A,
+                str(NbCurve)+            #  Point B};'
+                ') = {'+str(TempLine[0])+#
+                ', '+str(TempLine[1])+   #
+                '};\n')	                 #
+         NumLine.append(NbCurve)         #  Save the line number in the
+                                         #   NumLine List
+         LineList.append(TempLine)       #
+         NbCurve = NbCurve+1             #
+      elif TempLine[0] <> TempLine[1]:   #  
+         NumLine.append(LineList.index(  #  Save the line number in the
+                        TempLine)+1)     #   NumLine List
+      i = i+1                            #  Update Counter
+   TempFace = []                         #
+   if len(NumLine) > 2:                  #
+      for Num in NumLine:                #
+         TempFace.append(Num)            #
+      TempFace.sort ()                   #
+      if TempFace not in FaceList:       #
+         if LineList[NumLine[0]-1][0] in LineList[NumLine[1]-1]:
+            TempNumLine = [-NumLine[0]]
+         else: 
+            TempNumLine = [NumLine[0]]
+         for i in range(1,len(NumLine)): 
+            if TempNumLine[i-1] < 1:
+               EndPoint = LineList[abs(TempNumLine[i-1])-1][0]
+            else: 
+               EndPoint = LineList[TempNumLine[i-1]-1][1]
+            if LineList[NumLine[i]-1][0] <> EndPoint: 
+               TempNumLine.append(-NumLine[i])
+            else:
+               TempNumLine.append(NumLine[i])
+         TempLine = str(TempNumLine[0])  # Create the plane surface 
+         for Val in TempNumLine[1:]:     #  ('Plane Surface(Surface 
+            TempLine = (TempLine+', '+   #    Number) = {Line Loop N};')
+                        str(Val))        #
+         code.append('Line Loop('+       #  which is based on the Line 
+                 str(NbLoop)+            #  Loop N ('Line Loop(N) = {
+                 ') = {'+TempLine+'};\n')#  Line 1, Line 2,...,Line n};')
+         code.append('Plane Surface('+   #  which define the wire of the
+                   str(NbSurface)+       #  plane surface
+                   ') = {'+              #
+                   str(NbSurface)+'};\n')#  
+         NbSurface = NbSurface+1         # Update NbSurface
+         NbLoop = NbLoop+1               # Update NbLoop
+         FaceList.append(TempFace)       #
+   if Debug == 1:                        # For Debug
+      print 'F_3DFACE() function End'    # 
+   return code                           #
+
+                                         #
+##########################################################################
+#                                                                        #
+#   Function F_3DSOLID :             Status: Not Implemented             #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Out : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Description :                                                        #
+#                                                                        #
+#   Comments :                                                           #
+#      The F_3DSOLID function is not implemented, there is no sutch      #
+#      object in the geo format.                                         #
+#                                                                        #
+##########################################################################
+                                         #
+def F_3DSOLID():                         # F_3DSOLID Function  
+   if Debug == 1:                        # For Debug
+      print 'F_3DSOLID() function Start' # 
+   print ('\n ARC entity is not '+       # Message  
+                             'supported')#
+   code = ['0']                          # Return code
+   if Debug == 1:                        # For Debug
+      print 'F_3DSOLID() function End'   #
+   return code                           #
+                                         #
+##########################################################################
+#                                                                        #
+#   Function F_ACAD_PROXY_ENTITY :   Status: Not Implemented             #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Out : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Description :                                                        #
+#                                                                        #
+#   Comments :                                                           #
+#      The F_ACAD_PROXY_ENTITY function is not implemented, there is no  #
+#      sutch object in the geo format.                                   #
+#                                                                        #
+##########################################################################
+                                         #
+def F_ACAD_PROXY_ENTITY():               # F_ACAD_PROXY_ENTITY Function  
+   if Debug == 1:                        # For Debug
+      print ('F_ACAD_PROXY_ENTITY() '+   #
+                        'function Start')# 
+   print ('\n  ACAD_PROXY_ENTITY entity'+# Message
+                     ' is not supported')#
+   code = ['0']                          # Return code
+   if Debug == 1:                        # For Debug
+      print ('F_ACAD_PROXY_ENTITY() '+   #
+                          'function End')#
+   return code                           #
+                                         #
+##########################################################################
+#                                                                        #
+#   Function F_ARC :                 Status: Implemented                 #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Out : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Description :                                                        #
+#      The F_ARC function convert the ARC entity of the dxf format to    #
+#      the circle object of the geo format.                              #
+#                                                                        #
+#   Comments :                                                           #
+#                                                                        #
+##########################################################################
+                                         #
+def F_ARC():                             # F_ARC Function  
+   if Debug == 1:                        # For Debug
+      print 'F_ARC() function Start'     #    
+   print ('\n ARC entity is not '+       # Message  
+                             'supported')#
+   code = ['0']                          # Return code
+   if Debug == 1:                        # For Debug
+      print 'F_ARC() function End'       #      code = ['0']
+   return code                           #
+                                         #
+##########################################################################
+#                                                                        #
+#   Function F_ATTDEF :              Status: Not Implemented             #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Out : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Description :                                                        #
+#                                                                        #
+#   Comments :                                                           #
+#      The F_ATTDEF function is not implemented, there is no sutch object#
+#      in the geo format.                                                #
+#                                                                        #
+##########################################################################
+                                         #
+def F_ATTDEF():                          # F_ATTDEF Function  
+   if Debug == 1:                        # For Debug
+      print 'F_ATTDEF() function Start'  # 
+   print ('\n ATTDEF entity is not '+    # Message  
+                             'supported')#
+   code = ['0']                          # Return code
+   if Debug == 1:                        # For Debug
+      print 'F_ATTDEF() function End'    # 
+   return code                           #
+                                         #
+##########################################################################
+#                                                                        #
+#   Function F_ATTRIB :              Status: Not Implemented             #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Out : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Description :                                                        #
+#                                                                        #
+#   Comments :                                                           #
+#      The F_ATTRIB function is not implemented, there is no sutch object#
+#      in the geo format.                                                #
+#                                                                        #
+##########################################################################
+                                         #
+def F_ATTRIB():                          # F_ATTRIB Function  
+   if Debug == 1:                        # For Debug
+      print 'F_ATTRIB() function Start'  # 
+   print ('\n ATTRIB entity is not '+    # Message  
+                             'supported')#
+   code = ['0']                          # Return code
+   if Debug == 1:                        # For Debug
+      print 'F_ATTRIB() function End'    # 
+   return code                           #
+                                         #
+##########################################################################
+#                                                                        #
+#   Function F_BODY :                Status: Not Implemented             #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Out : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Description :                                                        #
+#                                                                        #
+#   Comments :                                                           #
+#      The F_BODY function is not implemented, there is no sutch object  #
+#      in the geo format.                                                #
+#                                                                        #
+##########################################################################
+                                         #
+def F_BODY():                            # F_BODY Function  
+   if Debug == 1:                        # For Debug
+      print 'F_BODY() function Start'    # 
+   print ('\n BODY entity is not '+      # Message  
+                             'supported')#
+   code = ['0']                          # Return code
+   if Debug == 1:                        # For Debug
+      print 'F_BODY() function End'      # 
+   return code                           #
+                                         #
+##########################################################################
+#                                                                        #
+#   Function F_CIRCLE :              Status: Implemented                 #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Out : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Description :                                                        #
+#      The F_CIRCLE function convert the CIRCLE entity of the dxf format #
+#      to the circle object of the geo format.                           #
+#                                                                        #
+#   Comments :                                                           #
+#                                                                        #
+##########################################################################
+                                         #
+def F_CIRCLE():                          # F_CIRCLE Function  
+   if Debug == 1:                        # For Debug
+      print 'F_CIRCLE() function Start'  # 
+   print ('\n CIRCLE entity is not '+    # Message  
+                             'supported')#
+   code = ['0']                          # Return code
+   if Debug == 1:                        # For Debug
+      print 'F_CIRCLE() function End'    #
+   return code                           #
+                                         #
+##########################################################################
+#                                                                        #
+#   Function F_DIMENSION :           Status: Not Implemented             #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Out : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Description :                                                        #
+#                                                                        #
+#   Comments :                                                           #
+#      The F_DIMENSION function is not implemented, there is no sutch    #
+#      object in the geo format.                                         #
+#                                                                        #
+##########################################################################
+                                         #
+def F_DIMENSION():                       # F_DIMENSION Function  
+   if Debug == 1:                        # For Debug
+      print ('F_DIMENSION() function '+  # 
+                                 'Start')#
+   print ('\n DIMENSION entity is not '+ # Message  
+                             'supported')#
+   code = ['0']                          # Return code
+   if Debug == 1:                        # For Debug
+      print 'F_DIMENSION() function End' #  
+   return code                           #
+                                         #
+##########################################################################
+#                                                                        #
+#   Function F_ELLIPSE :             Status: Implemented                 #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Out : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Description :                                                        #
+#      The F_ELLIPSE function convert the CIRCLE entity of the dxf format#
+#      to the ELLIPSE object of the geo format.                          #
+#                                                                        #
+#   Comments :                                                           #
+#                                                                        #
+##########################################################################
+                                         #
+def F_ELLIPSE():                         # F_ELLIPSE Function  
+   if Debug == 1:                        # For Debug
+      print 'F_ELLIPSE() function Start' # 
+   print ('\n ELLIPSE entity is not '+   # Message  
+                             'supported')#
+   code = ['0']                          # Return code
+   if Debug == 1:                        # For Debug
+      print 'F_ELLIPSE() function End'   #
+   return code                           #
+                                         #
+##########################################################################
+#                                                                        #
+#   Function F_HATCH :               Status: Not Implemented             #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Out : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Description :                                                        #
+#                                                                        #
+#   Comments :                                                           #
+#      The F_HATCH function is not implemented, there is no sutch        #
+#      object in the geo format.                                         #
+#                                                                        #
+##########################################################################
+                                         #
+def F_HATCH():                           # F_HATCH Function  
+   if Debug == 1:                        # For Debug
+      print 'F_HATCH() function Start'   # 
+   print ('\n HATCH entity is not '+     # Message  
+                             'supported')#
+   code = ['0']                          # Return code
+   if Debug == 1:                        # For Debug
+      print 'F_HATCH() function End'     #
+   return code                           #
+                                         #
+##########################################################################
+#                                                                        #
+#   Function F_IMAGE :               Status: Not Implemented             #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Out : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Description :                                                        #
+#                                                                        #
+#   Comments :                                                           #
+#      The F_IMAGE function is not implemented, there is no sutch        #
+#      object in the geo format.                                         #
+#                                                                        #
+##########################################################################
+                                         #
+def F_IMAGE():                           # F_IMAGE Function  
+   if Debug == 1:                        # For Debug
+      print 'F_IMAGE() function Start'   # 
+   print ('\n IMAFE entity is not '+     # Message  
+                             'supported')#
+   code = ['0']                          # Return code
+   if Debug == 1:                        # For Debug
+      print 'F_IMAGE() function End'     #
+   return code                           #
+                                         #
+##########################################################################
+#                                                                        #
+#   Function F_INSERT :              Status: Not Implemented             #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Out : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Description :                                                        #
+#                                                                        #
+#   Comments :                                                           #
+#      The F_INSERT function is not implemented, there is no sutch       #
+#      object in the geo format.                                         #
+#                                                                        #
+##########################################################################
+                                         #
+def F_INSERT():                          # F_INSERT Function  
+   if Debug == 1:                        # For Debug
+      print 'F_INSERT() function Start'  # 
+   print ('\n INSERT entity is not '+    # Message  
+                             'supported')#
+   code = ['0']                          # Return code
+   if Debug == 1:                        # For Debug
+      print 'F_INSERT() function End'    #
+   return code                           #
+                                         #
+##########################################################################
+#                                                                        #
+#   Function F_LEADER :              Status: Not Implemented             #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Out : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Description :                                                        #
+#                                                                        #
+#   Comments :                                                           #
+#      The F_LEADER function is not implemented, there is no sutch       #
+#      object in the geo format.                                         #
+#                                                                        #
+##########################################################################
+                                         #
+def F_LEADER():                          # F_LEADER Function  
+   if Debug == 1:                        # For Debug
+      print 'F_LEADER() function Start'  # 
+   print ('\n LEADER entity is not '+    # Message  
+                             'supported')#
+   code = ['0']                          # Return code
+   if Debug == 1:                        # For Debug
+      print 'F_LEADER() function End'    #
+   return code                           #
+                                         #
+##########################################################################
+#                                                                        #
+#   Function F_LINE :                Status: Implemented                 #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Out : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Description :                                                        #
+#      The F_LINE function convert the LINE entity of the dxf format to  #
+#      the LINE object of the geo format.                                #
+#                                                                        #
+#   Comments :                                                           #
+#                                                                        #
+##########################################################################
+                                         #
+def F_LINE():                            # F_LINE Function  
+   if Debug == 1:                        # For Debug
+      print 'F_LINE() function Start'    # 
+   print ('\n LINE entity is not '+      # Message  
+                             'supported')#
+   code = ['0']                          # Return code
+   if Debug == 1:                        # For Debug
+      print 'F_LINE() function End'      #
+   return code                           #
+                                         #
+##########################################################################
+#                                                                        #
+#   Function F_LWPOLYLINE :          Status: Implemented                 #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Out : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Description :                                                        #
+#      The F_LWPOLYLINE function convert the LWPOLYLINE entity of the dxf#
+#      format to the surface object of the geo format.                   #
+#                                                                        #
+#   Comments :                                                           #
+#                                                                        #
+##########################################################################
+                                         #
+def F_LWPOLYLINE():                      # F_LWPOLYLINE Function  
+   if Debug == 1:                        # For Debug
+      print ('F_LWPOLYLINE() function '+ # 
+                                 'Start')# 
+   print ('\n LWPOLYLINE entity is not '+# Message  
+                             'supported')#
+   code = ['0']                          # Return code
+   if Debug == 1:                        # For Debug
+      print 'F_LWPOLYLINE() function End'#
+   return code                           #
+                                         #
+##########################################################################
+#                                                                        #
+#   Function F_MLINE :               Status: Not Implemented             #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Out : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Description :                                                        #
+#                                                                        #
+#   Comments :                                                           #
+#      The F_MLINE function is not implemented, there is no sutch        #
+#      object in the geo format.                                         #
+#                                                                        #
+##########################################################################
+                                         #
+def F_MLINE():                           # F_MLINE Function  
+   if Debug == 1:                        # For Debug
+      print 'F_MLINE() function Start'   # 
+   print ('\n MLINE entity is not '+     # Message  
+                             'supported')#
+   code = ['0']                          # Return code
+   if Debug == 1:                        # For Debug
+      print 'F_MLINE() function End'     #
+   return code                           #
+                                         #
+##########################################################################
+#                                                                        #
+#   Function F_MTEXT :               Status: Not Implemented             #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Out : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Description :                                                        #
+#                                                                        #
+#   Comments :                                                           #
+#      The F_MTEXT function is not implemented, there is no sutch        #
+#      object in the geo format.                                         #
+#                                                                        #
+##########################################################################
+                                         #
+def F_MTEXT():                           # F_MTEXT Function  
+   if Debug == 1:                        # For Debug
+      print 'F_MTEXT() function Start'   # 
+   print ('\n MTEXT entity is not '+     # Message  
+                             'supported')#
+   code = ['0']                          # Return code
+   if Debug == 1:                        # For Debug
+      print 'F_MTEXT() function End'     #
+   return code                           #
+                                         #
+##########################################################################
+#                                                                        #
+#   Function F_OLEFRAME :            Status: Not Implemented             #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Out : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Description :                                                        #
+#                                                                        #
+#   Comments :                                                           #
+#      The F_OLEFRAME function is not implemented, there is no sutch     #
+#      object in the geo format.                                         #
+#                                                                        #
+##########################################################################
+                                         #
+def F_OLEFRAME():                        # F_OLEFRAME Function  
+   if Debug == 1:                        # For Debug
+      print 'F_OLEFRAME() function Start'# 
+   print ('\n OLEFRAME entity is not '+  # Message  
+                             'supported')#
+   code = ['0']                          # Return code
+   if Debug == 1:                        # For Debug
+      print 'F_OLEFRAME() function End'  #
+   return code                           #
+                                         #
+##########################################################################
+#                                                                        #
+#   Function F_OLE2FRAME :           Status: Not Implemented             #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Out : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Description :                                                        #
+#                                                                        #
+#   Comments :                                                           #
+#      The F_OLE2FRAME function is not implemented, there is no sutch    #
+#      object in the geo format.                                         #
+#                                                                        #
+##########################################################################
+                                         #
+def F_OLE2FRAME():                       # F_OLE2FRAME Function  
+   if Debug == 1:                        # For Debug
+      print ('F_OLE2FRAME() function '+  #
+                                 'Start')# 
+   print ('\n OLE2FRAME entity is not '+ # Message  
+                             'supported')#
+   code = ['0']                          # Return code
+   if Debug == 1:                        # For Debug
+      print 'F_OLE2FRAME() function End' #
+   return code                           #
+                                         #
+##########################################################################
+#                                                                        #
+#   Function F_POINT :               Status: Implemented                 #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Out : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Description :                                                        #
+#      The F_POINT function convert the POINT entity of the dxf format to#
+#      the POINT object of the geo format.                               #
+#                                                                        #
+#   Comments :                                                           #
+#                                                                        #
+##########################################################################
+                                         #
+def F_POINT():                           # F_POINT Function  
+   if Debug == 1:                        # For Debug
+      print 'F_POINT() function Start'   # 
+   print ('\n POINT entity is not '+     # Message  
+                             'supported')#
+   code = ['0']                          # Return code
+   if Debug == 1:                        # For Debug
+      print 'F_POINT() function End'     #
+   return code                           #
+                                         #
+##########################################################################
+#                                                                        #
+#   Function F_POLYLINE :            Status: Implemented                 #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  : NbPoint, Integer, Glopbal                                      #
+#         NbCurve, Integer, Glopbal                                      #
+#         NbSurface, Integer, Glopbal                                    #
+#         ReadValue , Integer, Global                                    #
+#                                                                        #
+#   Out : NbPoint, Integer, Glopbal                                      #
+#         NbCurve, Integer, Glopbal                                      #
+#         NbSurface, Integer, Glopbal                                    #
+#         ReadValue , Integer, Global                                    #
+#         code, list of string, Local                                    #
+#                                                                        #
+#   Description :                                                        #
+#      The F_POLYLINE function convert the POLYLINE entity of the dxf    #
+#      format to the surface object of the geo format.                   #
+#                                                                        #
+#   Comments :                                                           #
+#                                                                        #
+##########################################################################
+                                         #
+def F_POLYLINE():                        # F_POLYLINE Function  
+   global NbPoint                        # Declare NbPoint scope
+   global NbCurve                        # Declare NbCurve scope 
+   global NbSurface                      # Declare NbSurface scope   
+   global ReadValue                      # Declare ReadValue scope
+   if Debug == 1:                        # For Debug
+      print ('F_POLYLINE() function '+   # 
+                                 'Start')# 
+   ReadValue = 1                         # Variable has to be read in the
+                                         #  Value_Cmd function
+   code = []                             # Init return code
+   code.append('1')                      # Fisrt element of code is a 
+                                         #  return code which indicates 
+                                         #  which treatment has to be done
+                                         #  in the main loop after the 
+                                         #  call of the present function
+                                         #  1 means write in the output
+                                         #  file, 0 means do nothing
+   Value = []                            # Init Value List
+   NumPoint = []                         # Init NumPoint List
+   NumLine = []                          # Init NumLine List
+   line = ReadLine()                     # Read the next line
+   while line <> 'SEQEND':               # While line is different to 
+      ret = AC_KeyWord[line]()           #  'SEQEND' call the 
+                                         #   corresponding function 
+      if ret <> 0:                       #  if the return of the function 
+         Value.append(ret)               #   is different to 0 then update
+      if line == '33':                   #  If line = '33' ReadValue = 0 
+         ReadValue = 0                   #   We have all the coordinates,
+                                         #   we don't need to read more 
+                                         #   values 
+      line = ReadLine()                  #   the Value List.
+
+
+
+   ReadValue = 0                         # We don't need to read more   
+                                         #  values 
+
+
+
+
+
+
+
+
+
+   if Debug == 1:                        # For Debug
+      print 'F_POLYLINE() function End'  #
+   return code                           #
+                                         #
+##########################################################################
+#                                                                        #
+#   Function F_RAY :                 Status: Not Implemented             #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Out : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Description :                                                        #
+#                                                                        #
+#   Comments :                                                           #
+#      The F_RAY function is not implemented, there is no sutch          #
+#      object in the geo format.                                         #
+#                                                                        #
+##########################################################################
+                                         #
+def F_RAY():                             # F_RAY Function  
+   if Debug == 1:                        # For Debug
+      print 'F_RAY() function Start'     # 
+   print ('\n RAY entity is not '+       # Message  
+                             'supported')#
+   code = ['0']                          # Return code
+   if Debug == 1:                        # For Debug
+      print 'F_RAY() function End'       #
+   return code                           #
+                                         #
+##########################################################################
+#                                                                        #
+#   Function F_REGION :              Status: Not Implemented             #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Out : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Description :                                                        #
+#                                                                        #
+#   Comments :                                                           #
+#      The F_REGION function is not implemented, there is no sutch       #
+#      object in the geo format.                                         #
+#                                                                        #
+##########################################################################
+                                         #
+def F_REGION():                          # F_REGION Function  
+   if Debug == 1:                        # For Debug
+      print 'F_REGION() function Start'  # 
+   print ('\n REGION entity is not '+    # Message  
+                             'supported')#
+   code = ['0']                          # Return code
+   if Debug == 1:                        # For Debug
+      print 'F_REGION() function End'    #
+   return code                           #
+                                         #
+##########################################################################
+#                                                                        #
+#   Function F_SEQEND :              Status: Implemented                 #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Out : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Description :                                                        #
+#      ???????????????????????????????????????????????????????????????   #
+#      ???????????????????????????????????????????????????????????????   #
+#                                                                        #
+#   Comments :                                                           #
+#                                                                        #
+##########################################################################
+                                         #
+def F_SEQEND():                          # F_SEQEND Function  
+   if Debug == 1:                        # For Debug
+      print 'F_SEQEND() function Start'  # 
+   code = ['0']                          # Return code
+   if Debug == 1:                        # For Debug
+      print 'F_REGION() function End'    #
+   return code                           #
+                                         #
+##########################################################################
+#                                                                        #
+#   Function F_SHAPE :               Status: Not Implemented             #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Out : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Description :                                                        #
+#                                                                        #
+#   Comments :                                                           #
+#      The F_SHAPE function is not implemented, there is no sutch        #
+#      object in the geo format.                                         #
+#                                                                        #
+##########################################################################
+                                         #
+def F_SHAPE():                           # F_SHAPE Function  
+   if Debug == 1:                        # For Debug
+      print 'F_SHAPE() function Start'   # 
+   print ('\n SHAPE entity is not '+     # Message  
+                             'supported')#
+   code = ['0']                          # Return code
+   if Debug == 1:                        # For Debug
+      print 'F_SHAPE() function End'     #
+   return code                           #
+                                         #
+##########################################################################
+#                                                                        #
+#   Function F_SOLID :               Status: Implemented                 #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Out : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Description :                                                        #
+#      The F_SOLID function convert the SOLID entity of the dxf          #
+#      format to the surface object of the geo format.                   #
+#                                                                        #
+#   Comments :                                                           #
+#                                                                        #
+##########################################################################
+                                         #
+def F_SOLID():                           # F_SOLID Function  
+   if Debug == 1:                        # For Debug
+      print 'F_SOLID() function Start'   # 
+   print ('\n SOLID entity is not '+     # Message  
+                             'supported')#
+   code = ['0']                          # Return code
+   if Debug == 1:                        # For Debug
+      print 'F_SOLID() function End'     #
+   return code                           #
+                                         #
+##########################################################################
+#                                                                        #
+#   Function F_SPLINE :              Status: Implemented                 #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Out : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Description :                                                        #
+#      The F_SPLINE function convert the SPLINE entity of the dxf        #
+#      format to the surface object of the geo format.                   #
+#                                                                        #
+#   Comments :                                                           #
+#                                                                        #
+##########################################################################
+                                         #
+def F_SPLINE():                          # F_SPLINE Function  
+   if Debug == 1:                        # For Debug
+      print 'F_SPLINE() function Start'  # 
+   print ('\n SPLINE entity is not '+    # Message  
+                             'supported')#
+   code = ['0']                          # Return code
+   if Debug == 1:                        # For Debug
+      print 'F_SPLINE() function End'    #
+   return code                           #
+                                         #
+##########################################################################
+#                                                                        #
+#   Function F_TEXT :                Status: Not Implemented             #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Out : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Description :                                                        #
+#                                                                        #
+#   Comments :                                                           #
+#      The F_TEXT function is not implemented, there is no sutch         #
+#      object in the geo format.                                         #
+#                                                                        #
+##########################################################################
+                                         #
+def F_TEXT():                            # F_TEXT Function  
+   if Debug == 1:                        # For Debug
+      print 'F_TEXT() function Start'    # 
+   print ('\n TEXT entity is not '+      # Message  
+                             'supported')#
+   code = ['0']                          # Return code
+   if Debug == 1:                        # For Debug
+      print 'F_TEXT() function End'      #
+   return code                           #
+                                         #
+##########################################################################
+#                                                                        #
+#   Function F_TOLERANCE :           Status: Not Implemented             #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Out : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Description :                                                        #
+#                                                                        #
+#   Comments :                                                           #
+#      The F_TOLERANCE function is not implemented, there is no sutch    #
+#      object in the geo format.                                         #
+#                                                                        #
+##########################################################################
+                                         #
+def F_TOLERANCE():                       # F_TOLERANCE Function  
+   if Debug == 1:                        # For Debug
+      print ('F_TOLERANCE() function '+  #
+                                 'Start')# 
+   print ('\n TOLERANCE entity is not '+ # Message  
+                             'supported')#
+   code = ['0']                          # Return code
+   if Debug == 1:                        # For Debug
+      print 'F_TOLERANCE() function End' #
+   return code                           #
+                                         #
+##########################################################################
+#                                                                        #
+#   Function F_TRACE :               Status: Implemented                 #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Out : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Description :                                                        #
+#      The F_TRACE function convert the TRACE entity of the dxf format to#
+#      the surface object of the geo format.                             #
+#                                                                        #
+#   Comments :                                                           #
+#                                                                        #
+##########################################################################
+                                         #
+def F_TRACE():                           # F_TRACE Function  
+   if Debug == 1:                        # For Debug
+      print 'F_TRACE() function Start'   # 
+   print ('\n TRACE entity is not '+     # Message  
+                             'supported')#
+   code = ['0']                          # Return code
+   if Debug == 1:                        # For Debug
+      print 'F_TRACE() function End'     #
+   return code                           #
+                                         #
+##########################################################################
+#                                                                        #
+#   Function F_VERTEX :              Status: Implemented                 #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Out : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Description :                                                        #
+#      ???????????????????????????????????????????????????????????????   #
+#      ???????????????????????????????????????????????????????????????   #
+#                                                                        #
+#   Comments :                                                           #
+#                                                                        #
+##########################################################################
+                                         #
+def F_VERTEX():                          # F_VERTEX Function  
+   if Debug == 1:                        # For Debug
+      print 'F_VERTEX() function Start'  # 
+   code = ['0']                          # Return code
+   if Debug == 1:                        # For Debug
+      print 'F_VERTEX() function End'    #
+   return code                           #
+                                         #
+##########################################################################
+#                                                                        #
+#   Function F_VIEWPORT :            Status: Not Implemented             #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Out : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Description :                                                        #
+#                                                                        #
+#   Comments :                                                           #
+#      The F_VIEWPORT function is not implemented, there is no sutch     #
+#      object in the geo format.                                         #
+#                                                                        #
+##########################################################################
+                                         #
+def F_VIEWPORT():                        # F_VIEWPORT Function  
+   if Debug == 1:                        # For Debug
+      print 'F_VIEWPORT() function Start'# 
+   print ('\n VIEWPORT entity is not '+  # Message  
+                             'supported')#
+   code = ['0']                          # Return code
+   if Debug == 1:                        # For Debug
+      print 'F_VIEWPORT() function End'  #
+   return code                           #
+                                         #
+##########################################################################
+#                                                                        #
+#   Function F_XLINE :               Status: Not Implemented             #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Out : Variable Name ???, Variable Type ???, Variable Scope ???       #
+#                                                                        #
+#   Description :                                                        #
+#                                                                        #
+#   Comments :                                                           #
+#      The F_XLINE function is not implemented, there is no sutch        #
+#      object in the geo format.                                         #
+#                                                                        #
+##########################################################################
+                                         #
+def F_XLINE():                           # F_XLINE Function  
+   if Debug == 1:                        # For Debug
+      print 'F_XLINE() function Start'   # 
+   print ('\n XLINE entity is not '+     # Message  
+                             'supported')#
+   code = ['0']                          # Return code
+   if Debug == 1:                        # For Debug
+      print 'F_XLINE() function End'     #
+   return code                           # 
+                                         #
+##########################################################################
+#                                                                        #
+#   Function NA_Cmd :                Status: Implemented                 #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  :                                                                #
+#                                                                        #
+#   Out : code, list of string, local                                    #
+#                                                                        #
+#   Description :                                                        #
+#       Do nothing, is use for AutoCad code which are not applicable     #
+#                                                                        #
+#   Comments :                                                           #
+#                                                                        #
+##########################################################################
+                                         #
+def NA_Cmd():                            # Na_Cmd Function  
+   if Debug == 1:                        # For Debug
+      print 'NA_Cmd() function Start'    # 
+   code = ['0']                          # Return code
+   if Debug == 1:                        # For Debug
+      print 'NA_Cmd() function End'      # 
+   return code                           #                  
+                                         #
+##########################################################################
+#                                                                        #
+#   Function Seperating_Cmd :        Status: Implemented                 #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  :                                                                #
+#                                                                        #
+#   Out : code, list of string, local                                    #
+#                                                                        #
+#   Description :                                                        #
+#      Do nothing                                                        #
+#                                                                        #
+#   Comments :                                                           #
+#                                                                        #
+##########################################################################
+                                         #
+def Seperating_Cmd():                    # Seperating_Cmd Function  
+   if Debug == 1:                        # For Debug
+      print ('Seperating_Cmd() function'+#
+                                ' Start')# 
+   code = ['0']                          # Return code
+   if Debug == 1:                        # For Debug
+      print ('Seperating_Cmd() function'+#
+                                  ' End')# 
+   return code                           #                  
+                                         #
+##########################################################################
+#                                                                        #
+#   Function Value_Cmd :             Status: Implemented                 #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  :                                                                #
+#                                                                        #
+#   Out : line, string, local                                            #
+#                                                                        #
+#   Description :                                                        #
+#      If ReadValue = 1 then read the current line, else jump the        #
+#      current line.                                                     #
+#                                                                        #
+#   Comments :                                                           #
+#                                                                        #
+##########################################################################
+                                         #
+def Value_Cmd():                         # Value_Cmd Function  
+   if Debug == 1:                        # For Debug
+      print 'Value_Cmd() function Start' # 
+   if ReadValue == 1:                    # If ReadValue = 1 then read the
+      line = ReadLine()                  #  line
+   else:                                 # Else jump the line with  
+      line = NextLine_Cmd()              #  NextLine_Cmd function      
+   if Debug == 1:                        # For Debug
+      print 'Value_Cmd() function End'   # 
+   return line                           # 
+                                         #
+##########################################################################
+#                                                                        #
+#   Function NextLine_Cmd :          Status: Implemented                 #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  :                                                                #
+#                                                                        #
+#   Out : code, list of string, local                                    #
+#                                                                        #
+#   Description :                                                        #
+#      Do nothing, is just used to jump a line in the reading if         #
+#      necessary                                                         #
+#                                                                        #
+#   Comments :                                                           #
+#                                                                        #
+##########################################################################
+                                         #
+def NextLine_Cmd():                      # Value_Cmd Function
+   if Debug == 1:                        # For Debug
+      print ('NextLine_Cmd() function '+ #
+                                 'Start')# 
+   line = ReadLine()                     # Jump the current reading line:
+   code = '0'                            #  Return code ='0' and not line
+   if Debug == 1:                        # For Debug
+      print 'NextLine_Cmd() function End'# 
+   return code                           #                   
+                                         #
+##########################################################################
+#                                                                        #
+#   Function SubClassMarker_Cmd :    Status: Implemented                 #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  :                                                                #
+#                                                                        #
+#   Out : code, list of string, local                                    #
+#                                                                        #
+#   Description :                                                        #
+#      Do nothing                                                        #
+#                                                                        #
+#   Comments :                                                           #
+#                                                                        #
+##########################################################################
+                                         #
+def SubClassMarker_Cmd():                # SubClassMarker_Cmd Function  
+   if Debug == 1:                        # For Debug
+      print ('SubClassMarker_Cmd() '+    #
+                        'function Start')# 
+   code = ['0']                          # Return code
+   if Debug == 1:                        # For Debug
+      print ('SubClassMarker_Cmd() '+    #
+                        'function End')  # 
+   return code                           #                               
+                                         #
+##########################################################################
+#                                                                        #
+#   Function Section_Cmd :           Status: Implemented                 #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  :                                                                #
+#                                                                        #
+#   Out : code, list of string, local                                    #
+#                                                                        #
+#   Description :                                                        #
+#      Do nothing                                                        #
+#                                                                        #
+#   Comments :                                                           #
+#                                                                        #
+##########################################################################
+                                         #
+def Section_Cmd():                       # Section_Cmd Function  
+   if Debug == 1:                        # For Debug
+      print ('Section_Cmd() function '+  #
+                                 'Start')# 
+   code = ['0']                          # Return code
+   if Debug == 1:                        # For Debug
+      print 'Section_Cmd() function End' # 
+   return code                           #                               
+                                         #
+##########################################################################
+#                                                                        #
+#   Function Endsec_Cmd :            Status: Implemented                 #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  :                                                                #
+#                                                                        #
+#   Out : code, list of string, local                                    #
+#                                                                        #
+#   Description :                                                        #
+#      Do nothing                                                        #
+#                                                                        #
+#   Comments :                                                           #
+#                                                                        #
+##########################################################################
+                                         #
+def Endsec_Cmd():                        # Endsec_Cmd Function  
+   if Debug == 1:                        # For Debug
+      print ('Endsec_Cmd() function '+   #
+                                 'Start')# 
+   code = ['0']                          # Return code
+   if Debug == 1:                        # For Debug
+      print 'Endsec_Cmd() function End'  # 
+   return code                           #                               
+                                         #
+##########################################################################
+#                                                                        #
+#   Function Header_Cmd :            Status: Implemented                 #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  :                                                                #
+#                                                                        #
+#   Out : code, list of string, local                                    #
+#                                                                        #
+#   Description :                                                        #
+#      Do nothing                                                        #
+#                                                                        #
+#   Comments :                                                           #
+#                                                                        #
+##########################################################################
+                                         #
+def Header_Cmd():                        # Header_Cmd Function  
+   if Debug == 1:                        # For Debug
+      print ('Header_Cmd() function '+   #
+                                 'Start')# 
+   code = ['0']                          # Return code
+   if Debug == 1:                        # For Debug
+      print 'Header_Cmd() function End'  # 
+   return code                           #                               
+                                         #
+##########################################################################
+#                                                                        #
+#   Function Classes_Cmd :           Status: Implemented                 #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  :                                                                #
+#                                                                        #
+#   Out : code, list of string, local                                    #
+#                                                                        #
+#   Description :                                                        #
+#      Do nothing                                                        #
+#                                                                        #
+#   Comments :                                                           #
+#                                                                        #
+##########################################################################
+                                         #
+def Classes_Cmd():                       # Classes_Cmd Function  
+   if Debug == 1:                        # For Debug
+      print ('Classes_Cmd() function '+  #
+                                 'Start')# 
+   code = ['0']                          # Return code
+   if Debug == 1:                        # For Debug
+      print 'Classes_Cmd() function End' # 
+   return code                           #                               
+                                         #
+##########################################################################
+#                                                                        #
+#   Function Class_Cmd :             Status: Implemented                 #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  :                                                                #
+#                                                                        #
+#   Out : code, list of string, local                                    #
+#                                                                        #
+#   Description :                                                        #
+#      Do nothing                                                        #
+#                                                                        #
+#   Comments :                                                           #
+#                                                                        #
+##########################################################################
+                                         #
+def Class_Cmd():                         # Class_Cmd Function  
+   if Debug == 1:                        # For Debug
+      print 'Class_Cmd() function Start' # 
+   code = ['0']                          # Return code
+   if Debug == 1:                        # For Debug
+      print 'Class_Cmd() function End'   # 
+   return code                           #                               
+                                         #
+##########################################################################
+#                                                                        #
+#   Function Tables_Cmd :            Status: Implemented                 #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  :                                                                #
+#                                                                        #
+#   Out : code, list of string, local                                    #
+#                                                                        #
+#   Description :                                                        #
+#      Do nothing                                                        #
+#                                                                        #
+#   Comments :                                                           #
+#                                                                        #
+##########################################################################
+                                         #
+def Tables_Cmd():                        # Tables_Cmd Function  
+   if Debug == 1:                        # For Debug
+      print 'Tables_Cmd() function Start'# 
+   code = ['0']                          # Return code
+   if Debug == 1:                        # For Debug
+      print 'Tables_Cmd() function End'  # 
+   return code                           #                               
+                                         #
+##########################################################################
+#                                                                        #
+#   Function Table_Cmd :             Status: Implemented                 #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  :                                                                #
+#                                                                        #
+#   Out : code, list of string, local                                    #
+#                                                                        #
+#   Description :                                                        #
+#      Do nothing                                                        #
+#                                                                        #
+#   Comments :                                                           #
+#                                                                        #
+##########################################################################
+                                         #
+def Table_Cmd():                         # Table_Cmd Function  
+   if Debug == 1:                        # For Debug
+      print 'Table_Cmd() function Start' # 
+   code = ['0']                          # Return code
+   if Debug == 1:                        # For Debug
+      print 'Table_Cmd() function End'   # 
+   return code                           #                               
+                                         #
+##########################################################################
+#                                                                        #
+#   Function Endtab_Cmd :            Status: Implemented                 #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  :                                                                #
+#                                                                        #
+#   Out : code, list of string, local                                    #
+#                                                                        #
+#   Description :                                                        #
+#      Do nothing                                                        #
+#                                                                        #
+#   Comments :                                                           #
+#                                                                        #
+##########################################################################
+                                         #
+def Endtab_Cmd():                        # Endtab_Cmd Function  
+   if Debug == 1:                        # For Debug
+      print 'Endtab_Cmd() function Start'# 
+   code = ['0']                          # Return code
+   if Debug == 1:                        # For Debug
+      print 'Endtab_Cmd() function End'  # 
+   return code                           #                               
+                                         #
+##########################################################################
+#                                                                        #
+#   Function Blocks_Cmd :            Status: Implemented                 #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  :                                                                #
+#                                                                        #
+#   Out : code, list of string, local                                    #
+#                                                                        #
+#   Description :                                                        #
+#      Do nothing                                                        #
+#                                                                        #
+#   Comments :                                                           #
+#                                                                        #
+##########################################################################
+                                         #
+def Blocks_Cmd():                        # Blocks_Cmd Function  
+   if Debug == 1:                        # For Debug
+      print 'Blocks_Cmd() function Start'# 
+   code = ['0']                          # Return code
+   if Debug == 1:                        # For Debug
+      print 'Blocks_Cmd() function End'  # 
+   return code                           #                               
+                                         #
+##########################################################################
+#                                                                        #
+#   Function EndBlk_Cmd :            Status: Implemented                 #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  :                                                                #
+#                                                                        #
+#   Out : code, list of string, local                                    #
+#                                                                        #
+#   Description :                                                        #
+#      Do nothing                                                        #
+#                                                                        #
+#   Comments :                                                           #
+#                                                                        #
+##########################################################################
+                                         #
+def Endblk_Cmd():                        # Endblk_Cmd Function  
+   if Debug == 1:                        # For Debug
+      print 'Ensblk_Cmd() function Start'# 
+   code = ['0']                          # Return code
+   if Debug == 1:                        # For Debug
+      print 'Endblk_Cmd() function End'  # 
+   return code                           #                               
+                                         #
+##########################################################################
+#                                                                        #
+#   Function Entities_Cmd :          Status: Implemented                 #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  :                                                                #
+#                                                                        #
+#   Out : code, list of string, local                                    #
+#                                                                        #
+#   Description :                                                        #
+#      Do nothing                                                        #
+#                                                                        #
+#   Comments :                                                           #
+#                                                                        #
+##########################################################################
+                                         #
+def Entities_Cmd():                      # Entities_Cmd Function  
+   if Debug == 1:                        # For Debug
+      print ('Entities_Cmd() function '+ #
+                                 'Start')# 
+   code = ['0']                          # Return code
+   if Debug == 1:                        # For Debug
+      print 'Entities_Cmd() function End'# 
+   return code                           #                               
+                                         #
+##########################################################################
+#                                                                        #
+#   Function Objets_Cmd :            Status: Implemented                 #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  :                                                                #
+#                                                                        #
+#   Out : code, list of string, local                                    #
+#                                                                        #
+#   Description :                                                        #
+#      Do nothing                                                        #
+#                                                                        #
+#   Comments :                                                           #
+#                                                                        #
+##########################################################################
+                                         #
+def Objects_Cmd():                       # Objects_Cmd Function  
+   if Debug == 1:                        # For Debug
+      print ('Objects_Cmd() function '+  #
+                                 'Start')# 
+   code = ['0']                          # Return code
+   if Debug == 1:                        # For Debug
+      print 'Objects_Cmd() function End' # 
+   return code                           #                               
+                                         #
+##########################################################################
+#                                                                        #
+#   Function Write_Cmd :             Status: Implemented                 #
+#                                                                        #
+#   Author : FW                      Creation      : 17/06/2003          #
+#                                                                        #
+#                                    Modifications : 17/06/2003  FW      #
+#                                                                        #
+#   In  : Code, list of string, global                                   #
+#                                                                        #
+#   Out : code, list of string, local                                    #
+#                                                                        #
+#   Description :                                                        #
+#      Write strings in the Code variable, in the output file            #
+#                                                                        #
+#   Comments :                                                           #
+#                                                                        #
+##########################################################################
+                                         #
+def Write_Cmd():                         # Write_Cmd Function  
+   if Debug == 1:                        # For Debug
+      print 'Write_Cmd() function Start' #
+   for Value in Code[1:]:                #
+      FileOut.write(Value)               #
+   code = ['0']                          # Return code
+   if Debug == 1:                        # For Debug
+      print 'Write_Cmd() function End'   # 
+   return code                           #                               
+                                         #
+##########################################################################
+#                                                                        #
+# Main Program                                                           #
+#                                                                        #
+##########################################################################
+                                         #
+Debug = 0                                # If Debug = 1 write debug
+                                         #  Messages, else nothing
+LineCounter = 0                          #
+OldLineCounter = 1000                    #
+NbPoint = 1                              # Init counter of Points
+NbCurve = 1                              # Init counter of Lines, Circle
+                                         #  Spline, B-Spline, Ellipse
+NbSurface = 1                            # Init counter of Plane Surface,
+                                         #  Ruled Surface 
+NbVolume = 1                             # Init Counter of Volume and of
+                                         #  Surface Loop
+NbLoop = 1                               # Init Counter Loop
+PointList = []                           # List of Point
+LineList = []                            # List Of Line
+FaceList = []                            # List Of Face 
+ReadValue = 0                            # Variable to indicate if the 
+                                         #  variable has to be read in
+                                         #  Value_Cmd function 
+                                         #  (0->No, 1->yes)               
+                                         #
+AC_KeyWord = {}                          # Create the dictionary of the 
+                                         #  AutoCad keyWords. Each 
+                                         #  keyword is linked to a 
+                                         #  function
+                                         #
+                                         # Fill the dictionary AC_KeyWord
+                                         #
+for i in range(5):                       # Code -5 to -1 call NA_Cmd 
+   AC_KeyWord[str(i-5)] = NA_Cmd         # function 
+                                         #
+AC_KeyWord['0'] = Seperating_Cmd         # Code 0 call Seperating_Cmd 
+                                         #  function 
+                                         #
+for i in range(9):                       # Code 1 to 9 call NextLine_Cmd 
+   AC_KeyWord[str(i+1)] = NextLine_Cmd   #  function
+                                         #
+for i in range(9):                       # Code 10 to 18 call Value_Cmd
+   AC_KeyWord[str(i+10)] = Value_Cmd     #  function
+                                         #
+for i in range(9):                       # Code 20 to 28 call Value_Cmd
+   AC_KeyWord[str(i+20)] = Value_Cmd     #  function
+                                         #
+for i in range(9):                       # Code 30 to 38 call Value_Cmd
+   AC_KeyWord[str(i+30)] = Value_Cmd     #  function
+                                         #  
+for i in range(20):                      # Code 39 to 58 call NextLine_Cmd
+   AC_KeyWord[str(i+39)] = NextLine_Cmd  #  function 
+                                         #
+AC_KeyWord['60'] = NextLine_Cmd          # Code 60 call NextLine_Cmd 
+                                         #  function  
+                                         #
+AC_KeyWord['62'] = NextLine_Cmd          # Code 62 call NextLine_Cmd
+                                         #  function
+                                         #
+for i in range(4):                       # Code 66 to 69 call NextLine_Cmd
+   AC_KeyWord[str(i+66)] = NextLine_Cmd  #  function
+                                         #               
+AC_KeyWord['70'] = Value_Cmd             # Code 70 call Value_Cmd function
+                                         #
+for i in range(8):                       # Code 66 to 78 call NextLine_Cmd
+   AC_KeyWord[str(i+71)] = NextLine_Cmd  #  function
+                                         #               
+for i in range(9):                       # Code 90 to 99 call NextLine_Cmd
+   AC_KeyWord[str(i+90)] = NextLine_Cmd  #  function
+                                         #  
+AC_KeyWord['100'] = SubClassMarker_Cmd   # Code 100 call 
+                                         # SubClassMarker_Cmd function 
+                                         #
+AC_KeyWord['102'] = NextLine_Cmd         # Code 102 call NextLine_Cmd
+                                         #  function
+                                         #
+AC_KeyWord['105'] = NextLine_Cmd         # Code 105 call NextLine_Cmd
+                                         #  function
+                                         #
+for i in range(3):                       # Code 110 to 112 call Value_Cmd
+   AC_KeyWord[str(i+110)] = Value_Cmd    #  function
+                                         #
+for i in range(3):                       # Code 120 to 122 call Value_Cmd
+   AC_KeyWord[str(i+120)] = Value_Cmd    #  function
+                                         #
+for i in range(3):                       # Code 130 to 132 call Value_Cmd
+   AC_KeyWord[str(i+130)] = Value_Cmd    #  function
+                                         #
+for i in range(10):                      # Code 140 to 149 call 
+                                         #  NextLine_Cmd 
+   AC_KeyWord[str(i+140)] = NextLine_Cmd #  function
+                                         #
+for i in range(10):                      # Code 170 to 179 call 
+                                         #  NextLine_Cmd 
+   AC_KeyWord[str(i+170)] = NextLine_Cmd #  function
+                                         #
+AC_KeyWord['210'] = Value_Cmd            # Code 210 call Value_Cmd 
+                                         #  function
+                                         #
+AC_KeyWord['220'] = Value_Cmd            # Code 220 call Value_Cmd 
+                                         #  function 
+                                         #
+AC_KeyWord['230'] = Value_Cmd            # Code 230 call Value_Cmd 
+                                         #  function
+                                         #
+for i in range(150):                     # Code 270 to 419 call 
+   AC_KeyWord[str(i+270)] = NextLine_Cmd #  NextLine_Cmd function
+                                         #
+for i in range(7):                       # Code 999 to 1005 call  
+   AC_KeyWord[str(i+999)] = NextLine_Cmd #  NextLine_Cmd function
+                                         #
+for i in range(4):                       # Code 1010 to 1013 call  
+   AC_KeyWord[str(i+1010)] = Value_Cmd   #  Value_Cmd function
+                                         #
+for i in range(4):                       # Code 1020 to 1023 call 
+   AC_KeyWord[str(i+1020)] = Value_Cmd   #  Value_Cmd function
+                                         #
+for i in range(4):                       # Code 1030 to 1033 call
+   AC_KeyWord[str(i+1030)] = Value_Cmd   #  Value_Cmd function
+                                         #
+for i in range(3):                       # Code 1040 to 1042 call   
+   AC_KeyWord[str(i+1040)] = NextLine_Cmd#  NextLine_Cmd function
+                                         #
+for i in range(2):                       # Code 1070 to 1071 call 
+   AC_KeyWord[str(i+1070)] = NextLine_Cmd#  NextLine_Cmd function
+                                         #
+AC_KeyWord['EOF'] = NA_Cmd               # KeyWord EOF call 
+                                         #  NA_cmd function
+AC_KeyWord['SECTION'] = Section_Cmd      # KeyWord SECTION call 
+                                         #  Section_cmd function
+                                         #
+AC_KeyWord['ENDSEC'] = Endsec_Cmd        # KeyWord ENDSEC call Endsec_cmd
+                                         #  function
+                                         #
+AC_KeyWord['HEADER'] = Header_Cmd        # KeyWord HEADER call Header_cmd
+                                         #  function
+                                         #
+AC_KeyWord['CLASSES'] = Classes_Cmd      # KeyWord Classes call 
+                                         #  Classes_cmd function
+                                         #
+AC_KeyWord['CLASS'] = Class_Cmd          # KeyWord Class call 
+                                         #  Class_cmd function
+                                         #
+AC_KeyWord['TABLES'] = Tables_Cmd        # KeyWord TABLES call Tables_cmd
+                                         #  function
+                                         #
+AC_KeyWord['TABLE'] = Table_Cmd          # KeyWord TABLE call Table_cmd
+                                         #  function
+                                         #
+AC_KeyWord['ENDTAB'] = Endtab_Cmd        # KeyWord ENDTAB call Endtab_cmd
+                                         #  function
+                                         #
+AC_KeyWord['BLOCKS'] = Blocks_Cmd        # KeyWord BLOCKS call Blocks_cmd
+                                         #  function
+                                         #
+AC_KeyWord['ENDBLK'] = Blocks_Cmd        # KeyWord ENDBLK call Endblk_cmd
+                                         #  function
+                                         #
+AC_KeyWord['ENTITIES'] = Entities_Cmd    # KeyWord ENTITIES call 
+                                         #  Entities_cmd function
+                                         #
+AC_KeyWord['OBJECTS'] = Objects_Cmd      # KeyWord OBJECTS call 
+                                         #  Objects_cmd function
+                                         #
+AC_KeyWord['THUMBNAILIMAGE'] = NA_Cmd    # KeyWord THUMBNAILIMAGE not
+                                         #  applicable 
+                                         #
+AC_KeyWord['$ACADMAINTVER'] = NA_Cmd     # KeyWord $ACADMAINTVER not
+                                         #  applicable
+                                         #
+AC_KeyWord['$ACADVER'] = NA_Cmd          # KeyWord $ACADVER not applicable
+                                         #
+AC_KeyWord['$ANGBASE'] = NA_Cmd          # KeyWord $ANGBASE not applicable
+                                         #
+AC_KeyWord['$ANGDIR'] = NA_Cmd           # KeyWord $ANGDIR not applicable
+                                         #
+AC_KeyWord['$ATTMODE'] = NA_Cmd          # KeyWord $ATTMODE not applicable
+                                         #
+AC_KeyWord['$AUNITS'] = NA_Cmd           # KeyWord $AUNITS not applicable
+                                         #
+AC_KeyWord['$AUPREC'] = NA_Cmd           # KeyWord $AUPREC not applicable
+                                         #
+AC_KeyWord['$CECOLOR'] = NA_Cmd          # KeyWord $CECOLOR not applicable
+                                         #
+AC_KeyWord['$CELTSCALE'] = NA_Cmd        # KeyWord $CELTSCALE not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$CELTYPE'] = NA_Cmd          # KeyWord $CELTYPE not applicable
+                                         #
+AC_KeyWord['$CELWEIGHT'] = NA_Cmd        # KeyWord $CELWEIGHT not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$CPSNID'] = NA_Cmd           # KeyWord $CPSNID not applicable
+                                         #
+AC_KeyWord['$CEPSNTYPE'] = NA_Cmd        # KeyWord $CEPSNTYPE not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$CHAMFERA'] = NA_Cmd         # KeyWord $CHAMFERA not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$CHAMFERB'] = NA_Cmd         # KeyWord $CHAMFERB not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$CHAMFERC'] = NA_Cmd         # KeyWord $CHAMFERC not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$CHAMFERD'] = NA_Cmd         # KeyWord $CHAMFERD not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$CLAYER'] = NA_Cmd           # KeyWord $CLAYER not applicable
+                                         #
+AC_KeyWord['$CMJUST'] = NA_Cmd           # KeyWord $CMJUST not applicable
+                                         #
+AC_KeyWord['$CMLSCALE'] = NA_Cmd         # KeyWord $CMLSCALE not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$CMLSTYLE'] = NA_Cmd         # KeyWord $CMLSTYLE not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$DIMADEC'] = NA_Cmd          # KeyWord $DIMADEC not applicable
+                                         #
+AC_KeyWord['$DIMALT'] = NA_Cmd           # KeyWord $DIMALT not applicable
+                                         #
+AC_KeyWord['$DIMALTD'] = NA_Cmd          # KeyWord $DIMALTD not applicable
+                                         #
+AC_KeyWord['$DIMALTF'] = NA_Cmd          # KeyWord $DIMALTF not applicable
+                                         #
+AC_KeyWord['$DIMALTRND'] = NA_Cmd        # KeyWord $DIMALTRND not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$DIMALTTD'] = NA_Cmd         # KeyWord $DIMALTTD not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$DIMALTTZ'] = NA_Cmd         # KeyWord $DIMALTTZ not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$DIMAPOST'] = NA_Cmd         # KeyWord $DIMAPOST not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$DIMASO'] = NA_Cmd           # KeyWord $DIMASO not applicable
+                                         #
+AC_KeyWord['$DIMASZ'] = NA_Cmd           # KeyWord $DIMASZ not applicable
+                                         #
+AC_KeyWord['$DIMATFIT'] = NA_Cmd         # KeyWord $DIMATFIT not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$DIMAUNIT'] = NA_Cmd         # KeyWord $DIMAUNIT not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$DIMAZIN'] = NA_Cmd          # KeyWord $DIMAZIN not applicable
+                                         #
+AC_KeyWord['$DIMBLK'] = NA_Cmd           # KeyWord $DIMBLK not applicable
+                                         #
+AC_KeyWord['$DIMBLK1'] = NA_Cmd          # KeyWord $DIMBLK1 not applicable
+                                         #
+AC_KeyWord['$DIMBLK2'] = NA_Cmd          # KeyWord $DIMBLK2 not applicable
+                                         #
+AC_KeyWord['$DIMCEN'] = NA_Cmd           # KeyWord $DIMCEN not applicable
+                                         #
+AC_KeyWord['$DIMCLRD'] = NA_Cmd          # KeyWord $DIMCLRD not applicable
+                                         #
+AC_KeyWord['$DIMCLRE'] = NA_Cmd          # KeyWord $DIMCLRE not applicable
+                                         #
+AC_KeyWord['$DIMCLRT'] = NA_Cmd          # KeyWord $DIMCLRT not applicable
+                                         #
+AC_KeyWord['$DIMDEC'] = NA_Cmd           # KeyWord $DIMDEC not applicable
+                                         #
+AC_KeyWord['$DIMDLE'] = NA_Cmd           # KeyWord $DIMDLE not applicable
+                                         #
+AC_KeyWord['$DIMDLI'] = NA_Cmd           # KeyWord $DIMDLI not applicable
+                                         #
+AC_KeyWord['$DIMDSEP'] = NA_Cmd          # KeyWord $DIMDSEP not applicable
+                                         #
+AC_KeyWord['$DIMEXE'] = NA_Cmd           # KeyWord $DIMEXE not applicable
+                                         #
+AC_KeyWord['$DIMEXO'] = NA_Cmd           # KeyWord $DIMEXO not applicable
+                                         #
+AC_KeyWord['$DIMFAC'] = NA_Cmd           # KeyWord $DIMFAC not applicable
+                                         #
+AC_KeyWord['$DIMGAP'] = NA_Cmd           # KeyWord $DIMGAP not applicable
+                                         #
+AC_KeyWord['$DIMJUST'] = NA_Cmd          # KeyWord $DIMJUST not applicable
+                                         #
+AC_KeyWord['$DIMLDRBLK'] = NA_Cmd        # KeyWord $DIMLDRBLK not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$DIMLFAC'] = NA_Cmd          # KeyWord $DIMLFAC not applicable
+                                         #
+AC_KeyWord['$DIMLIM'] = NA_Cmd           # KeyWord $DIMLIM not applicable
+                                         #
+AC_KeyWord['$DIMLUNIT'] = NA_Cmd         # KeyWord $DIMLUNIT not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$DIMLWD'] = NA_Cmd           # KeyWord $DIMLWD not applicable
+                                         #
+AC_KeyWord['$DIMLWE'] = NA_Cmd           # KeyWord $DIMLWE not applicable
+                                         #
+AC_KeyWord['$DIMPOST'] = NA_Cmd          # KeyWord $DIMPOST not applicable
+                                         #
+AC_KeyWord['$DIMRND'] = NA_Cmd           # KeyWord $DIMRND not applicable
+                                         #
+AC_KeyWord['$DIMSAH'] = NA_Cmd           # KeyWord $DIMSAH not applicable
+                                         #
+AC_KeyWord['$DIMSCALE'] = NA_Cmd         # KeyWord $DIMSCALE not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$DIMSD1'] = NA_Cmd           # KeyWord $DIMSD1 not applicable
+                                         #
+AC_KeyWord['$DIMSD2'] = NA_Cmd           # KeyWord $DIMSD2 not applicable
+                                         #
+AC_KeyWord['$DIMSE1'] = NA_Cmd           # KeyWord $DIMSE1 not applicable
+                                         #
+AC_KeyWord['$DIMSE2'] = NA_Cmd           # KeyWord $DIMSE2 not applicable
+                                         #
+AC_KeyWord['$DIMSHO'] = NA_Cmd           # KeyWord $DIMSHO not applicable
+                                         #
+AC_KeyWord['$DIMSOXD'] = NA_Cmd          # KeyWord $DIMSOXD not applicable
+                                         #
+AC_KeyWord['$DIMSTYLE'] = NA_Cmd         # KeyWord $DIMSTYLE not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$DIMTAD'] = NA_Cmd           # KeyWord $DIMTAD not applicable
+                                         #
+AC_KeyWord['$DIMTDEC'] = NA_Cmd          # KeyWord $DIMTDEC not applicable
+                                         #
+AC_KeyWord['$DIMTFAC'] = NA_Cmd          # KeyWord $DIMTFAC not applicable
+                                         #
+AC_KeyWord['$DIMTIH'] = NA_Cmd           # KeyWord $DIMTIH not applicable
+                                         #
+AC_KeyWord['$DIMTIX'] = NA_Cmd           # KeyWord $DIMTIX not applicable
+                                         #
+AC_KeyWord['$DIMTM'] = NA_Cmd            # KeyWord $DIMTM not applicable
+                                         #
+AC_KeyWord['$DIMTMOVE'] = NA_Cmd         # KeyWord $DIMTMOVE not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$DIMTOFL'] = NA_Cmd          # KeyWord $DIMTOFL not applicable
+                                         #
+AC_KeyWord['$DIMTOH'] = NA_Cmd           # KeyWord $DIMTOH not applicable
+                                         #
+AC_KeyWord['$DIMTOL'] = NA_Cmd           # KeyWord $DIMTOL not applicable
+                                         #
+AC_KeyWord['$DIMTOLJ'] = NA_Cmd          # KeyWord $DIMTOLJ not applicable
+                                         #
+AC_KeyWord['$DIMTP'] = NA_Cmd            # KeyWord $DIMTP not applicable
+                                         #
+AC_KeyWord['$DIMTSZ'] = NA_Cmd           # KeyWord $DIMTSZ not applicable
+                                         #
+AC_KeyWord['$DIMTVP'] = NA_Cmd           # KeyWord $DIMTVP not applicable
+                                         #
+AC_KeyWord['$DIMTXSTY'] = NA_Cmd         # KeyWord $DIMTXSTY not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$DIMTXT'] = NA_Cmd           # KeyWord $DIMTXT not applicable
+                                         #
+AC_KeyWord['$DIMTZIN'] = NA_Cmd          # KeyWord $DIMTZIN not applicable
+                                         #
+AC_KeyWord['$DIMUPT'] = NA_Cmd           # KeyWord $DIMUPT not applicable
+                                         #
+AC_KeyWord['$DIMZIN'] = NA_Cmd           # KeyWord $DIMZIN not applicable
+                                         #
+AC_KeyWord['$DISPSILH'] = NA_Cmd         # KeyWord $DISPSILH not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$DWGCODEPAGE'] = NA_Cmd      # KeyWord $DWGCODEPAGE not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$ELEVATION'] = NA_Cmd        # KeyWord $ELEVATION not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$ENCAPS'] = NA_Cmd           # KeyWord $ENDCAPS not applicable
+                                         #
+AC_KeyWord['$EXTMAX'] = NA_Cmd           # KeyWord $EXTMAX not applicable
+                                         #
+AC_KeyWord['$EXTMIN'] = NA_Cmd           # KeyWord $EXTMIN not applicable
+                                         #
+AC_KeyWord['$EXTNAMES'] = NA_Cmd         # KeyWord $EXTNAMES not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$FILETRAD'] = NA_Cmd         # KeyWord $FILLETRAD not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$FILLMODE'] = NA_Cmd         # KeyWord $FILLMODE not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$FINGERPRINTGUID'] = NA_Cmd  # KeyWord $FINGERPRINTGUID not
+                                         #  applicable
+                                         #
+AC_KeyWord['$HANDSEED'] = NA_Cmd         # KeyWord $HANDSEED not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$HYPERLINKBASE'] = NA_Cmd    # KeyWord $HYPERLINKBASE not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$INSBASE'] = NA_Cmd          # KeyWord $INSBASE not applicable
+                                         #
+AC_KeyWord['$INSUNITS'] = NA_Cmd         # KeyWord $INSUNITS not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$JOINSTYLE'] = NA_Cmd        # KeyWord $JOINSTYLE not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$LIMCHECK'] = NA_Cmd         # KeyWord $LIMCHECK not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$LIMMAX'] = NA_Cmd           # KeyWord $LIMMAX not applicable
+                                         #
+AC_KeyWord['$LIMMIN'] = NA_Cmd           # KeyWord $LIMMIN not applicable
+                                         #
+AC_KeyWord['$LTSCALE'] = NA_Cmd          # KeyWord $LTSCALE not applicable
+                                         #
+AC_KeyWord['$LUNITS'] = NA_Cmd           # KeyWord $LUNITS not applicable
+                                         #
+AC_KeyWord['$LUPREC'] = NA_Cmd           # KeyWord $LUPREc not applicable
+                                         #
+AC_KeyWord['$LWDISPLAY'] = NA_Cmd        # KeyWord $LWDISPLAY not 
+                                         #  applicable
+                                         # 
+AC_KeyWord['$MAXACTVP'] = NA_Cmd         # KeyWord $MAXACTVP not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$MEASUREMENT'] = NA_Cmd      # KeyWord $MEASUREMENT not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$MENU'] = NA_Cmd             # KeyWord $MENU not applicable
+                                         #
+AC_KeyWord['$MIRRTEXT'] = NA_Cmd         # KeyWord $MIRRTEXT not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$ORTHOMODE'] = NA_Cmd        # KeyWord $ORTHOMODE not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$PDMODE'] = NA_Cmd           # KeyWord $PDMODE not applicable
+                                         #
+AC_KeyWord['$PDSIZE'] = NA_Cmd           # KeyWord $PDSIZE not applicable
+                                         #
+AC_KeyWord['$PELEVATION'] = NA_Cmd       # KeyWord $PELEVATION not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$PEXTMAX'] = NA_Cmd          # KeyWord $PEXTMAX not applicable
+                                         #
+AC_KeyWord['$PEXTMIN'] = NA_Cmd          # KeyWord $PEXTMIN not applicable
+                                         # 
+AC_KeyWord['$PINSBASE'] = NA_Cmd         # KeyWord $PINSBASE not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$PLIMCHECK'] = NA_Cmd        # KeyWord $PLIMCHECK not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$PLIMMAX'] = NA_Cmd          # KeyWord $PLIMMAX not applicable
+                                         #
+AC_KeyWord['$PLIMMIN'] = NA_Cmd          # KeyWord $PLIMMIN not applicable
+                                         #
+AC_KeyWord['$PLINEGEN'] = NA_Cmd         # KeyWord $PLINEGEN not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$PLINEWID'] = NA_Cmd         # KeyWord $PLINEWID not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$PROXYGRAPHICS'] = NA_Cmd    # KeyWord $PROXYGRAPHICS not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$PSLTSCALE'] = NA_Cmd        # KeyWord $PSLTSCALE not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$PSTYLEMODE'] = NA_Cmd       # KeyWord $PSTYLEMODE not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$PSVPSCALE'] = NA_Cmd        # KeyWord $PSVPSCALE not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$PUCSBASE'] = NA_Cmd         # KeyWord $PUCSBASE not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$PUCSNAME'] = NA_Cmd         # KeyWord $PUCSNAME not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$PUCSORG'] = NA_Cmd          # KeyWord $PUCSORG not applicable
+                                         #
+AC_KeyWord['$PUCSORGBACK'] = NA_Cmd      # KeyWord $PUCSORGBACK not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$PUCSORGBOTTOM'] = NA_Cmd    # KeyWord $PUCSORGBOTTOM not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$PUCSORGFRONT'] = NA_Cmd     # KeyWord $PUCSORGFRONT not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$PUCSORGLEFT'] = NA_Cmd      # KeyWord $PUCSORGLEFT not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$PUCSORGRIGHT'] = NA_Cmd     # KeyWord $PUCSORGRIGHT not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$PUCSORGTOP'] = NA_Cmd       # KeyWord $PUCSORGTOP not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$PUCSORTHOREF'] = NA_Cmd     # KeyWord $PUCSORTHOREF not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$PUCSORTHOview'] = NA_Cmd    # KeyWord $PUCSORTHOview not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$PUCSXDIR'] = NA_Cmd         # KeyWord $PUCSXDIR not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$PUCSYDIR'] = NA_Cmd         # KeyWord $PUCSYDIR not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$QTEXTMODE'] = NA_Cmd        # KeyWord $QTEXTMODE not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$REGENMODE'] = NA_Cmd        # KeyWord $REGENMODE not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$SHADEDGE'] = NA_Cmd         # KeyWord $SHADEDGE not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$SHADEDIF'] = NA_Cmd         # KeyWord $SHADEDIF not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$SKETCHINC'] = NA_Cmd        # KeyWord $SKETCHINC not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$SKPOLY'] = NA_Cmd           # KeyWord $SKPOLY not applicable
+                                         #
+AC_KeyWord['$SPLFRAME'] = NA_Cmd         # KeyWord $SPLFRAME not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$SPLINESEGS'] = NA_Cmd       # KeyWord $SPLINESEGS not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$SPLINETYPE'] = NA_Cmd       # KeyWord $SPLINETYPE not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$SURFTAB1'] = NA_Cmd         # KeyWord $SURFTAB1 not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$SURFTAB2'] = NA_Cmd         # KeyWord $SURFTAB2 not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$SURFTYPE'] = NA_Cmd         # KeyWord $SURFTYPE not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$SURFU'] = NA_Cmd            # KeyWord $SURFU not applicable
+                                         #
+AC_KeyWord['$SURFV'] = NA_Cmd            # KeyWord $SURFV not applicable
+                                         #
+AC_KeyWord['$TDCREATE'] = NA_Cmd         # KeyWord $TDCREATE not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$TDINDWG'] = NA_Cmd          # KeyWord $TDINDWG not applicable
+                                         #
+AC_KeyWord['$TDUCREATE'] = NA_Cmd        # KeyWord $TDUCREATE not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$TDUPDATE'] = NA_Cmd         # KeyWord $TDUPDATE not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$TDUSRTIMER'] = NA_Cmd       # KeyWord $TDUSRTIMER not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$TDUUPDATE'] = NA_Cmd        # KeyWord $TDUUPDATE not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$TEXTSIZE'] = NA_Cmd         # KeyWord $TEXTSIZE not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$TEXTSTYLE'] = NA_Cmd        # KeyWord $TEXTSTYLE not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$THICKNESS'] = NA_Cmd        # KeyWord $THICKNESS not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$TILEMODE'] = NA_Cmd         # KeyWord $TILEMODE not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$TRACEWID'] = NA_Cmd         # KeyWord $TRACEWID not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$TREEDEPTH'] = NA_Cmd        # KeyWord $TREEDEPTH not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$UCSBASE'] = NA_Cmd          # KeyWord $UCSBASE not applicable
+                                         #
+AC_KeyWord['$UCSNAME'] = NA_Cmd          # KeyWord $UCSNAME not applicable
+                                         #
+AC_KeyWord['$UCSORG'] = NA_Cmd           # KeyWord $UCSORG not applicable
+                                         #
+AC_KeyWord['$UCSORGBACK'] = NA_Cmd       # KeyWord $UCSORGBACK not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$UCSORGBOTTOM'] = NA_Cmd     # KeyWord $UCSORGBOTTOM not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$UCSORGFRONT'] = NA_Cmd      # KeyWord $UCSORGFRONT not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$UCSORGLEFT'] = NA_Cmd       # KeyWord $UCSORGLEFT not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$UCSORGRIGHT'] = NA_Cmd      # KeyWord $UCSORGRIGHT not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$UCSORGTOP'] = NA_Cmd        # KeyWord $UCSORGTOP not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$UCSORTHOREF'] = NA_Cmd      # KeyWord $UCSORTHOREF not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$UCSORTHOVIEW'] = NA_Cmd     # KeyWord $UCSORTHOVIEW not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$UCSXDIR'] = NA_Cmd          # KeyWord $UCSXDIR not applicable
+                                         #
+AC_KeyWord['$UCSYDIR'] = NA_Cmd          # KeyWord $UCSYDIR not applicable
+                                         #
+AC_KeyWord['$UNITMODE'] = NA_Cmd         # KeyWord $UNITMODE not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$USERI1 - 5'] = NA_Cmd       # KeyWord $USERI1 - 5 not  
+                                         #  applicable
+                                         #
+AC_KeyWord['$USERR1 - 5'] = NA_Cmd       # KeyWord $USERR1 - 5 not  
+                                         #  applicable
+                                         #
+AC_KeyWord['$USRTIMER'] = NA_Cmd         # KeyWord $USRTIMER not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$VERSIONGUID'] = NA_Cmd      # KeyWord $VERSIONGUID not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$VISRETAIN'] = NA_Cmd        # KeyWord $VISRETAIN not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$WORLDVIEW'] = NA_Cmd        # KeyWord $WORLDVIEW not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$XEDIT'] = NA_Cmd            # KeyWord $XEDIT not applicable
+                                         #
+AC_KeyWord['$FASTZOOM'] = NA_Cmd         # KeyWord $FASTZOOM not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$GRIDMODE'] = NA_Cmd         # KeyWord $GRIDMODE not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$GRIDUNIT'] = NA_Cmd         # KeyWord $GRIDUNIT not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$SNAPANG'] = NA_Cmd          # KeyWord $SNAPANG not applicable
+                                         #
+AC_KeyWord['$SNAPBASE'] = NA_Cmd         # KeyWord $SNAPBASE not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$SNAPISOPAIR'] = NA_Cmd      # KeyWord $SNAPISOPAIR not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$SNAPMODE'] = NA_Cmd         # KeyWord $SNAPMODE not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$SNAPSTYLE'] = NA_Cmd        # KeyWord $SNAPSTYLE not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$SNAPUNIT'] = NA_Cmd         # KeyWord $SNAPUNIT not 
+                                         #  applicable
+                                         #
+AC_KeyWord['$VIEWCTR'] = NA_Cmd          # KeyWord $VIEWCTR not applicable
+                                         #
+AC_KeyWord['$VIEWDIR'] = NA_Cmd          # KeyWord $VIEWDIR not applicable
+                                         #
+AC_KeyWord['$VIEWSIZE'] = NA_Cmd         # KeyWord $VIEWSIZE not 
+                                         #  applicable
+                                         #
+AC_KeyWord['APPID'] = NA_Cmd             # KeyWord APPID not applicable
+                                         #
+AC_KeyWord['BLOCK_RECORD'] = NA_Cmd      # KeyWord BLOCK_RECORD not 
+                                         #  applicable
+                                         #
+AC_KeyWord['DIMSTYLE'] = NA_Cmd          # KeyWord DIMSTYLE not applicable
+                                         #
+AC_KeyWord['LAYER'] = NA_Cmd             # KeyWord LAYER not applicable
+                                         #
+AC_KeyWord['LTYPE'] = NA_Cmd             # KeyWord LTYPE not applicable
+                                         #
+AC_KeyWord['STYLE'] = NA_Cmd             # KeyWord STYLE not applicable
+                                         #
+AC_KeyWord['UCS'] = NA_Cmd               # KeyWord UCS not applicable
+                                         #
+AC_KeyWord['VIEW'] = NA_Cmd              # KeyWord VIEW not applicable
+                                         #
+AC_KeyWord['VPORT'] = NA_Cmd             # KeyWord VPORT not applicable
+                                         #
+AC_KeyWord['3DFACE'] = F_3DFACE          # KeyWord 3DFACE call F_3DFACE
+                                         #  function
+                                         #
+AC_KeyWord['3DSOLID'] = F_3DSOLID        # KeyWord 3DSOLID call F_3DSOLID
+                                         #  function
+                                         #
+AC_KeyWord['ACAD_PROXY_ENTITY'] = (      # KeyWord 3DFACE call F_3DFACE
+                     F_ACAD_PROXY_ENTITY)#  function
+                                         #
+AC_KeyWord['ARC'] = F_ARC                # KeyWord ARC call F_ARC
+                                         #  function
+                                         #
+AC_KeyWord['ATTDEF'] = F_ATTDEF          # KeyWord ATTDEF call F_ATTDEF
+                                         #  function
+                                         #
+AC_KeyWord['ATTRIB'] = F_ATTRIB          # KeyWord ATTRIB call F_ATTRIB
+                                         #  function
+                                         #
+AC_KeyWord['BODY'] = F_BODY              # KeyWord BODY call F_BODY
+                                         #  function
+                                         #
+AC_KeyWord['CIRCLE'] = F_CIRCLE          # KeyWord CIRCLE call F_CIRCLE
+                                         #  function
+                                         #
+AC_KeyWord['DIMENSION'] = F_DIMENSION    # KeyWord DIMENSION call 
+                                         #  F_DIMENSION function
+                                         #
+AC_KeyWord['ELLIPSE'] = F_ELLIPSE        # KeyWord ELLIPSE call F_ELLIPSE
+                                         #  function
+                                         #
+AC_KeyWord['HATCH'] = F_HATCH            # KeyWord HATCH call F_HATCH
+                                         #  function
+                                         #
+AC_KeyWord['IMAGE'] = F_IMAGE            # KeyWord IMAGE call F_IMAGE
+                                         #  function
+                                         #
+AC_KeyWord['INSERT'] = F_INSERT          # KeyWord INSERT call F_INSERT
+                                         #  function
+                                         #
+AC_KeyWord['LEADER'] = F_LEADER          # KeyWord LEADER call F_LEADER
+                                         #  function
+                                         #
+AC_KeyWord['LINE'] = F_LINE              # KeyWord LINE call F_LINE
+                                         #  function
+                                         #
+AC_KeyWord['LWPOLYLINE'] = F_LWPOLYLINE  # KeyWord LWPOLYLINE call 
+                                         #  F_LWPOLYLINE function
+                                         #
+AC_KeyWord['MLINE'] = F_MLINE            # KeyWord MLINE call F_MLINE
+                                         #  function
+                                         #
+AC_KeyWord['MTEXT'] = F_MTEXT            # KeyWord MTEXT call F_MTEXT
+                                         #  function
+                                         #
+AC_KeyWord['OLEFRAME'] = F_OLEFRAME      # KeyWord OLEFRAME call 
+                                         #  F_OLEFRAME function
+                                         #
+AC_KeyWord['OLE2FRAME'] = F_OLE2FRAME    # KeyWord OLE2FRAME call 
+                                         #  F_OLE2FRAME function
+                                         #
+AC_KeyWord['POINT'] = F_POINT            # KeyWord POINT call F_POINT
+                                         #  function
+                                         #
+AC_KeyWord['POLYLINE'] = F_POLYLINE      # KeyWord POLYLINE call 
+                                         #  F_POLYLINE function
+                                         #
+AC_KeyWord['RAY'] = F_RAY                # KeyWord RAY call F_RAY
+                                         #  function
+                                         #
+AC_KeyWord['REGION'] = F_REGION          # KeyWord REGION call F_REGION
+                                         #  function
+                                         #
+AC_KeyWord['SEQEND'] = F_SEQEND          # KeyWord SEQEND call F_SEQEND
+                                         #  function
+                                         #
+AC_KeyWord['SHAPE'] = F_SHAPE            # KeyWord SHAPE call F_SHAPE
+                                         #  function
+                                         #
+AC_KeyWord['SOLID'] = F_SOLID            # KeyWord SOLID call F_SOLID
+                                         #  function
+                                         #
+AC_KeyWord['SPLINE'] = F_SPLINE          # KeyWord SPLINE call F_SPLINE
+                                         #  function
+                                         #
+AC_KeyWord['TEXT'] = F_TEXT              # KeyWord TEXT call F_TEXT
+                                         #  function
+                                         #
+AC_KeyWord['TOLERANCE'] = F_TOLERANCE    # KeyWord TOLERANCE call 
+                                         #  F_TOLERANCE function
+                                         #
+AC_KeyWord['TRACE'] = F_TRACE            # KeyWord TRACE call F_TRACE
+                                         #  function
+                                         #
+AC_KeyWord['VERTEX'] = F_VERTEX          # KeyWord VERTEX call F_VERTEX
+                                         #  function
+                                         #
+AC_KeyWord['VIEWPORT'] = F_VIEWPORT      # KeyWord VIEWPORT call 
+                                         #  F_VIEWPORT function
+                                         #
+AC_KeyWord['XLINE'] = F_XLINE            # KeyWord XLINE call F_XLINE
+                                         #  function
+                                         #
+AC_KeyWord['ACAD_PROXY_OBJECT'] = NA_Cmd # KeyWord ACAD_PROXY_OBJECT not 
+                                         #  applicable
+                                         #
+AC_KeyWord['ACDBDICTIONARYWDFLT'] = (    # KeyWord ACDBDICTIONARYWDFLT not
+                                  NA_Cmd)#  applicable
+                                         #
+AC_KeyWord['ACDBPLACEHOLDER'] = NA_Cmd   # KeyWord ACDBPLACEHOLDER not 
+                                         #  applicable
+                                         #
+AC_KeyWord['DICTIONARY'] = NA_Cmd        # KeyWord DICTIONARY not 
+                                         #  applicable
+                                         #
+AC_KeyWord['DICTIONARYVAR'] = NA_Cmd     # KeyWord DICTIONARYVAR not 
+                                         #  applicable
+                                         #
+AC_KeyWord['DIMASSOC'] = NA_Cmd          # KeyWord DIMASSOC not applicable
+                                         #                                
+AC_KeyWord['GROUP'] = NA_Cmd             # KeyWord GROUP not applicable
+                                         #
+AC_KeyWord['IDBUFFER'] = NA_Cmd          # KeyWord IDBUFFER not applicable
+                                         #
+AC_KeyWord['IMAGEDEF'] = NA_Cmd          # KeyWord IMAGEDEF not applicable
+                                         #
+AC_KeyWord['IMAGEDEF_REACTOR'] = NA_Cmd  # KeyWord IMAGEDEF_REACTOR not 
+                                         #  applicable
+                                         #
+AC_KeyWord['LAYER_INDEX'] = NA_Cmd       # KeyWord LAYER_INDEX not 
+                                         #  applicable
+                                         #
+AC_KeyWord['LAYER_FILTER'] = NA_Cmd      # KeyWord LAYER_FILTER not 
+                                         #  applicable
+                                         #
+AC_KeyWord['LAYOUT'] = NA_Cmd            # KeyWord LAYOUT not applicable
+                                         #
+AC_KeyWord['MLINESTYLE'] = NA_Cmd        # KeyWord MLINESTYLE not 
+                                         #  applicable
+                                         #
+AC_KeyWord['OBJECT_PTR'] = NA_Cmd        # KeyWord OBJECT_PTR not 
+                                         #  applicable
+                                         #
+AC_KeyWord['PLOTSETTINGS'] = NA_Cmd      # KeyWord PLOTSETTINGS not 
+                                         #  applicable
+                                         #
+AC_KeyWord['RASTERVARIABLES'] = NA_Cmd   # KeyWord RASTERVARIABLES not 
+                                         #  applicable
+                                         #
+AC_KeyWord['SPATIAL_INDEX'] = NA_Cmd     # KeyWord SPATIAL_INDEX not 
+                                         #  applicable
+                                         #
+AC_KeyWord['SPATIAL_FILTER'] = NA_Cmd    # KeyWord SPATIAL_FILTER not 
+                                         #  applicable
+                                         #
+AC_KeyWord['SORTENTSTABLE'] = NA_Cmd     # KeyWord SORTENTSTABLE not 
+                                         #  applicable
+                                         #
+AC_KeyWord['VBA_PROJECT'] = NA_Cmd       # KeyWord VBA_PROJECT not 
+                                         #  applicable
+                                         #
+AC_KeyWord['XRECORD'] = NA_Cmd           # KeyWord XRECORD not 
+                                         #  applicable
+Return_Code = {}                         # Create the dictionary which 
+                                         #  associate to each function
+                                         #  linked to the AutoCad keyWords
+                                         #  a specefic treatement in the  
+                                         #  main loop of the main program
+Return_Code['0'] = NA_Cmd                # Return code 0 = Do nothing
+Return_Code['1'] = Write_Cmd             # Return coden 1 = Write the 
+                                         #  OutLines fields in the outfile
+                                         #
+Outlines = []                            # List of lines which must be
+                                         #  written in the outfile.
+                                         #
+Refine = sys.argv[1]                     # Extract Refinement from cmd
+                                         #  file
+InputList = sys.argv[2:]                 # extract file names from cmd 
+                                         #  line and put them in  
+					 #  InputList
+                                         #
+for FileNameIn in InputList:             # For all files in InputList
+                                         #  create the Tetgen files
+   print ('\n Convert the input file')+( #
+		        ': ')+FileNameIn #  Message      
+                                         #   
+   FileIn = open(FileNameIn, "r")        #  Open FileNameIn in read mode
+   i = string.find(FileNameIn,'.dxf')    #  Locate '.dxf' in FileNameIn
+   FileNameOut = FileNameIn[0:i]+".geo"  #  Create the name of the output
+                                         #   file	 
+   FileOut = open(FileNameOut,"w")       #  Open FileNameOut in write mode
+   while 1:                              # Read all lines of the file
+      Line = ReadLine()                  # Read the current line
+      if not Line:                       # If End of file, exit
+         break                           #
+#      try:                               # Exeption error management
+      Code = AC_KeyWord[Line]()       # Call the corresponding function
+#      except:                            # If exceptions (no function)
+#         print ('\n '+Line+': UNKNOWN '+ # Message
+#                           'AC_KeyWord ')#
+#      else:                              # Else call the function  
+
+
+ 
+#         try:
+      Code = Return_Code[Code[0]]()   #  corresponding to the return
+                                         #  code (NA_Cmd -> do nothing
+                                         #  or Write_Cmd -> write the 
+                                         #  strings in code, in the oupput
+                                         #  file) 
+
+#         except:
+#            print ('\n '+Line+': UNKNOWN '+ # Message
+#                              'AC_KeyWord ')#
+#            print '\nCode =',Code[0]
+
+   FileIn.close()                        # Close the input file 
+   FileOut.close()                       # Close the output file

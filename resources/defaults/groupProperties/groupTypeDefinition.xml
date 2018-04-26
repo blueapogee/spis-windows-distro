@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GroupTypeDefinition xsi:noNamespaceSchemaLocation="org-frida-0.0.5.xsd" creationDate="2014/04/14-14:51:33:06"
+lastUpdate="2014/04/14-14:51:36:309" owner="benj" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Group groupType="Undefined" description=""/>
+    <Group groupType="Spacecraft surface group" description="">
+        <MandatoryPropertyType>
+            <PropertyType name="S/C plasma population BC" defaultValue="Plasma Population BC - Spacecraft default"/>
+        </MandatoryPropertyType>
+        <MandatoryPropertyType>
+            <PropertyType name="Electrical node model" defaultValue="Spacecraft ground (ElecNode-0)" shared="true"/>
+        </MandatoryPropertyType>
+        <MandatoryPropertyType>
+            <PropertyType name="S/C conductivity model" defaultValue="Default conductivity model - Spacecraft default"/>
+        </MandatoryPropertyType>
+        <MandatoryPropertyType>
+            <PropertyType name="S/C electric field BC" defaultValue="Electric Field BC - Spacecraft default"/>
+        </MandatoryPropertyType>
+        <MandatoryPropertyType>
+            <PropertyType name="S/C macroscopic characteristics" defaultValue="Macroscopic Characteristics - Spacecraft default"/>
+        </MandatoryPropertyType>
+        <MandatoryPropertyType>
+            <PropertyType name="S/C thin elements" defaultValue="Default - No thin elements"/>
+        </MandatoryPropertyType>
+        <MandatoryPropertyType>
+            <PropertyType name="S/C sources and interactors" defaultValue="No source - Spacecraft default"/>
+        </MandatoryPropertyType>
+        <MandatoryPropertyType>
+            <PropertyType name="S/C material" shared="true"/>
+        </MandatoryPropertyType>
+        <MandatoryPropertyType>
+            <PropertyType name="S/C mesh properties" defaultValue="Mesh Model - Spacecraft default"/>
+        </MandatoryPropertyType>
+        <OptionalPropertyType>
+            <PropertyType name="S/C instrument support" defaultValue="No Actual Instrument Support"/>
+        </OptionalPropertyType>
+    </Group>
+    <Group groupType="External boundary group" description="">
+        <MandatoryPropertyType>
+            <PropertyType name="Ext. Bound. Plasma Population BC" defaultValue="Plasma population BC: Boundary, default"/>
+        </MandatoryPropertyType>
+        <MandatoryPropertyType>
+            <PropertyType name="Ext. Bound. Electric field BC" defaultValue="Electric field BC: Boundary, default"/>
+        </MandatoryPropertyType>
+        <MandatoryPropertyType>
+            <PropertyType name="Ext. Bound. mesh properties" defaultValue="Mesh Model Boundary, default"/>
+        </MandatoryPropertyType>
+    </Group>
+    <Group groupType="Computational volume group" description="">
+        <MandatoryPropertyType>
+            <PropertyType name="Volume plasma model" defaultValue="Plasma Model in Volume, default"/>
+        </MandatoryPropertyType>
+        <MandatoryPropertyType>
+            <PropertyType name="Volume mesh properties" defaultValue="Mesh Model Volume, default"/>
+        </MandatoryPropertyType>
+    </Group>
+    <Group groupType="Instruments" description="">
+    </Group>
+    <Group groupType="Semi Transparent Grid group" description="">
+        <MandatoryPropertyType>
+            <PropertyType name="STG plasma population BC" defaultValue="Plasma Population BC - STG default"/>
+        </MandatoryPropertyType>
+        <MandatoryPropertyType>
+            <PropertyType name="STG Electrical node model" defaultValue="STG ground (ElecNode-0)" shared="true"/>
+        </MandatoryPropertyType>
+        <MandatoryPropertyType>
+            <PropertyType name="STG electric field BC" defaultValue="Electric Field BC - STG default"/>
+        </MandatoryPropertyType>
+        <MandatoryPropertyType>
+            <PropertyType name="STG material" shared="true"/>
+        </MandatoryPropertyType>
+        <MandatoryPropertyType>
+            <PropertyType name="STG mesh properties" defaultValue="Mesh Model - STG default"/>
+        </MandatoryPropertyType>
+    </Group>
+</GroupTypeDefinition>

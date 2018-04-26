@@ -1,0 +1,75 @@
+<Property>
+  <id>500</id>
+  <name>Plasma Population BC - STG default</name>
+  <description>Default STG settings: No emissions</description>
+  <isCompound>false</isCompound>
+  <type>STG plasma population BC</type>
+  <characteristicList>
+   
+   <entry>
+      <string>GridTransparency</string>
+      <DoubleCharacteristic>
+        <id>501</id>
+        <name>GridTransparency</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit>[-]</unit>
+          <standardUnit>-</standardUnit>
+        </unit>
+        <localisation>2</localisation>
+        <informationLink></informationLink>
+        <value>0.5</value>
+      </DoubleCharacteristic>
+    </entry>
+    
+    <entry>
+      <string>GridPhotoEmis</string>
+      <IntegerCharacteristic>
+        <id>502</id>
+        <name>GridPhotoEmis</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit>[-]</unit>
+          <standardUnit>-</standardUnit>
+        </unit>
+        <localisation>2</localisation>
+        <informationLink></informationLink>
+        <value>0</value>
+      </IntegerCharacteristic>
+    </entry>
+    
+    <entry>
+      <string>GridElecSecEmis</string>
+      <IntegerCharacteristic>
+        <id>503</id>
+        <name>GridElecSecEmis</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit></unit>
+          <standardUnit></standardUnit>
+        </unit>
+        <localisation>2</localisation>
+        <informationLink></informationLink>
+        <value>0</value>
+      </IntegerCharacteristic>
+    </entry>
+    
+    <entry>
+      <string>GridProtSecEmis</string>
+      <IntegerCharacteristic>
+        <id>504</id>
+        <name>GridProtSecEmis</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit></unit>
+          <standardUnit></standardUnit>
+        </unit>
+        <localisation>2</localisation>
+        <informationLink></informationLink>
+        <value>0</value>
+      </IntegerCharacteristic>
+    </entry>
+    
+   </characteristicList>
+
+</Property>

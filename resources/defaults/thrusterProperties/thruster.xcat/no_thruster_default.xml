@@ -1,0 +1,12 @@
+<Property>
+	<id>1400</id>
+	<name>No thruster - Spacecraft default</name>
+	<description>Default SC settings: no thruster</description>
+	<isCompound>false</isCompound>
+	<type>Thruster sub-property</type>
+
+	<characteristicList>
+
+	</characteristicList>
+
+</Property>

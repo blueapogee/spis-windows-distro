@@ -1,0 +1,26 @@
+<Property>
+  <id>600</id>
+  <name>Electric Field BC - STG default</name>
+  <description>Default STG settings: dirichlet</description>
+  <isCompound>false</isCompound>
+  <type>STG electric field BC</type>
+  
+  <characteristicList>
+    <entry>
+      <string>GridDiriPot</string>
+      <DoubleCharacteristic>
+        <id>601</id>
+        <name>GridDiriPot</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit>[V]</unit>
+          <standardUnit>V</standardUnit>
+        </unit>
+        <localisation>0</localisation>
+        <informationLink></informationLink>
+        <value>0.0</value>
+      </DoubleCharacteristic>
+    </entry>
+   </characteristicList>
+
+</Property>

@@ -1,0 +1,260 @@
+<?xml version="1.0"?>
+<scxml xmlns="http://www.w3.org/2005/07/scxml" version="1.0" xmlns:ker="http://www.keridwen.org/SCXML"
+	initialstate="org.spis.ui.home">
+
+	<state id="org.spis.ui.home">
+		<onentry>
+			<ker:event key="org.spis.ui.home.insert" message="0" />
+			<ker:event key="org.spis.ui.home.enable" message="true" />
+			<ker:event key="org.spis.ui.home.display" />
+
+			<ker:event key="org.spis.ui.project.configuration.insert" message="1" />
+			<ker:event key="org.spis.ui.project.configuration.enable" message="false" />
+
+			<ker:event key="org.spis.ui.geometry.editor.insert" message="2" />
+			<ker:event key="org.spis.ui.geometry.editor.enable" message="false" />
+
+			<ker:event key="org.spis.ui.mesh.editor.insert" message="3" />
+			<ker:event key="org.spis.ui.mesh.editor.enable" message="false" />
+			
+			<ker:event key="org.spis.ui.radiation.editor.insert" message="4" />
+			<ker:event key="org.spis.ui.radiation.editor.enable" message="false" />
+
+			<ker:event key="org.spis.ui.group.editor.insert" message="5" />
+			<ker:event key="org.spis.ui.group.editor.enable" message="false" />
+
+			<ker:event key="org.spis.ui.electrical.circuit.insert" message="6" />
+			<ker:event key="org.spis.ui.electrical.circuit.enable" message="false" />
+
+			<ker:event key="org.spis.ui.global.parameters.insert" message="7" />
+			<ker:event key="org.spis.ui.global.parameters.enable" message="false" />
+
+			<ker:event key="org.spis.ui.simulation.insert" message="8" />
+			<ker:event key="org.spis.ui.simulation.enable" message="false" />
+
+			<ker:event key="org.spis.ui.data.mining.insert" message="9" />
+			<ker:event key="org.spis.ui.data.mining.enable" message="false" />
+
+			<ker:event key="org.spis.ui.reporting.insert" message="10" />
+			<ker:event key="org.spis.ui.reporting.enable" message="false" />
+		</onentry>
+		<transition event="org.spis.ui.transition.home.next" target="org.spis.ui.project.configuration" />
+	</state>
+
+	<state id="org.spis.ui.project.configuration">
+		<onentry>
+			<ker:event key="org.spis.ui.home.enable" message="true" />
+			<ker:event key="org.spis.ui.project.configuration.enable" message="true" />
+			<ker:event key="org.spis.ui.project.configuration.display" />
+			<ker:event key="org.spis.ui.geometry.editor.enable" message="false" />
+			<ker:event key="org.spis.ui.mesh.editor.enable" message="false" />
+			<ker:event key="org.spis.ui.radiation.editor.enable" message="false" />
+			<ker:event key="org.spis.ui.group.editor.enable" message="false" />
+			<ker:event key="org.spis.ui.electrical.circuit.enable" message="false" />
+			<ker:event key="org.spis.ui.global.parameters.enable" message="false" />
+			<ker:event key="org.spis.ui.simulation.enable" message="false" />
+			<ker:event key="org.spis.ui.data.mining.enable" message="false" />
+			<ker:event key="org.spis.ui.reporting.enable" message="false" />
+		</onentry>
+		<transition event="org.spis.ui.transition.project.configuration.previous" target="org.spis.ui.home" />
+		<transition event="org.spis.ui.transition.project.configuration.next" target="org.spis.ui.geometry.editor" />
+		<transition event="org.spis.ui.transition.project.configuration.next.skip.geo" target="org.spis.ui.mesh.editor" />
+		<onexit>
+			<!-- <ker:event key="org.spis.ui.geometry.editor.invalidate" /> -->
+		</onexit>
+	</state>
+
+	<state id="org.spis.ui.geometry.editor">
+		<onentry>
+			<ker:event key="org.spis.ui.home.enable" message="true" />
+			<ker:event key="org.spis.ui.project.configuration.enable" message="true" />
+			<ker:event key="org.spis.ui.geometry.editor.enable" message="true" />
+			<ker:event key="org.spis.ui.geometry.editor.display" />
+			<ker:event key="org.spis.ui.mesh.editor.enable" message="false" />
+			<ker:event key="org.spis.ui.radiation.editor.enable" message="false" />
+			<ker:event key="org.spis.ui.group.editor.enable" message="false" />
+			<ker:event key="org.spis.ui.electrical.circuit.enable" message="false" />
+			<ker:event key="org.spis.ui.global.parameters.enable" message="false" />
+			<ker:event key="org.spis.ui.simulation.enable" message="false" />
+			<ker:event key="org.spis.ui.data.mining.enable" message="false" />
+			<ker:event key="org.spis.ui.reporting.enable" message="false" />
+		</onentry>
+		<transition event="org.spis.ui.transition.geometry.editor.previous" target="org.spis.ui.project.configuration" />
+		<transition event="org.spis.ui.transition.geometry.editor.next" target="org.spis.ui.mesh.editor" />
+		<transition event="org.spis.ui.transition.geometry.editor.next.skip.mesh" target="org.spis.ui.group.editor" />
+		<onexit>
+			<!-- <ker:event key="org.spis.ui.mesh.editor.invalidate" /> -->
+			<!-- <ker:event key="org.spis.ui.group.editor.invalidate" /> -->
+		</onexit>
+	</state>
+
+	<state id="org.spis.ui.mesh.editor">
+		<onentry>
+			<ker:event key="org.spis.ui.home.enable" message="true" />
+			<ker:event key="org.spis.ui.project.configuration.enable" message="true" />
+			<ker:event key="org.spis.ui.geometry.editor.enable" message="true" />
+			<ker:event key="org.spis.ui.mesh.editor.enable" message="true" />
+			<ker:event key="org.spis.ui.mesh.editor.display" />
+			<ker:event key="org.spis.ui.radiation.editor.enable" message="false" />
+			<ker:event key="org.spis.ui.group.editor.enable" message="false" />
+			<ker:event key="org.spis.ui.electrical.circuit.enable" message="false" />
+			<ker:event key="org.spis.ui.global.parameters.enable" message="false" />
+			<ker:event key="org.spis.ui.simulation.enable" message="false" />
+			<ker:event key="org.spis.ui.data.mining.enable" message="false" />
+			<ker:event key="org.spis.ui.reporting.enable" message="false" />
+		</onentry>
+		<transition event="org.spis.ui.transition.mesh.editor.previous" target="org.spis.ui.geometry.editor" />
+		<transition event="org.spis.ui.transition.mesh.editor.previous.skip.geo" target="org.spis.ui.project.configuration" />
+		<transition event="org.spis.ui.transition.mesh.editor.next.use.radiation" target="org.spis.ui.radiation.editor" />
+		<transition event="org.spis.ui.transition.mesh.editor.next" target="org.spis.ui.group.editor" />
+		<onexit>
+			<!-- <ker:event key="org.spis.ui.group.editor.invalidate" /> -->
+		</onexit>
+	</state>
+	
+	<state id="org.spis.ui.radiation.editor">
+		<onentry>
+			<ker:event key="org.spis.ui.home.enable" message="true" />
+			<ker:event key="org.spis.ui.project.configuration.enable" message="true" />
+			<ker:event key="org.spis.ui.geometry.editor.enable" message="true" />
+			<ker:event key="org.spis.ui.mesh.editor.enable" message="true" />
+			<ker:event key="org.spis.ui.radiation.editor.enable" message="true" />
+			<ker:event key="org.spis.ui.radiation.editor.display" />
+			<ker:event key="org.spis.ui.electrical.circuit.enable" message="false" />
+			<ker:event key="org.spis.ui.global.parameters.enable" message="false" />
+			<ker:event key="org.spis.ui.simulation.enable" message="false" />
+			<ker:event key="org.spis.ui.data.mining.enable" message="false" />
+			<ker:event key="org.spis.ui.reporting.enable" message="false" />
+		</onentry>
+		<transition event="org.spis.ui.transition.radiation.editor.previous" target="org.spis.ui.mesh.editor" />
+		<transition event="org.spis.ui.transition.radiation.editor.next" target="org.spis.ui.group.editor" />
+		<onexit>
+			<!-- <ker:event key="org.spis.ui.group.editor.invalidate" /> -->
+		</onexit>
+	</state>
+
+	<state id="org.spis.ui.group.editor">
+		<onentry>
+			<ker:event key="org.spis.ui.home.enable" message="true" />
+			<ker:event key="org.spis.ui.project.configuration.enable" message="true" />
+			<ker:event key="org.spis.ui.geometry.editor.enable" message="true" />
+			<ker:event key="org.spis.ui.mesh.editor.enable" message="true" />
+			<ker:event key="org.spis.ui.radiation.editor.enable" message="true" />
+			<ker:event key="org.spis.ui.group.editor.enable" message="true" />
+			<ker:event key="org.spis.ui.group.editor.display" />
+			<ker:event key="org.spis.ui.electrical.circuit.enable" message="false" />
+			<ker:event key="org.spis.ui.global.parameters.enable" message="false" />
+			<ker:event key="org.spis.ui.simulation.enable" message="false" />
+			<ker:event key="org.spis.ui.data.mining.enable" message="false" />
+			<ker:event key="org.spis.ui.reporting.enable" message="false" />
+		</onentry>
+		<transition event="org.spis.ui.transition.group.editor.previous" target="org.spis.ui.radiation.editor" />
+		<transition event="org.spis.ui.transition.group.editor.previous.skip.mesh" target="org.spis.ui.geometry.editor" />
+		<transition event="org.spis.ui.transition.group.editor.next" target="org.spis.ui.electrical.circuit" />
+		<onexit>
+			<!-- <ker:event key="org.spis.ui.simulation.invalidate" /> -->
+		</onexit>
+	</state>
+
+	<state id="org.spis.ui.electrical.circuit">
+		<onentry>
+			<ker:event key="org.spis.ui.home.enable" message="true" />
+			<ker:event key="org.spis.ui.project.configuration.enable" message="true" />
+			<ker:event key="org.spis.ui.geometry.editor.enable" message="true" />
+			<ker:event key="org.spis.ui.mesh.editor.enable" message="true" />
+			<ker:event key="org.spis.ui.radiation.editor.enable" message="true" />
+			<ker:event key="org.spis.ui.group.editor.enable" message="true" />
+			<ker:event key="org.spis.ui.electrical.circuit.enable" message="true" />
+			<ker:event key="org.spis.ui.electrical.circuit.display" />
+			<ker:event key="org.spis.ui.global.parameters.enable" message="false" />
+			<ker:event key="org.spis.ui.simulation.enable" message="false" />
+			<ker:event key="org.spis.ui.data.mining.enable" message="true" />
+			<ker:event key="org.spis.ui.reporting.enable" message="false" />
+		</onentry>
+		<transition event="org.spis.ui.transition.electrical.circuit.previous" target="org.spis.ui.group.editor" />
+		<transition event="org.spis.ui.transition.electrical.circuit.next" target="org.spis.ui.global.parameters" />
+		<onexit>
+			<!-- <ker:event key="org.spis.ui.global.parameters.invalidate" /> -->
+			<!-- <ker:event key="org.spis.ui.simulation.invalidate" /> -->
+		</onexit>
+	</state>
+
+	<state id="org.spis.ui.global.parameters">
+		<onentry>
+			<ker:event key="org.spis.ui.home.enable" message="true" />
+			<ker:event key="org.spis.ui.project.configuration.enable" message="true" />
+			<ker:event key="org.spis.ui.geometry.editor.enable" message="true" />
+			<ker:event key="org.spis.ui.mesh.editor.enable" message="true" />
+			<ker:event key="org.spis.ui.radiation.editor.enable" message="true" />
+			<ker:event key="org.spis.ui.group.editor.enable" message="true" />
+			<ker:event key="org.spis.ui.electrical.circuit.enable" message="true" />
+			<ker:event key="org.spis.ui.global.parameters.enable" message="true" />
+			<ker:event key="org.spis.ui.global.parameters.display" />
+			<ker:event key="org.spis.ui.simulation.enable" message="false" />
+			<ker:event key="org.spis.ui.data.mining.enable" message="true" />
+			<ker:event key="org.spis.ui.reporting.enable" message="false" />
+		</onentry>
+		<transition event="org.spis.ui.transition.global.parameters.previous" target="org.spis.ui.electrical.circuit" />
+		<transition event="org.spis.ui.transition.global.parameters.next" target="org.spis.ui.simulation" />
+		<onexit>
+			<ker:event key="org.spis.ui.ui2num.invalidate" />
+		</onexit>
+	</state>
+
+	<state id="org.spis.ui.simulation">
+		<onentry>
+			<ker:event key="org.spis.ui.home.enable" message="true" />
+			<ker:event key="org.spis.ui.project.configuration.enable" message="true" />
+			<ker:event key="org.spis.ui.geometry.editor.enable" message="true" />
+			<ker:event key="org.spis.ui.mesh.editor.enable" message="true" />
+			<ker:event key="org.spis.ui.radiation.editor.enable" message="true" />
+			<ker:event key="org.spis.ui.group.editor.enable" message="true" />
+			<ker:event key="org.spis.ui.electrical.circuit.enable" message="true" />
+			<ker:event key="org.spis.ui.global.parameters.enable" message="true" />
+			<ker:event key="org.spis.ui.simulation.enable" message="true" />
+			<ker:event key="org.spis.ui.simulation.display" />
+			<ker:event key="org.spis.ui.data.mining.enable" message="true" />
+			<ker:event key="org.spis.ui.reporting.enable" message="false" />
+		</onentry>
+		<transition event="org.spis.ui.transition.simulation.previous" target="org.spis.ui.global.parameters" />
+		<transition event="org.spis.ui.transition.simulation.next" target="org.spis.ui.data.mining" />
+		<onexit>
+		</onexit>
+	</state>
+
+	<state id="org.spis.ui.data.mining">
+		<onentry>
+			<ker:event key="org.spis.ui.home.enable" message="true" />
+			<ker:event key="org.spis.ui.project.configuration.enable" message="true" />
+			<ker:event key="org.spis.ui.geometry.editor.enable" message="true" />
+			<ker:event key="org.spis.ui.mesh.editor.enable" message="true" />
+			<ker:event key="org.spis.ui.radiation.editor.enable" message="true" />
+			<ker:event key="org.spis.ui.group.editor.enable" message="true" />
+			<ker:event key="org.spis.ui.electrical.circuit.enable" message="true" />
+			<ker:event key="org.spis.ui.global.parameters.enable" message="true" />
+			<ker:event key="org.spis.ui.simulation.enable" message="true" />
+			<ker:event key="org.spis.ui.data.mining.enable" message="true" />
+			<ker:event key="org.spis.ui.data.mining.display" />
+			<ker:event key="org.spis.ui.reporting.enable" message="false" />
+		</onentry>
+		<transition event="org.spis.ui.transition.data.mining.next" target="org.spis.ui.reporting" />
+	</state>
+
+	<state id="org.spis.ui.reporting">
+		<onentry>
+			<ker:event key="org.spis.ui.home.enable" message="true" />
+			<ker:event key="org.spis.ui.project.configuration.enable" message="true" />
+			<ker:event key="org.spis.ui.geometry.editor.enable" message="true" />
+			<ker:event key="org.spis.ui.mesh.editor.enable" message="true" />
+			<ker:event key="org.spis.ui.radiation.editor.enable" message="true" />
+			<ker:event key="org.spis.ui.group.editor.enable" message="true" />
+			<ker:event key="org.spis.ui.electrical.circuit.enable" message="true" />
+			<ker:event key="org.spis.ui.global.parameters.enable" message="true" />
+			<ker:event key="org.spis.ui.simulation.enable" message="true" />
+			<ker:event key="org.spis.ui.data.mining.enable" message="true" />
+			<ker:event key="org.spis.ui.reporting.enable" message="true" />
+			<ker:event key="org.spis.ui.reporting.display" />
+		</onentry>
+	</state>
+
+</scxml>

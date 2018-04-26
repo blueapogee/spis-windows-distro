@@ -1,0 +1,5 @@
+Test example of axisymmetrical source (lines 1 and 2 are read but have no consequences)			
+angle[rad] flux[relative] meanEnergy[eV] energyDispersion[eV]			
+0	1	10	0.01
+0.1	0.99	10	0.01
+0.11	0	10	0.01

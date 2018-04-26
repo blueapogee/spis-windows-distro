@@ -1,0 +1,80 @@
+<Property>
+  <id>100</id>
+  <name>Mesh Model Volume, default</name>
+  <description>Default mesh volume settings</description>
+  <isCompound>false</isCompound>
+  <type>Volume mesh properties</type>
+  
+  <characteristicList>
+    
+    <entry>
+      <string>Xyz</string>
+      <com.artenum.frida.characteristic.TupleOfIntegerCharacteristic>
+        <id>4</id>
+        <name>Xyz</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit>[m]</unit>
+          <standardUnit>m</standardUnit>
+        </unit>
+        <localisation>0</localisation>
+        <informationLink></informationLink>
+        <value>
+          <int>0</int>
+          <int>0</int>
+          <int>0</int>
+        </value>
+      </com.artenum.frida.characteristic.TupleOfIntegerCharacteristic>
+    </entry>
+    
+    <entry>
+      <string>NodeFlag</string>
+      <IntegerCharacteristic>
+        <id>3</id>
+        <name>NodeFlag</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit></unit>
+          <standardUnit></standardUnit>
+        </unit>
+        <localisation>0</localisation>
+        <informationLink></informationLink>
+        <value>0</value>
+      </IntegerCharacteristic>
+    </entry>
+    
+    <entry>
+      <string>EdgeFlag</string>
+      <IntegerCharacteristic>
+        <id>2</id>
+        <name>EdgeFlag</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit></unit>
+          <standardUnit></standardUnit>
+        </unit>
+        <localisation>1</localisation>
+        <informationLink></informationLink>
+        <value>0</value>
+      </IntegerCharacteristic>
+    </entry>
+    
+    
+    <entry>
+      <string>SurfFlag</string>
+      <IntegerCharacteristic>
+        <id>1</id>
+        <name>SurfFlag</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit></unit>
+          <standardUnit></standardUnit>
+        </unit>
+        <localisation>2</localisation>
+        <informationLink></informationLink>
+        <value>0</value>
+      </IntegerCharacteristic>
+    </entry>
+  </characteristicList>
+
+</Property>

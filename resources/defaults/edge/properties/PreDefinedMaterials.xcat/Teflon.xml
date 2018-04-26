@@ -1,0 +1,376 @@
+<Property>
+  <id>225</id>
+  <name>TEFLON</name>
+  <description></description>
+  <characteristicList>
+    <entry>
+      <string>D</string>
+      <DoubleCharacteristic>
+        <id>-1</id>
+        <name>D</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="SimpleStringUnit">
+          <unit>g/cm3</unit>
+          <standardUnit>g/cm3</standardUnit>
+        </unit>
+        <localisation>-1</localisation>
+        <informationLink></informationLink>
+        <value>2.2</value>
+      </DoubleCharacteristic>
+    </entry>
+    <entry>
+      <string>formula</string>
+      <StringCharacteristic>
+        <id>-1</id>
+        <name>formula</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="SimpleStringUnit">
+          <unit></unit>
+          <standardUnit></standardUnit>
+        </unit>
+        <localisation>-1</localisation>
+        <informationLink></informationLink>
+        <value></value>
+      </StringCharacteristic>
+    </entry>
+    <entry>
+      <string>Z</string>
+      <DoubleCharacteristic>
+        <id>-1</id>
+        <name>Z</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="SimpleStringUnit">
+          <unit></unit>
+          <standardUnit></standardUnit>
+        </unit>
+        <localisation>-1</localisation>
+        <informationLink></informationLink>
+        <value>0.0</value>
+      </DoubleCharacteristic>
+    </entry>
+    <entry>
+      <string>state</string>
+      <StringCharacteristic>
+        <id>-1</id>
+        <name>state</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="SimpleStringUnit">
+          <unit></unit>
+          <standardUnit></standardUnit>
+        </unit>
+        <localisation>-1</localisation>
+        <informationLink></informationLink>
+        <value>unknown</value>
+      </StringCharacteristic>
+    </entry>
+    <entry>
+      <string>MEE</string>
+      <DoubleCharacteristic>
+        <id>-1</id>
+        <name>MEE</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="SimpleStringUnit">
+          <unit>eV</unit>
+          <standardUnit>eV</standardUnit>
+        </unit>
+        <localisation>-1</localisation>
+        <informationLink></informationLink>
+        <value>99.1</value>
+      </DoubleCharacteristic>
+    </entry>
+  </characteristicList>
+  <subPropertiesList>
+    <entry>
+      <string>composite_F</string>
+      <Property>
+        <id>-1</id>
+        <name>composite_F</name>
+        <description></description>
+        <characteristicList>
+          <entry>
+            <string>n</string>
+            <DoubleCharacteristic>
+              <id>-1</id>
+              <name>n</name>
+              <parentProperty class="Property" reference="../../../.."/>
+              <unit class="SimpleStringUnit">
+                <unit></unit>
+                <standardUnit></standardUnit>
+              </unit>
+              <localisation>-1</localisation>
+              <informationLink></informationLink>
+              <value>4.0</value>
+            </DoubleCharacteristic>
+          </entry>
+        </characteristicList>
+        <subPropertiesList>
+          <entry>
+            <string>F</string>
+            <Property>
+              <id>8</id>
+              <name>F</name>
+              <description></description>
+              <characteristicList>
+                <entry>
+                  <string>formula</string>
+                  <StringCharacteristic>
+                    <id>-1</id>
+                    <name>formula</name>
+                    <parentProperty class="Property" reference="../../../.."/>
+                    <unit class="SimpleStringUnit">
+                      <unit></unit>
+                      <standardUnit></standardUnit>
+                    </unit>
+                    <localisation>-1</localisation>
+                    <informationLink></informationLink>
+                    <value>F</value>
+                  </StringCharacteristic>
+                </entry>
+                <entry>
+                  <string>Z</string>
+                  <DoubleCharacteristic>
+                    <id>-1</id>
+                    <name>Z</name>
+                    <parentProperty class="Property" reference="../../../.."/>
+                    <unit class="SimpleStringUnit">
+                      <unit></unit>
+                      <standardUnit></standardUnit>
+                    </unit>
+                    <localisation>-1</localisation>
+                    <informationLink></informationLink>
+                    <value>9.0</value>
+                  </DoubleCharacteristic>
+                </entry>
+                <entry>
+                  <string>state</string>
+                  <StringCharacteristic>
+                    <id>-1</id>
+                    <name>state</name>
+                    <parentProperty class="Property" reference="../../../.."/>
+                    <unit class="SimpleStringUnit">
+                      <unit></unit>
+                      <standardUnit></standardUnit>
+                    </unit>
+                    <localisation>-1</localisation>
+                    <informationLink></informationLink>
+                    <value>gas</value>
+                  </StringCharacteristic>
+                </entry>
+                <entry>
+                  <string>N</string>
+                  <IntegerCharacteristic>
+                    <id>-1</id>
+                    <name>N</name>
+                    <parentProperty class="Property" reference="../../../.."/>
+                    <unit class="SimpleStringUnit">
+                      <unit></unit>
+                      <standardUnit></standardUnit>
+                    </unit>
+                    <localisation>-1</localisation>
+                    <informationLink></informationLink>
+                    <value>0</value>
+                  </IntegerCharacteristic>
+                </entry>
+              </characteristicList>
+              <subPropertiesList>
+                <entry>
+                  <string>atom</string>
+                  <Property>
+                    <id>-1</id>
+                    <name>atom</name>
+                    <description></description>
+                    <characteristicList>
+                      <entry>
+                        <string>type</string>
+                        <StringCharacteristic>
+                          <id>-1</id>
+                          <name>type</name>
+                          <parentProperty class="Property" reference="../../../.."/>
+                          <unit class="SimpleStringUnit">
+                            <unit></unit>
+                            <standardUnit></standardUnit>
+                          </unit>
+                          <localisation>-1</localisation>
+                          <informationLink></informationLink>
+                          <value>A</value>
+                        </StringCharacteristic>
+                      </entry>
+                      <entry>
+                        <string>value</string>
+                        <DoubleCharacteristic>
+                          <id>-1</id>
+                          <name>value</name>
+                          <parentProperty class="Property" reference="../../../.."/>
+                          <unit class="SimpleStringUnit">
+                            <unit></unit>
+                            <standardUnit></standardUnit>
+                          </unit>
+                          <localisation>-1</localisation>
+                          <informationLink></informationLink>
+                          <value>18.0</value>
+                        </DoubleCharacteristic>
+                      </entry>
+                    </characteristicList>
+                    <isCompound>false</isCompound>
+                    <type>atom</type>
+                  </Property>
+                </entry>
+              </subPropertiesList>
+              <isCompound>true</isCompound>
+              <type>element</type>
+            </Property>
+          </entry>
+        </subPropertiesList>
+        <isCompound>true</isCompound>
+        <type>composite</type>
+      </Property>
+    </entry>
+    <entry>
+      <string>composite_C</string>
+      <Property>
+        <id>-1</id>
+        <name>composite_C</name>
+        <description></description>
+        <characteristicList>
+          <entry>
+            <string>n</string>
+            <DoubleCharacteristic>
+              <id>-1</id>
+              <name>n</name>
+              <parentProperty class="Property" reference="../../../.."/>
+              <unit class="SimpleStringUnit">
+                <unit></unit>
+                <standardUnit></standardUnit>
+              </unit>
+              <localisation>-1</localisation>
+              <informationLink></informationLink>
+              <value>2.0</value>
+            </DoubleCharacteristic>
+          </entry>
+        </characteristicList>
+        <subPropertiesList>
+          <entry>
+            <string>C</string>
+            <Property>
+              <id>5</id>
+              <name>C</name>
+              <description></description>
+              <characteristicList>
+                <entry>
+                  <string>formula</string>
+                  <StringCharacteristic>
+                    <id>-1</id>
+                    <name>formula</name>
+                    <parentProperty class="Property" reference="../../../.."/>
+                    <unit class="SimpleStringUnit">
+                      <unit></unit>
+                      <standardUnit></standardUnit>
+                    </unit>
+                    <localisation>-1</localisation>
+                    <informationLink></informationLink>
+                    <value>C</value>
+                  </StringCharacteristic>
+                </entry>
+                <entry>
+                  <string>Z</string>
+                  <DoubleCharacteristic>
+                    <id>-1</id>
+                    <name>Z</name>
+                    <parentProperty class="Property" reference="../../../.."/>
+                    <unit class="SimpleStringUnit">
+                      <unit></unit>
+                      <standardUnit></standardUnit>
+                    </unit>
+                    <localisation>-1</localisation>
+                    <informationLink></informationLink>
+                    <value>6.0</value>
+                  </DoubleCharacteristic>
+                </entry>
+                <entry>
+                  <string>state</string>
+                  <StringCharacteristic>
+                    <id>-1</id>
+                    <name>state</name>
+                    <parentProperty class="Property" reference="../../../.."/>
+                    <unit class="SimpleStringUnit">
+                      <unit></unit>
+                      <standardUnit></standardUnit>
+                    </unit>
+                    <localisation>-1</localisation>
+                    <informationLink></informationLink>
+                    <value>unknown</value>
+                  </StringCharacteristic>
+                </entry>
+                <entry>
+                  <string>N</string>
+                  <IntegerCharacteristic>
+                    <id>-1</id>
+                    <name>N</name>
+                    <parentProperty class="Property" reference="../../../.."/>
+                    <unit class="SimpleStringUnit">
+                      <unit></unit>
+                      <standardUnit></standardUnit>
+                    </unit>
+                    <localisation>-1</localisation>
+                    <informationLink></informationLink>
+                    <value>0</value>
+                  </IntegerCharacteristic>
+                </entry>
+              </characteristicList>
+              <subPropertiesList>
+                <entry>
+                  <string>atom</string>
+                  <Property>
+                    <id>-1</id>
+                    <name>atom</name>
+                    <description></description>
+                    <characteristicList>
+                      <entry>
+                        <string>type</string>
+                        <StringCharacteristic>
+                          <id>-1</id>
+                          <name>type</name>
+                          <parentProperty class="Property" reference="../../../.."/>
+                          <unit class="SimpleStringUnit">
+                            <unit></unit>
+                            <standardUnit></standardUnit>
+                          </unit>
+                          <localisation>-1</localisation>
+                          <informationLink></informationLink>
+                          <value>A</value>
+                        </StringCharacteristic>
+                      </entry>
+                      <entry>
+                        <string>value</string>
+                        <DoubleCharacteristic>
+                          <id>-1</id>
+                          <name>value</name>
+                          <parentProperty class="Property" reference="../../../.."/>
+                          <unit class="SimpleStringUnit">
+                            <unit></unit>
+                            <standardUnit></standardUnit>
+                          </unit>
+                          <localisation>-1</localisation>
+                          <informationLink></informationLink>
+                          <value>12.0</value>
+                        </DoubleCharacteristic>
+                      </entry>
+                    </characteristicList>
+                    <isCompound>false</isCompound>
+                    <type>atom</type>
+                  </Property>
+                </entry>
+              </subPropertiesList>
+              <isCompound>true</isCompound>
+              <type>element</type>
+            </Property>
+          </entry>
+        </subPropertiesList>
+        <isCompound>true</isCompound>
+        <type>composite</type>
+      </Property>
+    </entry>
+  </subPropertiesList>
+  <isCompound>true</isCompound>
+  <type>material</type>
+</Property>

@@ -1,0 +1,44 @@
+<Property>
+  <id>200</id>
+  <name>Macroscopic Characteristics - Spacecraft default</name>
+  <description>Default SC settings: 0 Dirichlet potential</description>
+  <characteristicList>
+  
+     <!-- from imported_Al_oxyde -->
+     <entry>
+      <string>Temperature</string>
+      <DoubleCharacteristic>
+        <id>10</id>
+        <name>Temperature</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit>[K]</unit>
+          <standardUnit>K</standardUnit>
+        </unit>
+        <localisation>2</localisation>
+        <informationLink></informationLink>
+        <value>300.0</value>
+      </DoubleCharacteristic>
+    </entry>
+    
+    <!-- from imported_Al_oxyde -->
+    <entry>
+      <string>MatThickness</string>
+      <DoubleCharacteristic>
+        <id>3</id>
+        <name>MatThickness</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit>[m]</unit>
+          <standardUnit>m</standardUnit>
+        </unit>
+        <localisation>2</localisation>
+        <informationLink></informationLink>
+        <value>1.25E-4</value>
+      </DoubleCharacteristic>
+    </entry>
+  
+  </characteristicList>
+  <isCompound>false</isCompound>
+  <type>S/C macroscopic characteristics</type>
+</Property>

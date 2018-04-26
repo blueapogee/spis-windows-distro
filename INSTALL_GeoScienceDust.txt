@@ -1,0 +1,56 @@
+
+                    SPIS 5.2.4 2017/02/20
+     SPIS-UI Integrated Modelling Environnement (SPIS-UI IME)
+
+             Spacecraft Plasma Interaction Software
+                  see: http://www.spis.org
+
+
+1) Contents
+
+SPIS is an open source software project supported by the Spacecraft Plasma
+Interaction Network in Europe (SPINE). This package contents the source
+codes and all needed compilation/configuration scripts of the the SPIS-UI
+IME. The SPIS-UI layer is an Integrated Modelling Environment (IME) to help
+the user to perform the whole modelling chain, from the pre-processing phase
+to the simulation results analysis. 
+
+2) Pre-requisites
+
+For binary based releases:
+
+No specific installation is required. Just unzip/unpack the present release
+and run the launching command as described in the README.TXT file. Be careful,
+on windows operating system, the default unzip application may not work.
+In this case, please use 7zip application. 
+
+For source code based releases:
+
+The compilation process of SPIS requires the following
+elements installed before:
+
+- Standard Java Development Kit (JDK-SE) 
+  (see http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+- Apache Maven (see http://maven.apache.org/)
+- The Apache Felix runtime configured for SPIS and as packaged in the binaries
+releases (see http://dev.spis.org/projects/spine/home/spis/software/download)
+
+3) Installation and compilation process
+
+Once downloaded, the zip file containing the SPIS release has to be extracted
+on the machine it will be used on to ensure that the software is executable. 
+
+All third party components and dependencies are automatically handled through
+the Maven based compilation process. See Artenum's Maven repository for further
+informations (see http://maven.artenum.com). 
+
+For this reason, you must be connected to internet to compile SPIS-UI. 
+
+To compile, go into the SPIS's root directory and type the following command: 
+
+	mvn clean install -DskipTests=true
+
+For the deployment of generated binaries, please see the advanced developer
+training course. 
+
+Done at Toulouse, France, 20th of February 2017.

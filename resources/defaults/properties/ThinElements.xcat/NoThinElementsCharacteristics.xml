@@ -1,0 +1,42 @@
+<Property>
+  <id>312</id>
+  <name>Default - No thin elements</name>
+  <description>Default SC settings: no thin element</description>
+  <isCompound>false</isCompound>
+  <type>S/C thin elements</type>
+  
+    <characteristicList>
+    <entry>
+      <string>SurfThicknessS</string>
+      <DoubleCharacteristic>
+        <id>8</id>
+        <name>SurfThicknessS</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit>[m]</unit>
+          <standardUnit>m</standardUnit>
+        </unit>
+        <localisation>2</localisation>
+        <informationLink></informationLink>
+        <value>0</value>
+      </DoubleCharacteristic>
+    </entry>
+  
+    <entry>
+      <string>EdgeRadiusS</string>
+      <DoubleCharacteristic>
+        <id>10</id>
+        <name>EdgeRadiusS</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit>[m]</unit>
+          <standardUnit>m</standardUnit>
+        </unit>
+        <localisation>1</localisation>
+        <informationLink></informationLink>
+        <value>0.000</value>
+      </DoubleCharacteristic>
+    </entry>
+    </characteristicList>
+    
+</Property>

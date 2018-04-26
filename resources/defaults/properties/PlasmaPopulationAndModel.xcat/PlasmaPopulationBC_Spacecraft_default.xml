@@ -1,0 +1,251 @@
+<Property>
+  <id>200</id>
+  <name>Plasma Population BC - Spacecraft default</name>
+  <description>Default SC settings: All interactions activated</description>
+  <isCompound>false</isCompound>
+  <type>S/C plasma population BC</type>
+  <characteristicList>
+   <entry>
+      <string>PhotoEmis</string>
+      <IntegerCharacteristic>
+        <id>4</id>
+        <name>PhotoEmis</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit></unit>
+          <standardUnit></standardUnit>
+        </unit>
+        <localisation>2</localisation>
+        <informationLink></informationLink>
+        <value>1</value>
+      </IntegerCharacteristic>
+    </entry>
+    <entry>
+      <string>SunFlux</string>
+      <DoubleCharacteristic>
+        <id>11</id>
+        <name>SunFlux</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit>[-]</unit>
+          <standardUnit>-</standardUnit>
+        </unit>
+        <localisation>2</localisation>
+        <informationLink></informationLink>
+        <value>300.0</value>
+      </DoubleCharacteristic>
+    </entry>
+    <entry>
+      <string>ProtSecEmis</string>
+      <IntegerCharacteristic>
+        <id>6</id>
+        <name>ProtSecEmis</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit></unit>
+          <standardUnit></standardUnit>
+        </unit>
+        <localisation>2</localisation>
+        <informationLink></informationLink>
+        <value>1</value>
+      </IntegerCharacteristic>
+    </entry>
+    <entry>
+      <string>ElecSecEmis</string>
+      <IntegerCharacteristic>
+        <id>5</id>
+        <name>ElecSecEmis</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit></unit>
+          <standardUnit></standardUnit>
+        </unit>
+        <localisation>2</localisation>
+        <informationLink></informationLink>
+        <value>1</value>
+      </IntegerCharacteristic>
+    </entry>
+    
+       <entry>
+      <string>PhotoEmisOnWire</string>
+      <IntegerCharacteristic>
+        <id>84</id>
+        <name>PhotoEmisOnWire</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit></unit>
+          <standardUnit></standardUnit>
+        </unit>
+        <localisation>1</localisation>
+        <informationLink></informationLink>
+        <value>1</value>
+      </IntegerCharacteristic>
+    </entry>
+    <entry>
+      <string>SunFluxOnWire</string>
+      <DoubleCharacteristic>
+        <id>81</id>
+        <name>SunFluxOnWire</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit>[-]</unit>
+          <standardUnit>-</standardUnit>
+        </unit>
+        <localisation>1</localisation>
+        <informationLink></informationLink>
+        <value>300.0</value>
+      </DoubleCharacteristic>
+    </entry>
+    <entry>
+      <string>ProtSecEmisOnWire</string>
+      <IntegerCharacteristic>
+        <id>86</id>
+        <name>ProtSecEmisOnWire</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit></unit>
+          <standardUnit></standardUnit>
+        </unit>
+        <localisation>1</localisation>
+        <informationLink></informationLink>
+        <value>1</value>
+      </IntegerCharacteristic>
+    </entry>
+    <entry>
+      <string>ElecSecEmisOnWire</string>
+      <IntegerCharacteristic>
+        <id>85</id>
+        <name>ElecSecEmisOnWire</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit></unit>
+          <standardUnit></standardUnit>
+        </unit>
+        <localisation>1</localisation>
+        <informationLink></informationLink>
+        <value>1</value>
+      </IntegerCharacteristic>
+    </entry>
+    <entry>
+      <string>ImposedEmittedCurrentFlag</string>
+      <IntegerCharacteristic>
+        <id>86</id>
+        <name>ImposedEmittedCurrentFlag</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit></unit>
+          <standardUnit></standardUnit>
+        </unit>
+        <localisation>2</localisation>
+        <informationLink></informationLink>
+        <value>0</value>
+      </IntegerCharacteristic>
+    </entry>
+        <entry>
+      <string>ImposedEmittedCurrentDensity</string>
+      <DoubleCharacteristic>
+        <id>87</id>
+        <name>ImposedEmittedCurrentDensity</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit>[A/m2]</unit>
+          <standardUnit>A/m2</standardUnit>
+        </unit>
+        <localisation>2</localisation>
+        <informationLink></informationLink>
+        <value>0.0</value>
+      </DoubleCharacteristic>
+    </entry>
+        <entry>
+      <string>ImposedEmittedCurrentFlagOnWire</string>
+      <IntegerCharacteristic>
+        <id>88</id>
+        <name>ImposedEmittedCurrentFlagOnWire</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit></unit>
+          <standardUnit></standardUnit>
+        </unit>
+        <localisation>1</localisation>
+        <informationLink></informationLink>
+        <value>0</value>
+      </IntegerCharacteristic>
+    </entry>
+        <entry>
+      <string>ImposedEmittedCurrentDensityOnWire</string>
+      <DoubleCharacteristic>
+        <id>89</id>
+        <name>ImposedEmittedCurrentDensityOnWire</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit>[A/m2]</unit>
+          <standardUnit>A/m2</standardUnit>
+        </unit>
+        <localisation>1</localisation>
+        <informationLink></informationLink>
+        <value>0.0</value>
+      </DoubleCharacteristic>
+    </entry>
+    <entry>
+      <string>ImposedCollectedCurrentFlag</string>
+      <IntegerCharacteristic>
+        <id>90</id>
+        <name>ImposedCollectedCurrentFlag</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit></unit>
+          <standardUnit></standardUnit>
+        </unit>
+        <localisation>2</localisation>
+        <informationLink></informationLink>
+        <value>0</value>
+      </IntegerCharacteristic>
+    </entry>
+        <entry>
+      <string>ImposedCollectedCurrentDensity</string>
+      <DoubleCharacteristic>
+        <id>91</id>
+        <name>ImposedCollectedCurrentDensity</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit>[A/m2]</unit>
+          <standardUnit>A/m2</standardUnit>
+        </unit>
+        <localisation>2</localisation>
+        <informationLink></informationLink>
+        <value>0.0</value>
+      </DoubleCharacteristic>
+    </entry>
+        <entry>
+      <string>ImposedCollectedCurrentFlagOnWire</string>
+      <IntegerCharacteristic>
+        <id>92</id>
+        <name>ImposedCollectedCurrentFlagOnWire</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit></unit>
+          <standardUnit></standardUnit>
+        </unit>
+        <localisation>1</localisation>
+        <informationLink></informationLink>
+        <value>0</value>
+      </IntegerCharacteristic>
+    </entry>
+        <entry>
+      <string>ImposedCollectedCurrentDensityOnWire</string>
+      <DoubleCharacteristic>
+        <id>93</id>
+        <name>ImposedCollectedCurrentDensityOnWire</name>
+        <parentProperty class="Property" reference="../../../.."/>
+        <unit class="com.artenum.penelope.mesh.unit.SimpleStringUnit">
+          <unit>[A/m2]</unit>
+          <standardUnit>A/m2</standardUnit>
+        </unit>
+        <localisation>1</localisation>
+        <informationLink></informationLink>
+        <value>0.0</value>
+      </DoubleCharacteristic>
+    </entry>
+  </characteristicList>
+
+</Property>

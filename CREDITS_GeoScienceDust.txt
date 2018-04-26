@@ -1,0 +1,40 @@
+
+                    SPIS 5.2.4 2017/02/20
+     SPIS-UI Integrated Modelling Environnement (SPIS-UI IME)
+
+             Spacecraft Plasma Interaction Software
+                  see: http://www.spis.org
+
+
+SPIS is an open source software project supported by the Spacecraft Plasma Interaction Network in Europe (SPINE).
+
+Intellectual property rights remain with the original authors. Software
+copy and modifications rights are covered by the GPL license (See COPYRIGHT,
+ LICENSE.txt and GPL.txt).
+
+The Spacecraft Plasma Interaction Software (SPIS) was initiated by the 
+European Space Agency (ESA) under contract number 16806/02/NL/JA.
+
+The SPIS 5.2.4 includes improvements performed in the frame of different 
+projects:
+1/ SPIS-Time Dependent activity (ESA contract 19884/06/NL/JD with funding 
+from Centre National d'Etudes Spatiales (CNES))
+	- Development by ONERA and ARTENUM
+	- validation by ONERA
+2/ SPIS-GEO (ESA contract 4000101174)
+	- Development by ARTENUM and ONERA
+	- Validation by OHB-Sweden and ASTRIUM-France
+3/ AISEPS (ESA contract)
+	- Development and validation by ASTRIUM-SAS
+	- Support by ONERA
+4/ SPIS-SCIENCE (ESA contract 4000102091/10/NL/AS)
+	- Development by ONERA and Artenum
+	- Validation by Swedish Institute of Space Physics (IRF-U) and by
+	Institut de Recherche en Astrophysique et Planetologie (IRAP)
+5/ SPIS-Dust (ESA contract 40004107327/12/NL/AK)
+	- Development by ONERA and ARTENUM
+	- Validation by Lancaster University
+6/ Numerous extra developments, improvements and bug fixes done on the 
+internal efforts of ONERA and ARTENUM. 
+
+Done at Toulouse, France, 20th of February 2017.

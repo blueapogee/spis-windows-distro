@@ -1,0 +1,144 @@
+
+                    SPIS 5.2.4 2017/02/20
+     SPIS-UI Integrated Modelling Environnement (SPIS-UI IME)
+
+             Spacecraft Plasma Interaction Software
+                  see: http://www.spis.org
+
+ I) SPIS sub-systems:
+
+      1-SPIS-NUM 5.2.4-DUST (based SVN ticket 1153)
+        Numerical core
+        2017/02/20, TOULOUSE, FRANCE
+
+        Copyright (c) ONERA, 2 av E.Belin, TOULOUSE, FRANCE
+        2002-2017, Toulouse, France, http://www.onera.fr
+	
+	1-a) Except files listed in V) and VI)
+	Copyright (c) Astrium SAS, 31 rue des Cosmonautes, Z.I. du Palays
+    31402 Toulouse Cedex 4, France
+    
+	Copyright (c) ESA, Keplerlaan 1  2201 AZ Noordwijk, The Netherlands
+
+
+      2-SPIS-UI 5.2.4  (based on SVN ticket 10326)
+        User Interface / CAD-Meshing-Postprocessing framework
+        2017/02/20, PARIS, FRANCE
+
+        Copyright (c) Artenum SARL, 24, rue Louis Blanc, 75010, PARIS,
+        2000-2017,  Paris, France, http://www.artenum.com
+
+II) Artenum technologies and sub-systems:
+
+   These components are Artenum products developed outside the present
+project and used as external components in the frame of their respective
+open-source licenses. Please see the Artenum's Web site (www.artenum.com)
+for further informations and details regarding the IPR and the license 
+terms. 
+
+      1-Keridwen Core 2.0.16 (based on SVN ticket 994)
+        http://www.artenum.com/EN/Products-Keridwen.html
+
+        Copyright (c) Artenum SARL, 24, rue Louis Blanc, 75010, PARIS,
+        2010-2017,  Paris, France, http://www.artenum.com
+
+      2-Keridwen Wrapping 2.0.16 (based on SVN ticket 45)
+        http://www.artenum.com/EN/Products-Keridwen.html
+
+        Copyright (c) Artenum SARL, 24, rue Louis Blanc, 75010, PARIS,
+        2010-2017,  Paris, France, http://www.artenum.com
+
+      3-Nisaba 1.0.16 (based on SVN ticket 61)
+        http://dev.artenum.com/projects/nisaba
+
+        Copyright (c) Artenum SARL, 24, rue Louis Blanc, 75010, PARIS,
+        2010-2017,  Paris, France, http://www.artenum.com
+
+      4-ArtTk 2.0.20 (based on SVN ticket 1990)
+        http://www.artenum.com/EN/Products-ArtTk.html
+
+        Copyright (c) Artenum SARL, 24, rue Louis Blanc, 75010, PARIS,
+        2004-2017,  Paris, France, http://www.artenum.com
+
+      5-Peneloppe 3.0.16 (based on SVN ticket 661)
+        http://www.artenum.com/EN/Products-JFreeMesh.html
+
+        Copyright (c) Artenum SARL, 24, rue Louis Blanc, 75010, PARIS,
+        2010-2017,  Paris, France, http://www.artenum.com
+
+      6-Cassandra 2.5.16 (based on SVN ticket 3377)
+        http://www.artenum.com/EN/Products-Cassandra.html
+
+        Copyright (c) Artenum SARL, 24, rue Louis Blanc, 75010, PARIS,
+        2010-2017,  Paris, France, http://www.artenum.com
+ 
+      7-JyConsole 1.5.0
+        http://www.artenum.com/EN/Products-JRosetta.html
+
+        Copyright (c) Artenum SARL, 24, rue Louis Blanc, 75010, PARIS,
+        2004-2017,  Paris, France, http://www.artenum.com
+        
+      8-Frida 0.0.16 (based on SVN ticket 244)
+        http://dev.artenum.com/projects/frida
+
+        Copyright (c) Artenum SARL, 24, rue Louis Blanc, 75010, PARIS,
+        2004-2017,  Paris, France, http://www.artenum.com
+
+      9-Keridwen-Tools 2.0.18 (based on SVN ticket 836)
+        http://www.artenum.com/EN/Products-Keridwen.html
+
+        Copyright (c) Artenum SARL, 24, rue Louis Blanc, 75010, PARIS,
+        2004-2017,  Paris, France, http://www.artenum.com
+
+
+III) External components:
+  
+   These components are external open-source components and are driven by 
+their own IPR and licensing rules. Please refere to the relevant Web site 
+and/or community for further details.
+ 
+      1-Gmsh, see: http://geuz.org/gmsh/ 
+
+      2-Visualisation Tool Kit (VTK), see: http://www.vtk.org/
+
+      3-Apache Felix runtime: http://felix.apache.org/site/index.html
+
+      4-Jython interpreter, see: http://www.jython.org/
+
+      5-Docking Frames GUI manager, see: http://dock.javaforge.com/
+
+      6-Xstream, see: http://xstream.codehaus.org/
+
+NB: Please note that theses components may be themselves depending on other
+technologies. Transitive dependencies are not systematically indicated. 
+
+
+IV) Contact:
+
+   Feel free to contact us for further information:
+	
+	- SPIS project: contact [at] spis.org
+	- ONERA contact point: Jean-Charles.Mateo_Velez [at] onera.fr
+	- Artenum's contact point: contact [at] artenum.com
+ 
+
+V) List of SPIS-NUM files co-owned by Astrium SAS and ESA :
+
+Spis.Surf.SurfField.LocalOMLCurrentScalerWithNeutrality.java
+Spis.Surf.SurfField.LocalTempCurrentScaler.java
+Spis.Surf.SurfField.OMLCurrentScalerWithNeutrality.java
+Spis.Surf.SurfField.OMLCurrentScalerWithNeutralityInf.java
+Spis.Surf.SurfDistrib.AisepsCathodeSurfDistrib.java
+Spis.Surf.SurfDistrib.AisepsThrusterSurfDistrib.java
+Spis.Util.Func.ExpPlusConst.java
+Spis.Util.Func.VariableTeLaw.java
+Spis.Util.List.AISEPSLocalSurfSampler.java
+
+
+VI) List of SPIS-NUM files co-owned by ONERA, Astrium SAS and ESA :
+
+spis.Vol.VolInteract.CEXInteractor3
+spis.Vol.VolDistrib.GlobalMaxwellBoltzmannVolDistribWithNeutrality
+
+
+Done at Toulouse, France, 20th of February 2017.
